@@ -26,6 +26,20 @@
     margin-bottom: 70px;
 }
 
+.sub-container-two{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    width: 700px;
+    height: 100%;
+    margin-left: 80px;
+}
+
+.background-image{
+    height: 400px;
+    margin-bottom: 50px;
+}
+
 .btn-home-page {
     color: white;
     background: #1E1E1E;
@@ -34,4 +48,17 @@
     margin-top: 50px;
     font-weight: bolder;
     width: 60%
+}
+
+h1{
+    font-size: 50px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.header-title{
+    color: #FFFFFF;
+    font-size: 50px;
+    font-weight: bolder;
+    margin-bottom: 50px;
 }
