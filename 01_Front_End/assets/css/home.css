@@ -12,7 +12,7 @@
     justify-content: center;
     width: 100vw;
     height: 100%;
-    background: #B22D2B;
+    background: #000000;
 }
 
 .sub-container-one{
@@ -42,11 +42,11 @@
 
 .register-btn-landing{
     color: white;
-    background: #1E1E1E;
+    background: #1C1B24;
     border-radius: 10px;
     font-size: 40px;
     margin-top: 50px;
-    font-weight: bolder;
+    font-weight: bold;
     width: 60%
 }
 
@@ -64,5 +64,24 @@ h1{
 }
 
 .bg-red{
-    background-color: #B22D2B;
+    background-color: #000000;
 }
+
+.container-side-one{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-car-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    width: 100%;
+    margin-top: 2%;
+}
+
