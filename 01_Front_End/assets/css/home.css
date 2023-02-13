@@ -87,6 +87,7 @@ h1{
 }
 
 .landing-custom-card{
+    z-index: 100;
     width: 350px;
     height: 90%;
     margin-right: 2%;
