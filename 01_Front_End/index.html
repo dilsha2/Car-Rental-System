@@ -7,6 +7,7 @@
     <link href="assets/css/home.css" rel="stylesheet">
 
     <link href="assets/boostrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/loginPage.css">
 </head>
 <body>
 <header>
@@ -159,6 +160,49 @@
                     <h1 class="h1">1230+</h1>
                     <h2 class="h2">Kilometers Daily</h2>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="display: none" id="loginPage">
+        <div class="login-container">
+            <div class="login-inside-container-one">
+                <div style="margin-right: 35%" class="login-container-title">
+                    <button style="margin-right:20%" type="button"
+                            class="btn btn-outline-dark rounded-circle mb-5 backToHomeBtn"><i
+                            class="fa-solid fa-arrow-left fs-6"></i></button>
+                    <h3 style="font-weight: bold;">
+                        Login
+                    </h3>
+                </div>
+                <div class="login-sub-container">
+                    <div class="login-box-row-one">
+                        <div class="form-floating w-100">
+                            <input type="text" class="form-control border-secondary" id="login-page-user-name"
+                                   placeholder="Kamal">
+                            <label for="login-page-user-name">User Name</label>
+                        </div>
+                        <div class="form-floating w-100 mt-3">
+                            <input type="password" class="form-control border-secondary " id="login-page-password"
+                                   placeholder="Password">
+                            <label for="login-page-password">Password</label>
+                        </div>
+                    </div>
+                    <div class="login-box-row-two">
+                        <button id="loginUserBtn" style="width: 100%;" type="button" class="btn btn-dark">SIGN-IN</button>
+                    </div>
+                    <div class="login-box-row-three">
+                        <h8 class="login-box-row-three">OR</h8>
+                    </div>
+                    <div class="login-box-row-two">
+                        <button style="width: 100%;" type="button" class="btn btn-outline-dark getStartBtn">SIGN-UP
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="login-inside-container-two">
+                <img class="login-image" src="assets/images/6852137_28532.jpg" alt="car-rent-image">
             </div>
         </div>
     </section>
