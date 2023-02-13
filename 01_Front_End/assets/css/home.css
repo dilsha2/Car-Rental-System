@@ -38,6 +38,7 @@
 .background-image{
     height: 595px;
     margin-bottom: 50px;
+    overflow: hidden;
 }
 
 .register-btn-landing{
