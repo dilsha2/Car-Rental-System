@@ -71,6 +71,15 @@
     background: #000000
 }
 
+.card-title{
+    width: 500px;
+    margin-bottom: 0.5rem;
+}
+
+h5{
+    font-size: 1.25rem;
+    width: 500px;
+}
 .detail-box-one {
     display: flex;
     flex-direction: column;
