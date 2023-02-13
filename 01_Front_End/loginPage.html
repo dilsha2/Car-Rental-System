@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in Page</title>
+    <link rel="stylesheet" href="assets/boostrap/css/loginPage.css">
 </head>
 <body>
 <section id="loginPage">
@@ -16,7 +17,35 @@
               Login
           </h3>
       </div>
+        <div class="login-sub-container">
+            <div class="login-box-row-one">
+                <div class="form-floating w-100">
+                    <input type="text" class="form-control border-secondary" id="login-page-user-name"
+                           placeholder="Kamal">
+                    <label for="login-page-user-name">User Name</label>
+                </div>
+                <div class="form-floating w-100 mt-3">
+                    <input type="password" class="form-control border-secondary " id="login-page-password"
+                           placeholder="Password">
+                    <label for="login-page-password">Password</label>
+                </div>
+            </div>
+            <div class="login-box-row-two">
+                <button id="loginUserBtn" style="width: 100%;" type="button" class="btn btn-dark">LOGIN</button>
+            </div>
+            <div class="login-box-row-three">
+                <h8 class="login-box-row-three">OR</h8>
+            </div>
+            <div class="login-box-row-two">
+                <button style="width: 100%;" type="button" class="btn btn-outline-dark getStartBtn">REGISTER
+                </button>
+
+            </div>
+        </div>
     </div>
+      <div class="login-inside-container-two">
+          <img class="login-image" src="assets/images/6852137_28532.jpg" alt="car-rent-image">
+      </div>
   </div>
 </section>
 </body>
