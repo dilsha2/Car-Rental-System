@@ -37,23 +37,13 @@ $(".backToHomeBtn").click(function (){
     $("#registerForm").css('display','none')
 })
 
-//user login
-$("#loginUserBtn").click(function (){
 
-    let userDTO = {
-        user_name: $("#login-page-user-name").val(),
-        password: $("#login-page-password").val()
-    }
-
-    $.ajax({
-
-    })
-})
 
 // /---------------admin profile navigations
 //--Dashboard
 $("#adminDashboardBtn").click(function () {
 
+    console.log("sdssd")
     $("#adminDailySummary").css("display", "inline-flex")
 
     $("#adminReservation").css("display", "none")
@@ -62,27 +52,22 @@ $("#adminDashboardBtn").click(function () {
     $("#adminCustomer").css("display", "none")
     $("#adminPayments").css("display", "none")
 
-   // loadDailySummary();
+
 })
 
-//--Payment
-$("#adminPaymentBtn").click(function () {
-    $("#adminPayments").css("display", "inline-flex")
+//--Reservation
+$("#adminReservationBtn").click(function () {
+    $("#adminReservation").css("display", "inline-flex")
 
+    console.log("sdssd")
+
+    $("#adminDailySummary").css("display", "none")
+    $("#adminCars").css("display", "none")
     $("#adminDrivers").css("display", "none")
     $("#adminCustomer").css("display", "none")
-    $("#adminCars").css("display", "none")
-    $("#adminReservation").css("display", "none")
-    $("#adminDailySummary").css("display", "none")
-
-    $("#admin-all-drivers-title").css("display", "block")
-    $("#admin-all-driverSchedule-title").css("display", "none")
+    $("#adminPayments").css("display", "none")
 
 
-    $("#enableSaveDriverBtn").css("display", "block");
-    $("#enableSearchDriverBtn").css("visibility", "hidden");
 
-   // loadAllDrivers()
+
 })
-
-

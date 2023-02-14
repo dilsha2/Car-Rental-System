@@ -7,10 +7,12 @@
     <link href="assets/boostrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/font/css/all.css" rel="stylesheet">
     <link href="assets/css/AdminDashboard.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/common.css">
-    <script src="assets/js/homePageController.js"></script>
+    <link href="assets/css/common.css" rel="stylesheet">
+
+
     <script src="assets/JQuery/jquery-3.6.0.min.js"></script>
     <script src="assets/boostrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/homePageController.js"></script>
 
 
 </head>
@@ -136,31 +138,259 @@
                             </tbody>
                         </table>
                     </div>
-                    <!--                    <div style="width: 45%;"-->
-                    <!--                         class=" h-100 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">-->
-                    <!--                        <h5 class="text-center mt-1">Last Payments</h5>-->
-                    <!--                        <table class="table table-hover table-borderless ">-->
-                    <!--                            <thead class="table-dark text-center">-->
-                    <!--                            <tr>-->
-                    <!--                                <th scope="col">Bill ID</th>-->
-                    <!--                                <th scope="col">Reserve ID</th>-->
-                    <!--                                <th scope="col">Pay Date</th>-->
-                    <!--                                <th scope="col">Amount</th>-->
-                    <!--                            </tr>-->
-                    <!--                            </thead>-->
-                    <!--                            <tbody id="admin-daily-payment-table">-->
+                    <div class=" h-100 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow "
+                         style="width: 45%;">
+                        <h5 class="text-center mt-1">Last Payments</h5>
+                        <table class="table table-hover table-borderless ">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Bill ID</th>
+                                <th scope="col">Reserve ID</th>
+                                <th scope="col">Pay Date</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-daily-payment-table">
 
-                    <!--                            </tbody>-->
-                    <!--                        </table>-->
-                    <!--                    </div>-->
-<!--                    <div class="w-100 d-flex justify-content-end mt-3">-->
-<!--                        <button id="admin-driver-viewDetailsBtn" style="display:block;" class=" btn btn-outline-primary fw-bold"-->
-<!--                                data-bs-toggle="modal"-->
-<!--                                data-bs-target="#updateDriverModel" disabled>View Details-->
-<!--                        </button>-->
-<!--                    </div>-->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
+            <!--                    admin reservation-->
+
+            <div style="display:none;margin-top: 3%" id="adminReservation" class="admin-dashboard-sub-container ">
+                <div class="sub-detail-container">
+                    <div class="btn-group d-flex ms-auto mb-5">
+                        <button type="button" class="btn btn-dark ">Action</button>
+                        <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" id="admin-pending-reservation">Pending Reservation</a></li>
+                            <li><a class="dropdown-item" id="admin-today-pickups">Today Pickups</a></li>
+                        </ul>
+                    </div>
+                    <h4 id="admin-reservation-title" class="text-center mt-1 fw-bold">Pending Reservation</h4>
+                    <h4 id="admin-todayPickups-title" style="display: none" class="text-center mt-1 fw-bold">Today
+                        Pickups</h4>
+                    <div style="width: 100%;height: 80%;"
+                         class=" h-90 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">
+
+                        <table class="table table-hover table-borderless ">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Reservation ID</th>
+                                <th scope="col">Customer ID</th>
+                                <th scope="col">Vehicle Number</th>
+                                <th scope="col">No Of Days</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-reservation-table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="w-100 d-flex justify-content-end mt-4">
+                        <button id="admin-update-reservation" style="display:none;"
+                                class=" btn btn-outline-primary fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#updateReservationModel" disabled>Update Reservation
+                        </button>
+                        <button id="admin-view-reservation" style="display:block;" class=" btn btn-outline-primary fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#viewReservationModel" disabled>View Reservation
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:none;margin-top: 5% " id="adminCars" class="admin-dashboard-sub-container ">
+
+                <div class="sub-detail-container">
+                    <div class="w-100 d-flex justify-content-between">
+                        <button class="btn btn-outline-dark h-50 w-25" data-bs-toggle="modal"
+                                data-bs-target="#saveCarModel">Save
+                        </button>
+
+
+                        <div class="btn-group d-flex ms-auto mb-5 w-25">
+                            <button type="button" class="btn btn-dark ">Action</button>
+                            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" id="admin-car-underMaintain">Under Maintaining</a></li>
+                                <li><a class="dropdown-item" id="admin-car-needMaintain">Need Maintain</a></li>
+                                <li><a class="dropdown-item" id="admin-car-available">Available</a></li>
+                                <li><a class="dropdown-item" id="admin-car-unavailable">Unavailable</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <h4 id="admin-all-cars-title" class="text-center mt-1 fw-bold">All Cars</h4>
+                    <h4 id="admin-all-unavailableCars-title" style="display: none" class="text-center mt-1 fw-bold">
+                        Unavailable Cars</h4>
+                    <h4 id="admin-all-availableCars-title" style="display: none" class="text-center mt-1 fw-bold">
+                        Available Cars</h4>
+                    <h4 id="admin-all-underMaintains-title" style="display: none" class="text-center mt-1 fw-bold">
+                        Under Maintains Cars</h4>
+                    <h4 id="admin-all-needMaintains-title" style="display: none" class="text-center mt-1 fw-bold">
+                        Need Maintains Cars</h4>
+                    <div style="width: 100%;height: 80%;"
+                         class=" h-90 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">
+
+                        <table class="table table-hover table-borderless ">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Vehicle Number</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Transmission</th>
+                                <th scope="col">Fuel Type</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-cars-table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="w-100 d-flex justify-content-end mt-3">
+                        <button id="viewButton" style="display:block;" class=" btn btn-outline-primary fw-bold"
+                                data-bs-toggle="modal"
+                                data-bs-target="#updateCarModel" disabled>View Details
+                        </button>
+                        <button id="unavailableBtn" style="display:none;" class=" btn btn-outline-danger fw-bold">
+                            Mark As Unavailable
+                        </button>
+                        <button id="availableBtn" style="display:none;" class=" btn btn-outline-success fw-bold">
+                            Mark As Available
+                        </button>
+                        <button id="maintainBtn" style="display:none;" class=" btn btn-outline-secondary fw-bold">
+                            Mark As Maintain
+                        </button>
+                        <button id="underMaintainBtn" style="display:none;"
+                                class=" btn btn-outline-warning fw-bold">Mark As under maintenance
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="display: none;margin-top:5%" id="adminCustomer" class="admin-dashboard-sub-container">
+                <div class="sub-detail-container">
+                    <h4 class="text-center mt-1 fw-bold">All Customers</h4>
+                    <div style="width: 100%;height: 80%;"
+                         class=" h-90 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">
+
+                        <table class="table table-hover table-borderless">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">NIC</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Register Date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-customer-table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="w-100 d-flex justify-content-end mt-3">
+                        <button id="admin-customer-viewBtn" class=" btn btn-outline-primary fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#viewCustomerModel" disabled>View Details
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div style="display:none;margin-top: 5%" id="adminDrivers" class="admin-dashboard-sub-container">
+                <div class="sub-detail-container">
+                    <!--This -->
+                    <div class="w-100 d-flex justify-content-between">
+                        <button id="enableSaveDriverBtn" style="display: block"
+                                class="btn btn-outline-dark h-50 w-25" data-bs-toggle="modal"
+                                data-bs-target="#saveDriverModel">Save
+                        </button><!--Save Button-->
+
+                        <form id="enableSearchDriverBtn" style="visibility:hidden;" class="d-flex h-50 w-50"
+                              role="search">
+                            <input id="admin-driver-start-date" class="form-control me-2  " type="date" aria-label="Search">
+                            <input id="admin-driver-end-date" class="form-control me-2  " type="date" aria-label="Search">
+                            <button id="admin-driver-schedule-searchBtn" class="btn btn-outline-dark  " type="button">Search</button>
+                        </form> <!--search Driver-->
+
+                        <div class="btn-group d-flex ms-auto mb-5 w-25">
+                            <button type="button" class="btn btn-dark ">Action</button>
+                            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" id="admin-driverBtn">All Drivers</a></li>
+                                <li><a class="dropdown-item" id="admin-scheduleBtn">Driver Schedule</a></li>
+                            </ul>
+                        </div>
+
+                    </div>                                                 <!--is-->
+                    <h4 id="admin-all-drivers-title" style="display:block;" class="text-center mt-1 fw-bold">All
+                        Drivers</h4>
+                    <!--change view of driver table and button-->
+                    <h4 id="admin-all-driverSchedule-title" style="display:none;" class="text-center mt-1 fw-bold">
+                        Driver Schedule</h4>
+                    <!--change view of driver table and button-->
+                    <div id="admin-driver-table" style="display:block;width: 100%;height: 80%;"
+                         class=" h-90 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">
+
+                        <table class="table table-hover table-borderless  ">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Driver NIC</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Join Date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-all-drivers-table">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="admin-driver-schedule-table" style="display:none;width: 100%;height: 80%;"
+                         class=" h-90 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">
+
+                        <table class="table table-hover table-borderless  ">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Schedule ID</th>
+                                <th scope="col">Driver Name</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-all-drivers-schedule-table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="w-100 d-flex justify-content-end mt-3">
+                        <button id="admin-driver-viewDetailsBtn" style="display:block;" class=" btn btn-outline-primary fw-bold"
+                                data-bs-toggle="modal"
+                                data-bs-target="#updateDriverModel" disabled>View Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
             <div style="display:none;" id="adminPayments" class="admin-dashboard-sub-container">
                 <div class="inside-payment-container">
                     <div class="payment-column border-radius-shadow ">
