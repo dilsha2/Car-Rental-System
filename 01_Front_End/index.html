@@ -6,12 +6,16 @@
 
 
     <link href="assets/boostrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/boostrap/css/all.css">
 
-    <link href="assets/css/home.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/loginPage.css">
     <link rel="stylesheet" href="assets/css/registerForm.css">
     <link rel="stylesheet" href="assets/css/CustomerDashBoard.css">
-    <link rel="stylesheet" href="assets/boostrap/css/all.css">
+    <link rel="stylesheet" href="assets/css/customerReservation.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+
+
+
 </head>
 <body>
 <header>
@@ -623,6 +627,111 @@
         </section>
     </section>
 
+<!--    customer profile-->
+   <section style="display: none" id="customerProfile">
+    <div class="customer-pro-container">
+        <p class="fs-2 fw-bold text-black border-5 border-dark">Update Profile</p>
+        <div class="customer-pro-sub-container border-radius-shadow">
+            <div class="customer-pro-detail-container-one">
+                <button id="customerInformationBtn" type="button"
+                        class="btn btn-outline-dark w-75 fw-bold register-form-btn mt-5">
+                    Information
+                </button>
+                <button id="customerChangePasswordBtn" type="button"
+                        class="btn btn-outline-dark w-75 fw-bold register-form-btn">Password
+                </button>
+
+            </div>
+
+            <div class="customer-pro-detail-container-two">
+                <div id="customerProfileUpdateDetail" style="display: block" class="customer-pro-box">
+                    <div class="customer-pro-box-row-one">
+                        <div class="customer-pro-detail-container">
+                            <div class="form-floating w-100">
+                                <input style="border: 1px solid gray" type="text" class="form-control " id="customer-profile-nic" disabled readonly>
+                                <label for="customer-profile-nic">NIC No</label>
+                            </div>
+                            <div class="form-floating w-100">
+                                <input style="height: 10%;border: 1px solid gray" type="text" class="form-control "
+                                       id="customer-profile-name" >
+                                <label for="customer-profile-name">Full Name</label>
+                            </div>
+
+                            <div class="form-floating w-100">
+                                <input style="border: 1px solid gray" type="email" class="form-control " id="customer-profile-email">
+                                <label for="customer-profile-email">Email </label>
+                            </div>
+                            <div class="form-floating w-100">
+                                <input style="border: 1px solid gray" type="number" class="form-control " id="customer-profile-mobile">
+                                <label for="customer-profile-mobile">Mobile</label>
+                            </div>
+                        </div>
+                        <div class="customer-pro-detail-container mt-2 ">
+                            <div class="form-floating w-100 ">
+                                <input style="border: 1px solid gray" type="text" class="form-control" id="customer-profile-address">
+                                <label for="customer-profile-address">Address</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="customer-pro-box-row-two">
+                        <button id="customer-updateBtn" type="button" class="btn btn-dark register-form-btn mt-5 w-25">Save</button>
+
+                    </div>
+                </div><!--Display block Information of customer-->
+
+                <div id="customerProfileChangePassword" style="display:none;margin-right:200px ">
+                    <h2 class="text-black mb-5">Change Password</h2>
+                    <div style="width: 450px; margin-bottom: 20px;" class="form-floating ">
+                        <input type="password" class="form-control border-secondary"
+                               id="customer-profile-current-password">
+                        <label for="customer-profile-current-password">Current Password</label>
+                    </div>
+                    <div class="form-floating w-100">
+                        <input type="password" class="form-control border-secondary"
+                               id="customer-profile-new-password">
+                        <label for="customer-profile-new-password">New Password</label>
+                    </div>
+                    <button id="btnChangePassword" type="button" class="btn btn-dark register-form-btn mt-5 w-20">Change</button>
+
+                </div><!--Display block change Password of customer-->
+            </div>
+        </div>
+    </div>
+   </section>
+
+<!--    driver-->
+    <section style="display: none" id="driver">
+        <div class="customer-res-container">
+            <div class="customer-res-sub__container">
+                <div>
+                    <button class="btn btn-outline-dark fs-5"> Weekly Schedule</button>
+                    <button style="display:none;margin-left: 20px" class="btn btn-outline-dark fs-5">Monthly Schedule
+                    </button>
+
+                </div>
+                <div class="customer-res-detail__container">
+                    <div class="w-100 h-100 table-wrapper-scroll-y my-custom-scrollbar  border-radius-shadow ">
+                        <table class="table table-hover table-borderless  ">
+                            <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Reserve ID</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="driver-schedule">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 </main>
 
