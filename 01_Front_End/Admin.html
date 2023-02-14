@@ -530,6 +530,144 @@
                 </div>
             </div>
         </div>
+        <!-------------Save Car----------->
+        <div class="modal fade" id="saveCarModel" tabindex="-1" aria-labelledby="bookCarModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog-centered modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-light">
+                        <h5 class="modal-title ">Add New Car</h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="saveCarForm">
+                            <p class="text-center fs-3 fw-bold">Vehicle Details</p>
+                            <hr style=" height: 2px; border: 1px solid black;">
+
+                            <div class="d-flex flex-wrap justify-content-around">
+                                <div style="width: 40%;">
+                                    <div>
+                                        <label class="col-form-label fw-bold">Registration No:</label>
+                                        <input id="save-car-registration-no" class="form-control mb-3 " type="text"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Brand:</label>
+                                        <input id="save-car-brand" class="form-control mb-3" type="text"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Color:</label>
+                                        <input id="save-car-color" class="form-control mb-3" type="text"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Mileage:</label>
+                                        <input id="save-car-mileage" class="form-control mb-3" type="text"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Type:</label>
+                                        <select id="save-car-type"  class="form-select mb-3" aria-label="Default select example">
+                                            <option >Select One</option>
+                                            <option value="General">General</option>
+                                            <option value="Premium">Premium</option>
+                                            <option value="Luxury">Luxury</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Transmission:</label>
+                                        <select id="save-car-transmission"  class="form-select mb-3" aria-label="Default select example">
+                                            <option >Select One</option>
+                                            <option value="Auto">Auto</option>
+                                            <option value="Manual">Manual</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">No Of Passengers:</label>
+                                        <input id="save-car-passengers" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Status:</label>
+                                        <select id="save-car-status"  class="form-select mb-3" aria-label="Default select example">
+                                            <option >Select One</option>
+                                            <option value="Available">Available</option>
+                                            <option value="Unavailable">Unavailable</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-form-label fw-bold">FuelType:</label>
+                                    <select id="save-car-fuelType"  class="form-select mb-3" aria-label="Default select example">
+                                        <option >Fuel Type</option>
+                                        <option value="Petrol">Petrol</option>
+                                        <option value="Diesel">Diesel</option>
+                                    </select>
+
+
+                                </div>
+                                <div style="width: 40%;">
+                                    <div>
+                                        <label class="col-form-label fw-bold">Daily Rate:</label>
+                                        <input id="save-car-daily" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Monthly Rate:</label>
+                                        <input id="save-car-monthly" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Free km For Day:</label>
+                                        <input id="save-car-freeKm-day" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Free km For Month:</label>
+                                        <input id="save-car-freeKm-month" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold">Price For Extra km:</label>
+                                        <input id="save-car-extraKm-price" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label fw-bold mb-1">Waiver Payment:</label>
+                                        <input id="save-car-waiver-payment" class="form-control mb-3" type="number"
+                                               aria-label="Disabled input example">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Front View Of Car</label>
+                                        <input class="form-control " type="file"
+                                               id="save-car-frontView">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Back View Of Car</label>
+                                        <input class="form-control " type="file"
+                                               id="save-car-backView">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Side View Of Car</label>
+                                        <input class="form-control " type="file"
+                                               id="save-car-sideView">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Interior View Of Car</label>
+                                        <input class="form-control " type="file"
+                                               id="save-car-interior">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="btnCarSave" class="btn btn-dark">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </section>
 
