@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<section style="" id="customerReservation">
+<section style="display: none" id="customerReservation">
 
     <div class="customer-res-container">
         <div class="customer-res-sub__container">
@@ -83,7 +83,7 @@
 
 </section>
 
-<section style="display: none" id="customerProfile">
+<section style="" id="customerProfile">
     <div class="customer-pro-container">
         <p class="fs-2 fw-bold text-black border-5 border-dark">Update Profile</p>
         <div class="customer-pro-sub-container border-radius-shadow">
@@ -171,10 +171,12 @@
                     <table class="table table-hover table-borderless  ">
                         <thead class="table-dark text-center">
                         <tr>
-                            <th scope="col">Reserve ID</th>
-                            <th scope="col">Start Time</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">End Date</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Driver</th>
+                            <th scope="col">Pickup Date</th>
+                            <th scope="col">Return Date</th>
+                            <th scope="col">Pickup Location</th>
+                            <th scope="col">Return Location</th>
                         </tr>
                         </thead>
                         <tbody id="driver-schedule">

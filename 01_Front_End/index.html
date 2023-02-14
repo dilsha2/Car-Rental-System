@@ -16,6 +16,7 @@
     <link href="assets/css/common.css" rel="stylesheet">
 
 
+
 </head>
 <body>
 <header>
@@ -756,12 +757,12 @@
     </section>
 
     <!--    driver-->
-    <section id="driver" style="display: none">
+    <section style="display: none" id="driver">
         <div class="customer-res-container">
             <div class="customer-res-sub__container">
                 <div>
                     <button class="btn btn-outline-dark fs-5"> Weekly Schedule</button>
-                    <button class="btn btn-outline-dark fs-5" style="display:none;margin-left: 20px">Monthly Schedule
+                    <button style="display:none;margin-left: 20px" class="btn btn-outline-dark fs-5">Monthly Schedule
                     </button>
 
                 </div>
@@ -770,10 +771,12 @@
                         <table class="table table-hover table-borderless  ">
                             <thead class="table-dark text-center">
                             <tr>
-                                <th scope="col">Reserve ID</th>
-                                <th scope="col">Start Time</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">End Date</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Driver</th>
+                                <th scope="col">Pickup Date</th>
+                                <th scope="col">Return Date</th>
+                                <th scope="col">Pickup Location</th>
+                                <th scope="col">Return Location</th>
                             </tr>
                             </thead>
                             <tbody id="driver-schedule">
@@ -792,6 +795,7 @@
 
 <script src="assets/boostrap/js/bootstrap.bundle.js"></script>
 <script src="assets/JQuery/jquery-3.6.0.min.js"></script>
+<script src="assets/js/homePageController.js"></script>
 
 </body>
 </html>
