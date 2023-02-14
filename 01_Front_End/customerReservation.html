@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Reservation</title>
+  <link rel="stylesheet" href="assets/css/customerReservation.css">
+    <link rel="stylesheet" href="assets/boostrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/boostrap/css/all.css">
+
+</head>
+<body>
+<section style="" id="customerReservation">
+
+    <div class="customer-res-container">
+        <div class="customer-res-sub__container">
+            <div>
+                <button id="customer-upcoming-reservationBtn" class="btn btn-outline-dark fs-5 me-2"> Upcoming Reservation</button>
+                <button id="customer-pending-reservationBtn" class="btn btn-outline-dark fs-5 ms-2"> Pending Reservation</button>
+                <button style="display:none;margin-left: 20px" class="btn btn-outline-dark fs-5"> Previous
+                    Reservation
+                </button>
+
+            </div>
+            <div class="customer-res-detail__container">
+                <div class="card text-bg-light border-radius-shadow w-50" style="height: 80%;">
+                    <div class="card-header border-2 fw-bold">Reservation Status
+                        <span  id="customer-reservationStatus" class=" ms-3 fw-bold ">No Reservation</span></div>
+                    <div class="card-body text-center">
+                        <h5  class="card-title text-center fw-bolder">Reservation ID : <span id="customer-reservation-id"> </span></h5>
+                        <br>
+                        <p class="card-title fs-5 fw-bold">Name : <span id="customer-reservation-name"></span></p>
+                        <p class="card-title fs-5 fw-bold">Vehicle No : <span id="customer-reservation-vehicle"></span></p>
+                        <p class="card-title fs-5 fw-bold">Pickup venue : <span id="customer-reservation-venue"></span></p>
+                        <p class="card-title fs-5 fw-bold">pickup Time : <span id="customer-reservation-pickUp-time"></span></p>
+                        <p class="card-title fs-5 fw-bold">Pickup Date : <span id="customer-reservation-pickUp-date"></span></p>
+                        <p class="card-title fs-5 fw-bold">Return Date : <span id="customer-reservation-return-date"></span></p>
+                        <p class="card-title fs-5 fw-bold">No Of Days : <span id="customer-reservation-days"></span></p>
+
+                    </div>
+                </div>
+                <div class="card text-bg-light border-radius-shadow w-25" style="margin-right: 5%;height: 80%">
+                    <div class="card-header fw-bold">Driver Status <span id="driverStatus" class="ms-3 fw-bold">Not Required</span></div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-center fw-bolder">Driver ID : <span id="customer-reservation-driver-id"> </span></h5>
+                        <br>
+                        <p class="card-title fs-5 fw-bold">Name : <span id="customer-reservation-driver-name">   </span></p>
+                        <p class="card-title fs-5 fw-bold">License No : <span id="customer-reservation-driver-license"> </span></p>
+                        <p class="card-title fs-5 fw-bold">Join Date : <span id="customer-reservation-driver-joinDate"> </span></p>
+                        <p class="card-title fs-5 fw-bold">Mobile : <span id="customer-reservation-driver-mobile"> </span></p>
+
+
+                    </div>
+                </div>
+                <div style="height: 80%;width: 15%" class="border-radius-shadow">
+
+                    <table class="table table-hover table-borderless  ">
+                        <thead style="background-color: #f2f2f2;border-bottom: 1px solid #e9e9e9" class="text-center">
+                        <tr >
+                            <th class="text-center" scope="col">Reservations</th>
+                        </tr>
+                        </thead>
+                        <tbody id="customer-upcoming-reservation-table">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-light me-1">
+                    <i class="fa-solid fs-2 fa-circle-arrow-left"></i>
+                </button>
+                <button type="button" class="btn btn-light ms-1">
+                    <i class="fa-solid fs-2 fa-circle-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+</body>
+</html>
