@@ -50,4 +50,39 @@ $("#loginUserBtn").click(function (){
     })
 })
 
+// /---------------admin profile navigations
+//--Dashboard
+$("#adminDashboardBtn").click(function () {
+
+    $("#adminDailySummary").css("display", "inline-flex")
+
+    $("#adminReservation").css("display", "none")
+    $("#adminCars").css("display", "none")
+    $("#adminDrivers").css("display", "none")
+    $("#adminCustomer").css("display", "none")
+    $("#adminPayments").css("display", "none")
+
+   // loadDailySummary();
+})
+
+//--Payment
+$("#adminPaymentBtn").click(function () {
+    $("#adminPayments").css("display", "inline-flex")
+
+    $("#adminDrivers").css("display", "none")
+    $("#adminCustomer").css("display", "none")
+    $("#adminCars").css("display", "none")
+    $("#adminReservation").css("display", "none")
+    $("#adminDailySummary").css("display", "none")
+
+    $("#admin-all-drivers-title").css("display", "block")
+    $("#admin-all-driverSchedule-title").css("display", "none")
+
+
+    $("#enableSaveDriverBtn").css("display", "block");
+    $("#enableSearchDriverBtn").css("visibility", "hidden");
+
+   // loadAllDrivers()
+})
+
 
