@@ -26,7 +26,7 @@ public class Customer {
     private String password;
     private String imageLocation;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customerId")
     private List<Rental> rentalDetails;
 
 
