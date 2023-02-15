@@ -6,16 +6,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Data
-public class Admin {
+public class Driver {
     @Id
-    private String adminId;
-    private String email;
-    private String userName;
-    private String password;
+    private String driverId;
+    private String name;
+    private String nic;
+    private String drivingLicenseNumber;
+    private LocalDate dob;
+    private String status;
 
 }

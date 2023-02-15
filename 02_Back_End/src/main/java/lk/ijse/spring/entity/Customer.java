@@ -11,11 +11,17 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Entity
 @Data
-public class Admin {
+public class Customer {
     @Id
-    private String adminId;
+    private String customerId;
+    private String name;
+    private String address;
+    private String nic;
+    private String drivingLicenseNumber;
+    private String contactNumber;
     private String email;
-    private String userName;
     private String password;
+    private String imageLocation;
+
 
 }
