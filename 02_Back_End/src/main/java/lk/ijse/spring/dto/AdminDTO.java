@@ -9,10 +9,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @ToString
-public class CustomerDTO {
+public class AdminDTO {
+    private String admin_id;
     private String name;
-    private String nic;
-    private String address;
-    private String email;
-    private String image;
+    private String password;
 }
