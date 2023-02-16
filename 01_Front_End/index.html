@@ -345,18 +345,22 @@
             </div>
         </div> End Header
 -->
-<!--        <div class="navList">-->
-<!--            <ul class="list">-->
-<!--                <li>Home</li>-->
-<!--                <li>Home</li>-->
-<!--                <li>Home</li>-->
-<!--                <li>Home</li>-->
-<!--                <li>Home</li>-->
-<!--            </ul>-->
-<!--        </div>-->
-
-        <section id="customerHome" style="display: none;">
+        <section id="customerHome" style="">
             <div class="customer-home-content">
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                    <label class="logo">ECR</label>
+                    <ul>
+                        <li><a class="active" href="#">Home</a></li>
+                        <li><a href="#">MyStore</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Log Out</a></li>
+
+                    </ul>
+                </nav>
                 <div class="customer-home-container-one">
                     <div class="customer-sub-container-one">
                         <p class="fs-1 fw-bold text-light mb-5">WHY ARE YOU WAITING ? <br/> Plan Your Trip Now</p>
@@ -398,12 +402,12 @@
                                 <h8 id="card-one-type">Luxury</h8>
                                 <h3 class="card-title" id="card-one-brand">Mercedes Benz</h3><br>
                                 <h5 class="custom-card-daily">Daily(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-one-daily">Rs.52000.00</h5>
+                                <h5 class="custom-card-price" id="card-one-daily"></h5>
                                 <br style="clear:both;">
                                 <h5 class="custom-card-daily">Monthly(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-one-monthly">Rs.10000.00</h5>
+                                <h5 class="custom-card-price" id="card-one-monthly"></h5>
                                 <h5 class="custom-card-daily">On Hold(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-T-monthly">Rs.10000.00</h5>
+                                <h5 class="custom-card-price" id="card-T-monthly"></h5>
 
                                 <hr style="clear:both;"/>
                                 <h5 class=" float-start ms-2" id="card-one-fuel-main">
@@ -833,7 +837,7 @@
     </section>
 
 <!--    ===========================================admin dashboard section=============================================-->
-    <section id="admin" style="">
+    <section id="admin" style="display: none">
         <section id="adminDashboard">
             <div class="admin-dashboard-container position-fixed">
 
@@ -1027,7 +1031,7 @@
                     <div class="sub-detail-container">
                         <div class="w-100 d-flex justify-content-between">
                             <button class="btn btn-outline-dark h-50 w-25" data-bs-target="#saveCarModel"
-                                    data-bs-toggle="modal">Save
+                                    data-bs-toggle="modal">New
                             </button>
 
 
@@ -1134,7 +1138,7 @@
                         <div class="w-100 d-flex justify-content-between">
                             <button class="btn btn-outline-dark h-50 w-25" data-bs-target="#saveDriverModel"
                                     data-bs-toggle="modal" id="enableSaveDriverBtn"
-                                    style="display: block">Save
+                                    style="display: block">New
                             </button><!--Save Button-->
 
                             <form class="d-flex h-50 w-50" id="enableSearchDriverBtn" role="search"
@@ -2071,7 +2075,7 @@
                             <div>
                                 <img alt=""
                                      id="admin-view-reservation-img"
-                                     src="assets/img/car-rent.jpg" style="width: 50%;display:block;margin-left: auto;margin-right: auto">
+                                     src="assets/images/car-rent.jpg" style="width: 50%;display:block;margin-left: auto;margin-right: auto">
                                 <br>
                             </div>
 
