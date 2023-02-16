@@ -145,12 +145,5 @@ $("#adminPaymentBtn").click(function () {
     $("#adminReservation").css("display", "none")
     $("#adminDailySummary").css("display", "none")
 
-    $("#admin-all-drivers-title").css("display", "block")
-    $("#admin-all-driverSchedule-title").css("display", "none")
 
-
-    $("#enableSaveDriverBtn").css("display", "block");
-    $("#enableSearchDriverBtn").css("visibility", "hidden");
-
-    //loadAllDrivers()
 })

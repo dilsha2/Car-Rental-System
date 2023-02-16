@@ -5,7 +5,7 @@
     <title>Car Rental System</title>
 
 
-    <link rel="stylesheet" href="assets/font/css/all.css">
+
 
     <link href="assets/css/loginPage.css" rel="stylesheet">
     <link href="assets/css/registerForm.css" rel="stylesheet">
@@ -13,15 +13,18 @@
     <link href="assets/css/customerReservation.css" rel="stylesheet">
     <link href="assets/css/home.css" rel="stylesheet">
     <link href="assets/css/common.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/AdminDashboard.css">
+    <link  href="assets/css/AdminDashboard.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/font/css/all.css">
+    <link rel="stylesheet" href="assets/boostrap/css/bootstrap.min.css">
 
 
 
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg bg-red" id="landingNavbar" style="display:none;">
+    <nav class="navbar navbar-expand-lg bg-red" id="landingNavbar" style="">
         <div class="container-fluid">
             <i class="fa-solid text-light fs-2 fa-car me-2 ms-5"></i>
             <a class="navbar-brand fw-bolder fs-1 text-light  me-5">ECR .</a>
@@ -42,7 +45,7 @@
 <main>
     <!--    Home Page-->
 
-    <section style="display: none" id="landingPage">
+    <section style="" id="landingPage">
         <div class="custom-container-one">
             <div class="container-one">
                 <div class="sub-container-one">
@@ -793,7 +796,7 @@
     </section>
 
 <!--    ===========================================admin dashboard section=============================================-->
-    <section style="" id="admin">
+    <section style="display: none" id="admin">
         <section id="adminDashboard">
             <div class="admin-dashboard-container position-fixed">
 
@@ -1057,11 +1060,12 @@
                             <table class="table table-hover table-borderless">
                                 <thead class="table-dark text-center">
                                 <tr>
-                                    <th scope="col">NIC</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">NIC</th>
                                     <th scope="col">Address</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Mobile</th>
-                                    <th scope="col">Register Date</th>
+                                    <th scope="col">Images</th>
                                 </tr>
                                 </thead>
                                 <tbody id="admin-customer-table">
@@ -2083,7 +2087,6 @@
 <script src="assets/JQuery/jquery-3.6.0.min.js"></script>
 <script src="assets/js/homePageController.js"></script>
 <script src="assets/boostrap/js/bootstrap.bundle.js"></script>
-
 
 </body>
 </html>
