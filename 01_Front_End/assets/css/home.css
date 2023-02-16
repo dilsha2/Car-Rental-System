@@ -166,3 +166,53 @@ h2 {
     background : #000000;
 }
 
+/*=================*/
+
+/*.section {
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.bg {
+  background-color: #f5f6f7;
+}*/
+
+.headerr {
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+.headerr h2 {
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+  color: #2e3135;
+}
+
+.headerr h2:before,
+.headerr h2:after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: var(--color-primary);
+  display: inline-block;
+}
+
+.headerr h2:before {
+  margin: 0 15px 10px 0;
+}
+
+.headerr h2:after {
+  margin: 0 0 10px 15px;
+}
+
+.headerr p {
+  margin: 0 auto 0 auto;
+}
+
+@media (min-width: 1199px) {
+  .headerr p {
+    max-width: 60%;
+  }
+}
+
