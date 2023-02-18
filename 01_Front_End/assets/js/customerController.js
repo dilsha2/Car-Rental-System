@@ -33,7 +33,7 @@ function registerCustomer() {
     dat.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
 
     $.ajax({
-        url: baseUrl +"",
+        url: baseUrl +"customer/register",
         method: 'post',
         async: true,
         contentType: false,
