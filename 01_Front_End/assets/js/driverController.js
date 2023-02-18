@@ -1,3 +1,10 @@
+var baseUrl = "";
+var driver_nic;
+
+$("#btnDriverSave").click(function (){
+
+})
+
 $("#admin-driverBtn").click(function () {
     $("#admin-all-drivers-title").css("display", "block")
     $("#admin-all-driverSchedule-title").css("display", "none")
@@ -29,3 +36,64 @@ $("#admin-scheduleBtn").click(function () {
 
     //loadDriverScheduleForAdmin();
 })
+
+function saveDriver(){
+    var DriverDTO = {
+        nic: $("#save-driver-nic").val(),
+        driver_name: $("#save-driver-name").val(),
+        address: $("#save-driver-address").val(),
+        license_no: $("#save-driver-license").val(),
+        mobile: $("#save-driver-mobile").val(),
+        join_date: $("#save-driver-date").val(),
+        user_name: $("#save-driver-user-name").val(),
+        password: $("#save-driver-password").val(),
+    }
+
+    $.ajax({
+        url: baseUrl + "driver",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(DriverDTO),
+        success: function (res){
+            if (res.status==200){
+                alert(res.message);
+                loadAllDrivers();
+            }
+        },
+
+        error: function(ob){
+            alert(ob.responseJSON.message);
+            console.log(ob.responseJSON.message)
+        }
+    })
+
+    clearDriversForm();
+}
+
+function clearDriversform(){
+    $('#save-driver-nic,#save-driver-name,#save-driver-address,#save-driver-license,#save-driver-mobile,#save-driver-date,#save-driver-user-name,#save-driver-password').css({
+        border: '1px solid #c4c4c4',
+    })
+    $('#save-driver-nic,#save-driver-name,#save-driver-address,#save-driver-license,#save-driver-mobile,#save-driver-date,#save-driver-user-name,#save-driver-password').val("")
+}
+
+function loadAllDrivers(){
+    $("#admin-all-drivers-table").empty();
+
+    $.ajax({
+        url: baseUrl + "",
+        method: "GET",
+        success: function (resp) {
+            for (const driver of resp.data) {
+                let row = `<tr><td>${driver.nic}</td><td>${driver.driver_name}</td><td>${driver.address}</td><td>${driver.mobile}</td><td>${driver.join_date}</td></tr>`;
+                $("#admin-all-drivers-table").append(row);
+
+                $("#admin-all-drivers-table>tr").off("click");
+                $("#admin-all-drivers-table>tr").click(function () {
+                    driver_nic = $(this).children(":eq(0)").text();
+                    $("#admin-driver-viewDetailsBtn").prop('disabled', false);
+                });
+            }
+        }
+    });
+}
