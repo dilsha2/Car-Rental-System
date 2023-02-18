@@ -33,7 +33,7 @@ function registerCustomer() {
     dat.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
 
     $.ajax({
-        url: baseUrl +"customer/register",
+        url: baseUrl +"customer",
         method: 'post',
         async: true,
         contentType: false,
@@ -43,7 +43,7 @@ function registerCustomer() {
         success: function (resp){
             alert(resp.message);
             if (resp.data==null){
-                openCustomerHome(resp.data)
+                openCustomerHome(resp.data);
                 getAvailableCar();
             }
         },
@@ -53,7 +53,7 @@ function registerCustomer() {
         }
     });
 
-    cleanRegisterForm()
+    cleanRegisterForm();
 }
 
 function cleanRegisterForm() {
@@ -76,4 +76,6 @@ function openCustomerHome(){
     $("#customer-profile-address").val(data.address)
     $("#customer-profile-mobile").val(data.mobile)
 }
+
+
 
