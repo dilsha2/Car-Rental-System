@@ -30,7 +30,7 @@ function registerCustomer() {
         nic_img: nicFileName,
     }
 
-    dat.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
+    data.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
 
     $.ajax({
         url: baseUrl +"customer",
