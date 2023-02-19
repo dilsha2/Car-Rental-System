@@ -23,4 +23,5 @@ public class CarDTO {
     private double price_for_extra_km;
     private double waiver_payment;
     private String status;
+    private CarImageDTO carImage;
 }
