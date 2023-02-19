@@ -47,7 +47,7 @@ $("#home-btn").click(function (){
     $("#customerHome").css("display","block");
 })
 
-//m-mystore
+//-mystore
 $("#myStore-btn").click(function () {
     $("#customerProfile").css("display", "none")
     $("#customerHome").css("display", "none")
