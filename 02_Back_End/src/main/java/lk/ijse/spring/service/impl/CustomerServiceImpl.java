@@ -15,29 +15,29 @@ import java.util.List;
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
-    CustomerRepo customerRepo;
-
-    @Autowired
-    ModelMapper mapper;
+//    @Autowired
+//    CustomerRepo customerRepo;
+//
+//    @Autowired
+//    ModelMapper mapper;
 
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
-      if (customerRepo.existsById(customerDTO.getNic())){
-          throw new RuntimeException("Customer "+customerDTO.getNic()+"Already exists");
-      }
-      customerRepo.save(mapper.map(customerDTO,Customer.class));
+//      if (customerRepo.existsById(customerDTO.getNic())){
+//          throw new RuntimeException("Customer "+customerDTO.getNic()+"Already exists");
+//      }
+//      customerRepo.save(mapper.map(customerDTO,Customer.class));
     }
 
     @Override
     public String updateCustomer(CustomerDTO customerDTO) {
-        customerRepo.save(mapper.map(customerDTO, Customer.class));
+//        customerRepo.save(mapper.map(customerDTO, Customer.class));
         return null;
     }
 
     @Override
     public void deleteCustomer(String id) {
-        customerRepo.existsById(id);
+//        customerRepo.existsById(id);
 
     }
 

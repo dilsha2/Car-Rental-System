@@ -38,7 +38,7 @@ $("#admin-scheduleBtn").click(function () {
 })
 
 function saveDriver(){
-    var DriverDTO = {
+    var driverDTO = {
         nic: $("#save-driver-nic").val(),
         driver_name: $("#save-driver-name").val(),
         address: $("#save-driver-address").val(),
@@ -53,7 +53,7 @@ function saveDriver(){
         url: baseUrl + "driver",
         method: "POST",
         contentType: "application/json",
-        data: JSON.stringify(DriverDTO),
+        data: JSON.stringify(driverDTO),
         success: function (res){
             if (res.status==200){
                 alert(res.message);
