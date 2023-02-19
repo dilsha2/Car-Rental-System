@@ -68,3 +68,23 @@ $("#admin-car-needMaintain").click(function () {
 
     //loadAllCars("carsNeedMaintain")
 })
+
+//-----------------save cars
+
+function saveCar(){
+    var data = new FormData();
+
+    let front = $("#save-car-frontView")[0].files[0];
+    let frontFileName = front.name;
+
+    let back = $("#save-car-backView")[0].files[0];
+    let backFileName = back.name;
+
+    let side = $("#save-car-sideView")[0].files[0];
+    let sideFileName = side.name;
+
+    let interior = $("#save-car-interior")[0].files[0];
+    let interiorFileName = interior.name;
+
+
+}

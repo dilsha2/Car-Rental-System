@@ -1,4 +1,4 @@
-var baseUrl = "";
+
 var driver_nic;
 
 $("#btnDriverSave").click(function (){

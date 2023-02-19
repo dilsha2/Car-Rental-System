@@ -40,6 +40,8 @@ $(".backToHomeBtn").click(function (){
 
 
 // /---------------admin profile navigations
+
+
 //--Dashboard
 $("#adminDashboardBtn").click(function () {
 
@@ -109,7 +111,7 @@ $("#adminCustomerBtn").click(function () {
     $("#adminDrivers").css("display", "none")
     $("#adminPayments").css("display", "none")
 
-
+    loadAllCustomers();
 })
 
 //--Drivers
@@ -132,7 +134,7 @@ $("#adminDriversBtn").click(function () {
     $("#enableSaveDriverBtn").css("display", "block");
     $("#enableSearchDriverBtn").css("visibility", "hidden");
 
-    //loadAllDrivers()
+    loadAllDrivers();
 })
 
 //--Payment
@@ -147,3 +149,5 @@ $("#adminPaymentBtn").click(function () {
 
 
 })
+
+var baseUrl = "http://localhost:8080/02_Back_End_war_exploded/"

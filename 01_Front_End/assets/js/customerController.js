@@ -77,5 +77,25 @@ function openCustomerHome(){
     $("#customer-profile-mobile").val(data.mobile)
 }
 
+function loadAllCustomers(){
+    $("#admin-customer-table").empty();
+
+    $.ajax({
+        url: baseUrl + "controller/customer",
+        method: "GET",
+        success: function (resp){
+            for (const customer of resp.data){
+                let row = `<tr><td>${customer.name}</td><td>${customer.nic}</td><td>${customer.address}</td><td>${customer.mobile}</td><td>${customer.email}</td><td>${customer.image}</td></tr>`;
+                $("#admin-customer-table").append(row);
+
+                $("#admin-customer-table>tr").off("click");
+                $("#admin-customer-table>tr").click(function (){
+                    customer_nic = $(this).children(":eq(0)").text();
+                    $("#admin-customer-viewBtn").prop('disabled',false);
+                });
+            }
+        }
+    })
+}
 
 
