@@ -37,10 +37,49 @@ $(".backToHomeBtn").click(function (){
     $("#registerForm").css('display','none')
 })
 
+//--------------------customer page navigation
+
+//-home
+$("#home-btn").click(function (){
+    $("#customerReservation").css("display","none");
+    $("#customerProfile").css("display","none");
+
+    $("#customerHome").css("display","block");
+})
+
+//m-mystore
+$("#myStore-btn").click(function () {
+    $("#customerProfile").css("display", "none")
+    $("#customerHome").css("display", "none")
+    $("#customerReservation").css("display", "block")
+
+    //loadUpcomingReservation();
+})
+
+//---------------customer Profile navigations------------------
+
+$("#customerInformationBtn").click(function () {
+    $("#customerProfileChangePassword").css("display", "none")
+
+    $("#customerProfileUpdateDetail").css("display", "block")
+})
+
+$("#customerChangePasswordBtn").click(function () {
+    $("#customerProfileChangePassword").css("display", "block")
+
+    $("#customerProfileUpdateDetail").css("display", "none")
+})
 
 
-// /---------------admin profile navigations
+// /---------------admin profile navigations------------------------------------
 
+//---Account
+$("#myAccount-btn").click(function () {
+    $("#customerHome").css("display", "none")
+    $("#customerReservation").css("display", "none")
+
+    $("#customerProfile").css("display", "block")
+})
 
 //--Dashboard
 $("#adminDashboardBtn").click(function () {
