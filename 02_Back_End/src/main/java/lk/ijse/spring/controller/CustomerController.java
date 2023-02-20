@@ -19,11 +19,11 @@ import java.net.URISyntaxException;
 public class CustomerController {
 
    @Autowired
-    CustomerService customerService;
+   CustomerService service;
 
    @PostMapping
-   public ResponseUtil RegisterCustomer(@RequestBody CustomerDTO dto){
-       customerService.saveCustomer(dto);
+   public ResponseUtil RegisterCustomer(@ModelAttribute CustomerDTO dto){
+       service.saveCustomer(dto);
        return new ResponseUtil(200, "Registration Successfully....", dto);
 
    }

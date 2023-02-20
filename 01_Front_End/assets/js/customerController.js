@@ -89,6 +89,7 @@ function registerCustomer() {
             }
 
     })
+    cleanRegisterForm();
 }
 
 function cleanRegisterForm() {
