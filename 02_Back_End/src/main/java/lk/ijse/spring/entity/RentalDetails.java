@@ -21,7 +21,7 @@ public class RentalDetails {
     private RentalDetails_PK id;
 
     @ManyToOne
-    private Driver driverId;
+    private Driver driverNic;
     private String rentalStatus;
     private String paymentSlip;
 

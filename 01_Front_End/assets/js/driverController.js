@@ -16,7 +16,7 @@ $("#admin-driverBtn").click(function () {
     $("#enableSearchDriverBtn").css("visibility", "hidden");
     $("#admin-driver-viewDetailsBtn").css("visibility", "visible");
 
-    //loadAllDrivers()
+    loadAllDrivers()
 })
 
 $("#admin-scheduleBtn").click(function () {
@@ -43,11 +43,11 @@ $("#btnDriverSave").click(function (){
 
 function saveDriver(){
     var driverDTO = {
-        nic: $("#save-driver-nic").val(),
+        driverNic: $("#save-driver-nic").val(),
         driver_name: $("#save-driver-name").val(),
         address: $("#save-driver-address").val(),
-        license_no: $("#save-driver-license").val(),
         mobile: $("#save-driver-mobile").val(),
+        license_no: $("#save-driver-license").val(),
         join_date: $("#save-driver-date").val(),
         user_name: $("#save-driver-user-name").val(),
         password: $("#save-driver-password").val(),

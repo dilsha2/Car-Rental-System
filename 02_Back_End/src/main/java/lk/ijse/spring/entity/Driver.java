@@ -17,13 +17,15 @@ import java.util.List;
 @Data
 public class Driver {
     @Id
-    private String driverId;
-    private String name;
-    private String nic;
-    private String drivingLicenseNumber;
-    private LocalDate dob;
-    private String status;
+    private String driverNic;
+    private String driver_name;
+    private String address;
+    private String mobile;
+    private String license_no;
+    private String join_date;
+    private String user_name;
+    private String password;
 
-    @OneToMany(mappedBy = "driverId")
+    @OneToMany(mappedBy = "driverNic")
     private List<RentalDetails> rentalDetailsList;
 }
