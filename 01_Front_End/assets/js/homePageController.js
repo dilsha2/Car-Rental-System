@@ -45,6 +45,7 @@ $("#home-btn").click(function (){
     $("#customerProfile").css("display","none");
 
     $("#customerHome").css("display","block");
+    $("#customer-nav-bar").css("display","block")
 })
 
 //-mystore
@@ -52,6 +53,7 @@ $("#myStore-btn").click(function () {
     $("#customerProfile").css("display", "none")
     $("#customerHome").css("display", "none")
     $("#customerReservation").css("display", "block")
+    $("#customer-nav-bar").css("display","block")
 
     //loadUpcomingReservation();
 })
