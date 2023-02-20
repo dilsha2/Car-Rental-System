@@ -15,18 +15,20 @@ import java.util.List;
 @Entity
 @Data
 public class Customer {
-    @Id
-    private String customerId;
+
+   // private String customerId;
     private String name;
     private String address;
+    @Id
     private String nic;
     private String drivingLicenseNumber;
     private String contactNumber;
     private String email;
+    private String user_name;
     private String password;
     private String imageLocation;
 
-    @OneToMany(mappedBy = "customerId")
+    @OneToMany(mappedBy = "nic")
     private List<Rental> rentalDetails;
 
 

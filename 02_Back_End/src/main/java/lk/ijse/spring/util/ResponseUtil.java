@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class ResponseUtil {
-    private String code;
+    private int code;
     private String message;
     private Object data;
 

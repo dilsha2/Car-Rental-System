@@ -17,7 +17,7 @@ public class Rental {
     @Id
     private String rentalId;
     @ManyToOne
-    private Customer customerId;
+    private Customer nic;
     private LocalDate date;
     private LocalDate pickupDate;
     private double amount;

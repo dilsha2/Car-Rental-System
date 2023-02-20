@@ -6,13 +6,13 @@ var customer;
 var customer_nic;
 
 $('#registerNowBtn').click(function (){
-    // registerFormValidation();
+    registerCustomer();
 })
 
 function registerCustomer() {
     var data = new FormData();
 
-    let nic = $("#register-form-NIC-image")[0].file[0];
+    let nic = $("#register-form-NIC-image")[0].files[0].name;
     let nicFileName = nic.name;
 
 
@@ -20,40 +20,75 @@ function registerCustomer() {
 
     let CustomerDTO = {
         nic: $("#register-form-nic").val(),
-        user_name: $("#register-form-user-name"),
-        password: $("#register-form-password").val(),
-        customer_name: $("#register-form-name").val(),
         address: $("#register-form-address").val(),
-        mobile: $("#register-form-mobile").valueOf(),
+        contactNumber: $("#register-form-mobile").val(),
+        name: $("#register-form-name").val(),
         email: $("#register-form-email").val(),
-        register_date: $("#register-form-date").val(),
-        nic_img: nicFileName,
+        drivingLicenseNumber: $(""),
+       // register_date: $("#register-form-date").val(),
+        password: $("#register-form-password").val(),
+        user_name: $("#register-form-user-name").val(),
+        imageLocation: nicFileName,
     }
 
-    data.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
+    // let Customer={
+    //     nic: nic,
+    //     address: address,
+    //     contactNumber: contactNumber,
+    //     drivingLicenseNumber: drivingLicenseNumber,
+    //     email: email,
+    //     imageLocation: nicFileName,
+    //     name: name,
+    //     password: password,
+    //     user_name: user_name
+    // }
+
+    // data.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
+
+    // $.ajax({
+    //     url: baseUrl +"customer",
+    //     method: 'post',
+    //     async: true,
+    //     contentType: false,
+    //     processData: false,
+    //     data: data,
+    //
+    //     success: function (resp){
+    //         alert(resp.message);
+    //         if (resp.data==null){
+    //             openCustomerHome(resp.data);
+    //
+    //         }
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //
+    //     }
+    // });
+    //
+    // cleanRegisterForm();
 
     $.ajax({
         url: baseUrl +"customer",
         method: 'post',
-        async: true,
-        contentType: false,
-        processData: false,
-        data: data,
+        // async: true,
+        // contentType: false,
+        // processData: false,
+        data: JSON.stringify(CustomerDTO),
+        contentType: "application/json",
 
-        success: function (resp){
-            alert(resp.message);
-            if (resp.data==null){
-                openCustomerHome(resp.data);
-                getAvailableCar();
+            success: function (resp){
+                alert(resp.message);
+                if (resp.data==null){
+                    openCustomerHome(resp.data);
+
+                }
+            },
+            error: function (err) {
+                console.log(err);
             }
-        },
-        error: function (err) {
-            console.log(err);
 
-        }
-    });
-
-    cleanRegisterForm();
+    })
 }
 
 function cleanRegisterForm() {
@@ -81,7 +116,7 @@ function loadAllCustomers(){
     $("#admin-customer-table").empty();
 
     $.ajax({
-        url: baseUrl + "controller/customer",
+        url: baseUrl + "controller/customer/register",
         method: "GET",
         success: function (resp){
             for (const customer of resp.data){

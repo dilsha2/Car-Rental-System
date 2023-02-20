@@ -7,7 +7,9 @@ import lk.ijse.spring.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
+import javax.jws.WebParam;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -15,18 +17,19 @@ import java.util.List;
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-//    @Autowired
-//    CustomerRepo customerRepo;
-//
-//    @Autowired
-//    ModelMapper mapper;
+    @Autowired
+    CustomerRepo repo;
+
+    @Autowired
+    ModelMapper mapper;
+
 
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
-//      if (customerRepo.existsById(customerDTO.getNic())){
-//          throw new RuntimeException("Customer "+customerDTO.getNic()+"Already exists");
-//      }
-//      customerRepo.save(mapper.map(customerDTO,Customer.class));
+        if (repo.existsById(customerDTO.getNic())){
+            throw new RuntimeException("Customer "+customerDTO.getNic()+"Already Exists");
+        }
+        repo.save(mapper.map(customerDTO,Customer.class));
     }
 
     @Override

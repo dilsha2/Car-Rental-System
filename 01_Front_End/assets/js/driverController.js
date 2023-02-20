@@ -37,6 +37,10 @@ $("#admin-scheduleBtn").click(function () {
     //loadDriverScheduleForAdmin();
 })
 
+$("#btnDriverSave").click(function (){
+    saveDriver();
+})
+
 function saveDriver(){
     var driverDTO = {
         nic: $("#save-driver-nic").val(),
@@ -67,7 +71,7 @@ function saveDriver(){
         }
     })
 
-    clearDriversForm();
+    clearDriversform();
 }
 
 function clearDriversform(){
