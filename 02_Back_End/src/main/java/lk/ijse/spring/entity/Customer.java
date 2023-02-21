@@ -21,7 +21,6 @@ public class Customer {
     private String address;
     @Id
     private String nic;
-    private String drivingLicenseNumber;
     private String contactNumber;
     private String email;
     private String user_name;

@@ -100,7 +100,7 @@ function cleanRegisterForm() {
 
 }
 
-function openCustomerHome(){
+function openCustomerHome(data){
     $("#registerForm").css("display", "none")
 
     $("#customer").css("display", "block")
@@ -117,7 +117,7 @@ function loadAllCustomers(){
     $("#admin-customer-table").empty();
 
     $.ajax({
-        url: baseUrl + "controller/customer/register",
+        url: baseUrl + "customer",
         method: "GET",
         success: function (resp){
             for (const customer of resp.data){
@@ -134,4 +134,37 @@ function loadAllCustomers(){
     })
 }
 
+$("#customer-updateBtn").click(function (){
+    updateCustomer();
+})
 
+function updateCustomer(){
+
+    var newDetails = {
+        nic: $("#customer-profile-nic").val(),
+        address: $("#customer-profile-address").val(),
+        contactNumber: $("#customer-profile-mobile").val(),
+        name: $("#customer-profile-name").val(),
+        email: $("#customer-profile-email").val(),
+        password: customer.password,
+        user_name: customer.user_name,
+        imageLocation: customer.imageLocation,
+    }
+
+    $.ajax({
+        url: baseUrl + "customer/update",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(newDetails),
+        success: function (res) {
+            if (res.status === 200) {
+                alert(res.message)
+            } else {
+                alert("Cant update your Details in this moment")
+            }
+        },
+        error: function (ob) {
+            console.log(ob.responseJSON.message);
+        }
+    });
+}

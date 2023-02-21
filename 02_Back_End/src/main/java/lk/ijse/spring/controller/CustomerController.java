@@ -28,4 +28,11 @@ public class CustomerController {
 
    }
 
+    @PutMapping(path = "update", produces = {MediaType.APPLICATION_JSON_VALUE})
+   public ResponseUtil UpdateCustomer(@ModelAttribute CustomerDTO dto){
+       service.saveCustomer(dto);
+       return new ResponseUtil(200,"Update Successfully",dto);
+
+   }
+
 }

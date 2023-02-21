@@ -16,7 +16,6 @@ public class CustomerDTO {
     private String name;
     private String address;
     private String nic;
-    private String drivingLicenseNumber;
     private String contactNumber;
     private String email;
     private String user_name;
