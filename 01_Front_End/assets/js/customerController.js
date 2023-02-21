@@ -10,7 +10,7 @@ $('#registerNowBtn').click(function (){
 })
 
 function registerCustomer() {
-    var data = new FormData();
+    // var data = new FormData();
 
     // let nicImage = $("#register-form-NIC-image")[0].files[0].name;
     // let nicFileName = nicImage.name;
@@ -55,9 +55,8 @@ function registerCustomer() {
     // })
     // cleanRegisterForm();
 
-    let nicFile = $("#register-form-NIC-image")[0].files[0];
+
     let nicFileName = $("#register-form-NIC-image")[0].files[0].name;
-    data.append("imageLocation", nicFile, nicFileName);
 
     // let nicFileName = nicImage.name;
     // data.append("file",nicImage);
@@ -66,33 +65,34 @@ function registerCustomer() {
     let address = $("#register-form-address").val();
     let contactNumber =$("#register-form-mobile").val();
     let name= $("#register-form-name").val();
-   // let date= $("#txtDate").val();
     let drivingLicenseNo= $("#register-form-drivingNo").val();
     let email= $("#register-form-email").val();
     let password =$("#register-form-password").val();
     let user_name= $("#register-form-user-name").val();
-    // let imageLocation= nicFileName;
 
-    data.append("nic",nic);
-    data.append("address",address);
-    data.append("contactNo",contactNumber);
-    data.append("cusName",name);
-   // data.append("date",date);
-    data.append("drivingLicenseNo",drivingLicenseNo);
-    data.append("email",email);
-    data.append("password",password);
-    data.append("user_name",user_name);
-    // data.append("imageLocation",imageLocation);
+
+    var newDetails = {
+        nic: nic,
+        address: address,
+        contactNumber: contactNumber,
+        name: name,
+        drivingLicenseNo: drivingLicenseNo,
+        email: email,
+        password:password,
+        user_name:user_name,
+        imageLocation: nicFileName
+    }
 
     $.ajax({
         url: baseUrl + "customer",
-        type: 'post',
-        async: true,
-        contentType: false,
-        processData: false,
-        data: data,
+        method: 'post',
+        // async: true,
+        contentType: "application/json",
+        // processData: false,
+        data: JSON.stringify(newDetails),
         success: function (resp) {
             alert(resp.message);
+            loadImage();
         },
         error: function (err) {
             console.log(err);
@@ -121,6 +121,31 @@ function openCustomerHome(data){
     $("#customer-profile-address").val(data.address)
     $("#customer-profile-mobile").val(data.mobile)
 }
+
+function loadImage(){
+    var data = new FormData();
+
+    let file = $("#register-form-NIC-image")[0].files[0];
+    let fileName = $("#register-form-NIC-image")[0].files[0].name;
+    data.append("myFile", file, fileName);
+
+    $.ajax({
+        url: baseUrl + "api/v1/upload",
+        method: 'post',
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (resp) {
+            alert("Successfully Uploaded");
+            //loadTheLastUploadedImage();
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
 
 function loadAllCustomers(){
     $("#admin-customer-table").empty();

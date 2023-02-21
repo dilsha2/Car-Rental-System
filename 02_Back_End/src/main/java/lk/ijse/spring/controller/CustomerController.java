@@ -19,7 +19,7 @@ public class CustomerController {
 
 
    @PostMapping
-   public ResponseUtil RegisterCustomer(CustomerDTO dto){
+   public ResponseUtil RegisterCustomer(@RequestBody CustomerDTO dto){
        service.saveCustomer(dto);
        System.out.println(dto.toString());
        return new ResponseUtil(200, "Registration Successfully....", dto);
