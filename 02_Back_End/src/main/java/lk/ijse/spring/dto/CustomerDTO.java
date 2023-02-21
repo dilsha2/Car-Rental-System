@@ -24,27 +24,27 @@ public class CustomerDTO {
     private String imageLocation;
     private String drivingLicenseNo;
 
-//    private MultipartFile image;
-//
-//    public CustomerDTO(String name, String address, String nic, String contactNumber, String email, String user_name, String password, String imageLocation) {
-//        this.name = name;
-//        this.address = address;
-//        this.nic = nic;
-//        this.contactNumber = contactNumber;
-//        this.email = email;
-//        this.user_name = user_name;
-//        this.password = password;
-//        this.imageLocation = imageLocation;
-//    }
-//
-//    public CustomerDTO(String name, String address, String nic, String contactNumber, String email, String user_name, String password, MultipartFile image) {
-//        this.name = name;
-//        this.address = address;
-//        this.nic = nic;
-//        this.contactNumber = contactNumber;
-//        this.email = email;
-//        this.user_name = user_name;
-//        this.password = password;
-//        this.image = image;
-//    }
+    private MultipartFile image;
+
+    public CustomerDTO(String name, String address, String nic, String contactNumber, String email, String user_name, String password, String imageLocation) {
+        this.name = name;
+        this.address = address;
+        this.nic = nic;
+        this.contactNumber = contactNumber;
+        this.email = email;
+        this.user_name = user_name;
+        this.password = password;
+        this.imageLocation = imageLocation;
+    }
+
+    public CustomerDTO(String name, String address, String nic, String contactNumber, String email, String user_name, String password, MultipartFile image) {
+        this.name = name;
+        this.address = address;
+        this.nic = nic;
+        this.contactNumber = contactNumber;
+        this.email = email;
+        this.user_name = user_name;
+        this.password = password;
+        this.image = image;
+    }
 }

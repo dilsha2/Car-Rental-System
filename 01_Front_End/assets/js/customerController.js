@@ -12,84 +12,92 @@ $('#registerNowBtn').click(function (){
 function registerCustomer() {
     var data = new FormData();
 
-    let nicImage = $("#register-form-NIC-image")[0].files[0].name;
-    let nicFileName = nicImage.name;
-
-
-    data.append("file",nicImage);
-
-    let CustomerDTO = {
-         nic:$("#register-form-nic").val(),
-        address : $("#register-form-address").val(),
-        contactNumber: $("#register-form-mobile").val(),
-        name: $("#register-form-name").val(),
-        email: $("#register-form-email").val(),
-        drivingLicenseNo: $("#register-form-drivingNo").val(),
-        password: $("#register-form-password").val(),
-        user_name: $("#register-form-user-name").val(),
-        imageLocation: nicFileName,
-    }
-
-
-
-    // let Customer={
-    //     nic: nic,
-    //     address: address,
-    //     contactNumber: contactNumber,
-    //     drivingLicenseNumber: drivingLicenseNumber,
-    //     email: email,
+    // let nicImage = $("#register-form-NIC-image")[0].files[0].name;
+    // let nicFileName = nicImage.name;
+    //
+    //
+    // data.append("file",nicImage);
+    //
+    // let CustomerDTO = {
+    //      nic:$("#register-form-nic").val(),
+    //     address : $("#register-form-address").val(),
+    //     contactNumber: $("#register-form-mobile").val(),
+    //     name: $("#register-form-name").val(),
+    //     email: $("#register-form-email").val(),
+    //     drivingLicenseNo: $("#register-form-drivingNo").val(),
+    //     password: $("#register-form-password").val(),
+    //     user_name: $("#register-form-user-name").val(),
     //     imageLocation: nicFileName,
-    //     name: name,
-    //     password: password,
-    //     user_name: user_name
     // }
-
-    // data.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
-
+    //
+    //
+    //
     // $.ajax({
     //     url: baseUrl +"customer",
     //     method: 'post',
-    //     async: true,
-    //     contentType: false,
-    //     processData: false,
-    //     data: data,
+    //      async: true,
+    //     // contentType: false,
+    //      processData: false,
+    //     data: JSON.stringify(CustomerDTO),
+    //     contentType: "application/json",
     //
-    //     success: function (resp){
-    //         alert(resp.message);
-    //         if (resp.data==null){
-    //             openCustomerHome(resp.data);
+    //         success: function (resp){
+    //             alert(resp.message);
+    //             if (resp.data==null){
+    //                 openCustomerHome(resp.data);
     //
+    //             }
+    //         },
+    //         error: function (err) {
+    //             console.log(err);
     //         }
-    //     },
-    //     error: function (err) {
-    //         console.log(err);
     //
-    //     }
-    // });
-    //
+    // })
     // cleanRegisterForm();
 
+    let nicFile = $("#register-form-NIC-image")[0].files[0];
+    let nicFileName = $("#register-form-NIC-image")[0].files[0].name;
+    data.append("imageLocation", nicFile, nicFileName);
+
+    // let nicFileName = nicImage.name;
+    // data.append("file",nicImage);
+
+    let nic =  $("#register-form-nic").val();
+    let address = $("#register-form-address").val();
+    let contactNumber =$("#register-form-mobile").val();
+    let name= $("#register-form-name").val();
+   // let date= $("#txtDate").val();
+    let drivingLicenseNo= $("#register-form-drivingNo").val();
+    let email= $("#register-form-email").val();
+    let password =$("#register-form-password").val();
+    let user_name= $("#register-form-user-name").val();
+    // let imageLocation= nicFileName;
+
+    data.append("nic",nic);
+    data.append("address",address);
+    data.append("contactNo",contactNumber);
+    data.append("cusName",name);
+   // data.append("date",date);
+    data.append("drivingLicenseNo",drivingLicenseNo);
+    data.append("email",email);
+    data.append("password",password);
+    data.append("user_name",user_name);
+    // data.append("imageLocation",imageLocation);
+
     $.ajax({
-        url: baseUrl +"customer",
-        method: 'post',
-         async: true,
-        // contentType: false,
-         processData: false,
-        data: JSON.stringify(CustomerDTO),
-        contentType: "application/json",
-
-            success: function (resp){
-                alert(resp.message);
-                if (resp.data==null){
-                    openCustomerHome(resp.data);
-
-                }
-            },
-            error: function (err) {
-                console.log(err);
-            }
-
-    })
+        url: baseUrl + "customer",
+        type: 'post',
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (resp) {
+            alert(resp.message);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
     cleanRegisterForm();
 }
 
@@ -169,3 +177,41 @@ function updateCustomer(){
         }
     });
 }
+
+
+// let Customer={
+//     nic: nic,
+//     address: address,
+//     contactNumber: contactNumber,
+//     drivingLicenseNumber: drivingLicenseNumber,
+//     email: email,
+//     imageLocation: nicFileName,
+//     name: name,
+//     password: password,
+//     user_name: user_name
+// }
+
+// data.append("customer",new Blob([JSON.stringify(CustomerDTO)]))
+
+// $.ajax({
+//     url: baseUrl +"customer",
+//     method: 'post',
+//     async: true,
+//     contentType: false,
+//     processData: false,
+//     data: data,
+//
+//     success: function (resp){
+//         alert(resp.message);
+//         if (resp.data==null){
+//             openCustomerHome(resp.data);
+//
+//         }
+//     },
+//     error: function (err) {
+//         console.log(err);
+//
+//     }
+// });
+//
+// cleanRegisterForm();
