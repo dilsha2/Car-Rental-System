@@ -5,6 +5,7 @@ import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -42,22 +43,34 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(String id) {
-//        customerRepo.existsById(id);
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        } else {
+            throw new RuntimeException("Something Wrong,Cant Delete Your Details.Please Contact Admin");
+        }
 
     }
 
     @Override
     public CustomerDTO getCustomerDetail(String id) {
-        return null;
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(), CustomerDTO.class);
+        } else {
+            throw new RuntimeException("Something Wrong,Cant Get Your Details.Please Contact Admin");
+        }
     }
 
     @Override
     public List<CustomerDTO> getAllCustomerDetail() {
-        return null;
+        return mapper.map(repo.findAll(), new TypeToken<List<CustomerDTO>>() {
+        }.getType());
     }
 
     @Override
     public List<CustomerDTO> getTodayRegisteredCustomers() {
+//        return mapper.map(repo.getTodayRegisteredCustomers(), new TypeToken<List<CustomerDTO>>() {
+//        }.getType());
+
         return null;
     }
 }

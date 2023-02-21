@@ -92,6 +92,7 @@ function registerCustomer() {
         data: JSON.stringify(newDetails),
         success: function (resp) {
             alert(resp.message);
+            openCustomerHome();
             loadImage();
         },
         error: function (err) {
@@ -155,7 +156,7 @@ function loadAllCustomers(){
         method: "GET",
         success: function (resp){
             for (const customer of resp.data){
-                let row = `<tr><td>${customer.name}</td><td>${customer.nic}</td><td>${customer.address}</td><td>${customer.mobile}</td><td>${customer.email}</td><td>${customer.image}</td></tr>`;
+                let row = `<tr><td>${customer.name}</td><td>${customer.nic}</td><td>${customer.address}</td><td>${customer.contactNumber}</td><td>${customer.email}</td><td>${customer.imageLocation}</td></tr>`;
                 $("#admin-customer-table").append(row);
 
                 $("#admin-customer-table>tr").off("click");
@@ -202,6 +203,36 @@ function updateCustomer(){
         }
     });
 }
+
+$("#admin-customer-viewBtn").click(function () {
+    if (customer_nic == null) {
+        return
+    }
+    $.ajax({
+        url: baseUrl + "customer/customerDetail/" + customer_nic,
+        method: "GET",
+        success: function (resp) {
+            if (resp.status === 200) {
+                setDataToViewCustomerModal(resp.data);
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+})
+
+function setDataToViewCustomerModal(data) {
+    $("#admin-view-customer-nic").val(data.nic)
+    $("#admin-view-customer-address").val(data.address)
+    $("#admin-view-customer-email").val(data.email)
+    $("#admin-view-customer-mobile").val(data.contactNumber)
+    $("#admin-view-customer-name").val(data.name)
+   // $("#admin-view-customer-registerDate").val(data.register_date)
+    $("#admin-view-customer-imgOne").attr("src", baseUrl + data.imageLocation)
+
+}
+
 
 
 // let Customer={

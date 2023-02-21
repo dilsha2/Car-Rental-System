@@ -21,7 +21,7 @@ public class CustomerController {
    @PostMapping
    public ResponseUtil RegisterCustomer(@RequestBody CustomerDTO dto){
        service.saveCustomer(dto);
-       System.out.println(dto.toString());
+      // System.out.println(dto.toString());
        return new ResponseUtil(200, "Registration Successfully....", dto);
 
    }
@@ -32,5 +32,23 @@ public class CustomerController {
        return new ResponseUtil(200,"Update Successfully",dto);
 
    }
+
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllCustomerDetail() {
+        return new ResponseUtil(200, "Done", service.getAllCustomerDetail());
+    }
+
+    @DeleteMapping(path = "delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCustomer(@PathVariable String id) {
+        service.deleteCustomer(id);
+        return new ResponseUtil(200, "Delete Your Account Successfully", null);
+    }
+
+    @GetMapping(path = "customerDetail/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerDetail(@PathVariable String id) {
+        CustomerDTO customerDTO = service.getCustomerDetail(id);
+        System.out.println(customerDTO.toString());
+        return new ResponseUtil(200, "Done", customerDTO);
+    }
 
 }
