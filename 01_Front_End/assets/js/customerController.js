@@ -12,24 +12,25 @@ $('#registerNowBtn').click(function (){
 function registerCustomer() {
     var data = new FormData();
 
-    let nic = $("#register-form-NIC-image")[0].files[0].name;
-    let nicFileName = nic.name;
+    let nicImage = $("#register-form-NIC-image")[0].files[0].name;
+    let nicFileName = nicImage.name;
 
 
-    data.append("file",nic);
+    data.append("file",nicImage);
 
     let CustomerDTO = {
-        nic: $("#register-form-nic").val(),
-        address: $("#register-form-address").val(),
+         nic:$("#register-form-nic").val(),
+        address : $("#register-form-address").val(),
         contactNumber: $("#register-form-mobile").val(),
         name: $("#register-form-name").val(),
         email: $("#register-form-email").val(),
-        drivingLicenseNumber: $(""),
-       // register_date: $("#register-form-date").val(),
+        drivingLicenseNo: $("#register-form-drivingNo").val(),
         password: $("#register-form-password").val(),
         user_name: $("#register-form-user-name").val(),
         imageLocation: nicFileName,
     }
+
+
 
     // let Customer={
     //     nic: nic,
@@ -71,9 +72,9 @@ function registerCustomer() {
     $.ajax({
         url: baseUrl +"customer",
         method: 'post',
-        // async: true,
+         async: true,
         // contentType: false,
-        // processData: false,
+         processData: false,
         data: JSON.stringify(CustomerDTO),
         contentType: "application/json",
 
@@ -93,10 +94,10 @@ function registerCustomer() {
 }
 
 function cleanRegisterForm() {
-    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password, #register-form-NIC-image, #register-form-License-image').css({
+    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password, #register-form-NIC-image, #register-form-License-image,#register-form-drivingNo').css({
         border: '1px solid gray',
     })
-    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password, #register-form-NIC-image, #register-form-License-image').val("")
+    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password, #register-form-NIC-image, #register-form-License-image,#register-form-drivingNo').val("")
 
 }
 
@@ -152,7 +153,7 @@ function updateCustomer(){
     }
 
     $.ajax({
-        url: baseUrl + "customer/update",
+        url: baseUrl + "customer",
         method: "PUT",
         contentType: "application/json",
         data: JSON.stringify(newDetails),

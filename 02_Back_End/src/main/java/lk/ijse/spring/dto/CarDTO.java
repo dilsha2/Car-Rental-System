@@ -10,18 +10,22 @@ import lombok.ToString;
 @Data
 @ToString
 public class CarDTO {
-    private String registration_no;
-    private String brand;
+    private String registrationId;
+    private String Brand;
     private String type;
-    private String transmission;
-    private String color;
-    private int no_of_passengers;
-    private long mileage;
+    private String model;
     private String fuelType;
-    private double daily_rate;
-    private double monthly_rate;
-    private double price_for_extra_km;
-    private double waiver_payment;
-    private String status;
-    private CarImageDTO carImage;
+    private String transmissionType;
+    private String color;
+    private int noOfPassenger;
+    private String image1;
+    private String image2;
+    private String image3;
+    private String image4;
+    private long lastServiceMileage;
+    private long freeServiceMileage;
+    private double dailyRate;
+    private double monthlyRate;
+    private double priceForExtraKm;
+    private String availability;
 }

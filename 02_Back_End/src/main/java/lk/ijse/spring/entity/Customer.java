@@ -16,7 +16,6 @@ import java.util.List;
 @Data
 public class Customer {
 
-   // private String customerId;
     private String name;
     private String address;
     @Id
@@ -25,6 +24,7 @@ public class Customer {
     private String email;
     private String user_name;
     private String password;
+    private String drivingLicenseNo;
     private String imageLocation;
 
     @OneToMany(mappedBy = "nic")

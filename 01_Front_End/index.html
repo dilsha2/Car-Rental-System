@@ -226,7 +226,7 @@
     </section>
 
     <!--    Register form-->
-    <section id="registerForm" style="display:none">
+    <section id="registerForm" style="">
         <div class="custom-container-two">
             <div class="container-inside-two">
                 <img alt="image of car" src="assets/images/red-luxurious-sedan-car-diving-street.jpg"
@@ -284,6 +284,15 @@
                                        type="text">
                                 <label for="register-form-address">Address</label>
                             </div>
+
+
+                            <div class="form-floating w-100  ">
+                                <input class="form-control  " id="register-form-drivingNo" placeholder="Panadura"
+                                       style="border: 1px solid gray"
+                                       type="text">
+                                <label for="register-form-address">Driving License No</label>
+                            </div>
+
                             <div class="form-floating w-100">
                                 <input class="form-control  " id="register-form-user-name" placeholder="Kamal"
                                        style="border: 1px solid gray"
@@ -348,7 +357,7 @@
           </div> End Header
   -->
 <!--        customer dashboard-->
-        <section id="customerHome" style="">
+        <section id="customerHome" style="display: none">
             <div class="customer-home-content">
                 <nav id="customer-nav-bar">
                     <input id="check" type="checkbox">
@@ -1444,18 +1453,26 @@
                                                    id="save-car-brand"
                                                    type="text">
                                         </div>
+
+                                        <div>
+                                            <label class="col-form-label fw-bold">Model:</label>
+                                            <input aria-label="Disabled input example" class="form-control mb-3"
+                                                   id="save-car-model"
+                                                   type="text">
+                                        </div>
+
                                         <div>
                                             <label class="col-form-label fw-bold">Color:</label>
                                             <input aria-label="Disabled input example" class="form-control mb-3"
                                                    id="save-car-color"
                                                    type="text">
                                         </div>
-                                        <div>
-                                            <label class="col-form-label fw-bold">Mileage:</label>
-                                            <input aria-label="Disabled input example" class="form-control mb-3"
-                                                   id="save-car-mileage"
-                                                   type="text">
-                                        </div>
+<!--                                        <div>-->
+<!--                                            <label class="col-form-label fw-bold">Mileage:</label>-->
+<!--                                            <input aria-label="Disabled input example" class="form-control mb-3"-->
+<!--                                                   id="save-car-mileage"-->
+<!--                                                   type="text">-->
+<!--                                        </div>-->
                                         <div>
                                             <label class="col-form-label fw-bold">Type:</label>
                                             <select aria-label="Default select example" class="form-select mb-3"
@@ -1514,13 +1531,13 @@
                                                    type="number">
                                         </div>
                                         <div>
-                                            <label class="col-form-label fw-bold">Free km For Day:</label>
+                                            <label class="col-form-label fw-bold">Last Service Mileage:</label>
                                             <input aria-label="Disabled input example" class="form-control mb-3"
                                                    id="save-car-freeKm-day"
                                                    type="number">
                                         </div>
                                         <div>
-                                            <label class="col-form-label fw-bold">Free km For Month:</label>
+                                            <label class="col-form-label fw-bold">Free Service Mileage:</label>
                                             <input aria-label="Disabled input example" class="form-control mb-3"
                                                    id="save-car-freeKm-month"
                                                    type="number">
@@ -1531,12 +1548,12 @@
                                                    id="save-car-extraKm-price"
                                                    type="number">
                                         </div>
-                                        <div>
-                                            <label class="col-form-label fw-bold mb-1">Waiver Payment:</label>
-                                            <input aria-label="Disabled input example" class="form-control mb-3"
-                                                   id="save-car-waiver-payment"
-                                                   type="number">
-                                        </div>
+<!--                                        <div>-->
+<!--                                            <label class="col-form-label fw-bold mb-1">Waiver Payment:</label>-->
+<!--                                            <input aria-label="Disabled input example" class="form-control mb-3"-->
+<!--                                                   id="save-car-waiver-payment"-->
+<!--                                                   type="number">-->
+<!--                                        </div>-->
                                         <div class="mb-3">
                                             <label class="form-label fw-bold">Front View Of Car</label>
                                             <input class="form-control " id="save-car-frontView"

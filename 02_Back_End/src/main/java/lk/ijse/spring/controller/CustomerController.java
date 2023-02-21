@@ -22,17 +22,20 @@ public class CustomerController {
    CustomerService service;
 
    @PostMapping
-   public ResponseUtil RegisterCustomer(@ModelAttribute CustomerDTO dto){
+   public ResponseUtil RegisterCustomer(@RequestBody CustomerDTO dto){
+       System.out.println(dto.toString());
        service.saveCustomer(dto);
        return new ResponseUtil(200, "Registration Successfully....", dto);
 
    }
 
-    @PutMapping(path = "update", produces = {MediaType.APPLICATION_JSON_VALUE})
-   public ResponseUtil UpdateCustomer(@ModelAttribute CustomerDTO dto){
+   @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+   public ResponseUtil UpdateCustomer(CustomerDTO dto){
        service.saveCustomer(dto);
        return new ResponseUtil(200,"Update Successfully",dto);
 
    }
+
+
 
 }
