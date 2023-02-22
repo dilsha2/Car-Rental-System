@@ -92,7 +92,7 @@ function registerCustomer() {
         data: JSON.stringify(newDetails),
         success: function (resp) {
             alert(resp.message);
-            openCustomerHome();
+            // openCustomerHome();
             loadImage();
         },
         error: function (err) {
@@ -187,7 +187,7 @@ function updateCustomer(){
     }
 
     $.ajax({
-        url: baseUrl + "customer",
+        url: baseUrl + "customer/updateCustomer",
         method: "PUT",
         contentType: "application/json",
         data: JSON.stringify(newDetails),

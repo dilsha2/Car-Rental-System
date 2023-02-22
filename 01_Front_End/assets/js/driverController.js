@@ -101,3 +101,75 @@ function loadAllDrivers(){
         }
     });
 }
+
+function updateDriver(){
+        var driver = {
+            driverNic: $("#admin-update-driver-nic").val(),
+            address: $("#admin-update-driver-address").val(),
+            driver_name: $("#admin-update-driver-name").val(),
+            join_date: $("#admin-update-driver-joinDate").val(),
+            license_no: $("#admin-update-driver-license").val(),
+            mobile: $("#admin-update-driver-mobile").val(),
+            password: $("#admin-update-driver-password").val(),
+            user_name: $("#admin-update-driver-userName").val(),
+        }
+
+        $.ajax({
+            url: baseUrl + "driver/updateDriver",
+            method: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(driver),
+            success: function (resp) {
+                if (resp.status === 200) {
+                    alert(resp.message)
+                    loadAllDrivers()
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+        clearDriversform();
+}
+
+$("#btnUpdateDriver").click(function (){
+    updateDriver();
+})
+
+$("#btnDeleteDriver").click(function (){
+    let res = confirm("Do you really need to delete this Driver ?");
+    if (res) {
+        $("#updateDriverModel").modal("toggle");
+        loadAllDrivers();
+        clearDriversform()
+    }
+})
+
+function setDataToVieDriverModal(data) {
+    $("#admin-update-driver-userName").val(data.user_name)
+    $("#admin-update-driver-name").val(data.driver_name)
+    $("#admin-update-driver-address").val(data.address)
+    $("#admin-update-driver-joinDate").val(data.join_date)
+    $("#admin-update-driver-license").val(data.license_no)
+    $("#admin-update-driver-mobile").val(data.mobile)
+    $("#admin-update-driver-nic").val(data.driverNic)
+    $("#admin-update-driver-password").val(data.password)
+}
+
+$("#admin-driver-viewDetailsBtn").click(function () {
+    if (driver_nic == null) {
+        return
+    }
+    $.ajax({
+        url: baseUrl + "driver/driverDetail/" + driver_nic,
+        method: "GET",
+        success: function (resp) {
+            if (resp.status === 200) {
+                setDataToVieDriverModal(resp.data);
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+})

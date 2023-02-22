@@ -21,7 +21,7 @@ public class DriverController {
         return new ResponseUtil(200, "Added Successfully....", dto);
     }
 
-    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path="updateDriver",produces = MediaType.APPLICATION_JSON_VALUE)
     private ResponseUtil updateDriverDetail(@RequestBody DriverDTO driverDTO) {
         service.UpdateDriver(driverDTO);
         return new ResponseUtil(200, "Driver Updated Successfully", null);
@@ -33,7 +33,7 @@ public class DriverController {
         return new ResponseUtil(200, "Driver Details Deleted Successfully", null);
     }
 
-    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "driverDetail",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getDriverDetail(@PathVariable String id) {
         return new ResponseUtil(200, "Done", service.getDriverDetail(id));
     }
