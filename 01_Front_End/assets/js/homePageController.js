@@ -191,4 +191,4 @@ $("#adminPaymentBtn").click(function () {
 
 })
 
-let baseUrl = "http://localhost:8080/02_Back_End_war_exploded/"
+let baseUrl = "http://localhost:8080/02_Back_End_war/"

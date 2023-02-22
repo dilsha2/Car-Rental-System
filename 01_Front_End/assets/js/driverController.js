@@ -85,7 +85,7 @@ function loadAllDrivers(){
     $("#admin-all-drivers-table").empty();
 
     $.ajax({
-        url: baseUrl + "driver",
+        url: baseUrl + "driver/allDriverDetail",
         method: "GET",
         success: function (resp) {
             for (const driver of resp.data) {
