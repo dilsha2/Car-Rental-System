@@ -61,7 +61,7 @@ public class FileUploaderController {
     public ResponseEntity uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            File uploadsDir = new File("D:\\images" + "/uploads");
+            File uploadsDir = new File(projectPath + "/uploads");
             System.out.println(projectPath);
             uploadsDir.mkdir();
             myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));

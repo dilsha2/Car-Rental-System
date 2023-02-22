@@ -83,30 +83,50 @@ function registerCustomer() {
         imageLocation: nicFileName
     }
 
+    // $.ajax({
+    //     url: baseUrl + "customer",
+    //     method: 'post',
+    //     // async: true,
+    //     contentType: "application/json",
+    //     // processData: false,
+    //     data: JSON.stringify(newDetails),
+    //     success: function (resp) {
+    //         alert(resp.message);
+    //          //openCustomerHome();
+    //         loadImage();
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //     }
+    // });
+    // cleanRegisterForm();
+
     $.ajax({
-        url: baseUrl + "customer",
-        method: 'post',
-        // async: true,
-        contentType: "application/json",
-        // processData: false,
-        data: JSON.stringify(newDetails),
+        url: baseUrl+"customer",
+        method :"post",
+        data : JSON.stringify(newDetails),
+        contentType:"application/json",
         success: function (resp) {
+            console.log(resp);
             alert(resp.message);
-            // openCustomerHome();
+
             loadImage();
+
         },
-        error: function (err) {
-            console.log(err);
+        error: function(error) {
+            let prase = JSON.parse(error.responseText);
+            alert(prase.message);
         }
     });
     cleanRegisterForm();
+
 }
 
 function cleanRegisterForm() {
-    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password, #register-form-NIC-image, #register-form-License-image,#register-form-drivingNo').css({
+    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password,#register-form-drivingNo').css({
         border: '1px solid gray',
     })
-    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password, #register-form-NIC-image, #register-form-License-image,#register-form-drivingNo').val("")
+    $('#register-form-name,#register-form-nic,#register-form-email,#register-form-mobile, #register-form-address,#register-form-user-name ,#register-form-password,#register-form-drivingNo').val("")
 
 }
 
@@ -127,8 +147,8 @@ function loadImage(){
     var data = new FormData();
 
     let file = $("#register-form-NIC-image")[0].files[0];
-    let fileName = $("#register-form-NIC-image")[0].files[0].name;
-    data.append("myFile", file, fileName);
+    let nicFileName = $("#register-form-NIC-image")[0].files[0].name;
+    data.append("myFile", file, nicFileName);
 
     $.ajax({
         url: baseUrl + "api/v1/upload",
