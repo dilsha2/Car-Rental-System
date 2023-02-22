@@ -118,7 +118,7 @@ function registerCustomer() {
             alert(prase.message);
         }
     });
-    cleanRegisterForm();
+   // cleanRegisterForm();
 
 }
 
@@ -246,12 +246,14 @@ function setDataToViewCustomerModal(data) {
     $("#admin-view-customer-nic").val(data.nic)
     $("#admin-view-customer-address").val(data.address)
     $("#admin-view-customer-email").val(data.email)
-    $("#admin-view-customer-mobile").val(data.contactNumber)
+    $("#admin-view-customer-mobile").val(data.mobile)
     $("#admin-view-customer-name").val(data.name)
-   // $("#admin-view-customer-registerDate").val(data.register_date)
+  //  $("#admin-view-customer-registerDate").val(data.register_date)
     $("#admin-view-customer-imgOne").attr("src", baseUrl + data.imageLocation)
 
+
 }
+
 
 
 

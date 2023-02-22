@@ -7,6 +7,7 @@ import lk.ijse.spring.repo.CarRepo;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.service.CarService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,26 +34,41 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void updateCar(CarDTO carDTO) {
-
+        if (repo.existsById(carDTO.getRegistrationId())) {
+            repo.save(mapper.map(carDTO, Car.class));
+        } else {
+            throw new RuntimeException("Update Failed.!  This Vehicle's Previous Record is Missing..Add Again");
+        }
     }
 
     @Override
     public void deleteCar(String id) {
-
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        } else {
+            throw new RuntimeException("Can't Delete.!  This Vehicle's Previous Record is Missing..Add Again");
+        }
     }
 
     @Override
     public CarDTO getCarDetail(String id) {
-        return null;
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(), CarDTO.class);
+        } else {
+            throw new RuntimeException("Can't Get Details.!  This Vehicle's Previous Record is Missing..Add Again");
+        }
     }
 
     @Override
     public List<CarDTO> getAllCarDetail() {
-        return null;
+        return mapper.map(repo.findAll(), new TypeToken<List<CarDTO>>() {
+        }.getType());
     }
 
     @Override
     public List<CarDTO> getCarsUnderMaintain() {
+//        return mapper.map(re.getCarsUnderMaintain(), new TypeToken<List<CarDTO>>() {
+//        }.getType());
         return null;
     }
 

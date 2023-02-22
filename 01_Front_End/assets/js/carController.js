@@ -82,10 +82,10 @@ $("#btnCarSave").click(function () {
 
 function saveCar() {
 
-    let front = $("#save-car-frontView")[0].files[0].name;
-    let back = $("#save-car-backView")[0].files[0].name;
-    let side = $("#save-car-sideView")[0].files[0].name;
-    let interior = $("#save-car-interior")[0].files[0].name;
+    let fileName = $("#save-car-frontView")[0].files[0].name;
+    let backFileName = $("#save-car-backView")[0].files[0].name;
+    let sideFileName = $("#save-car-sideView")[0].files[0].name;
+    let interiorFileName = $("#save-car-interior")[0].files[0].name;
 
 
     let registrationId = $("#save-car-registration-no").val();
@@ -102,10 +102,10 @@ function saveCar() {
     let monthlyRate = $("#save-car-monthly").val();
     let priceForExtraKm = $("#save-car-extraKm-price").val();
     let availability = $("#save-car-status").val();
-    let image1 = front;
-    let image2 = back;
-    let image3 = side;
-    let image4 = interior;
+    let image1 = fileName;
+    let image2 = backFileName;
+    let image3 = sideFileName;
+    let image4 = interiorFileName;
 
     var CarDTO = {
         registrationId: registrationId,
@@ -148,7 +148,7 @@ function saveCar() {
             console.log(err);
         }
     });
-    clearSaveCarForm();
+    //clearSaveCarForm();
 }
 
 function loadImage() {
@@ -222,7 +222,7 @@ $("#viewButton").click(function () {
         return
     }
     $.ajax({
-        url: baseUrl + "controller/car/carDetail/" + vehicle_no,
+        url: baseUrl + "car/carDetail/" + vehicle_no,
         method: "GET",
         success: function (resp) {
             if (resp.status === 200) {
@@ -234,3 +234,25 @@ $("#viewButton").click(function () {
         }
     });
 })
+
+function setDataToUpdateModel(data) {
+    $("#admin-update-registration-no").val(data.registrationId)
+    $("#admin-update-brand").val(data.Brand)
+    $("#admin-update-type").val(data.type)
+    $("#admin-update-transmission").val(data.transmissionType)
+    $("#admin-update-color").val(data.color)
+    $("#admin-update-passengers").val(data.noOfPassenger)
+   // $("#admin-update-mileage").val(data.mileage)
+    $("#admin-update-fuel").val(data.fuelType)
+    $("#admin-update-daily").val(data.dailyRate)
+    $("#admin-update-monthly").val(data.monthlyRate)
+    $("#admin-update-freeKm-day").val(data.lastServiceMileage)
+    $("#admin-update-freeKn-month").val(data.freeServiceMileage)
+    $("#admin-update-extraKm").val(data.priceForExtraKm)
+    // $("#admin-update-waiverPayment").val(data.waiver_payment)
+    $("#admin-update-status").val(data.status)
+    $("#update-car-modal-front").attr("src", baseUrl + data.image1.image1)
+    $("#update-car-modal-back").attr("src", baseUrl + data.image2.image2)
+    $("#update-car-modal-side").attr("src", baseUrl + data.image3.image3)
+    $("#update-car-modal-interior").attr("src", baseUrl + data.image4.image4)
+}
