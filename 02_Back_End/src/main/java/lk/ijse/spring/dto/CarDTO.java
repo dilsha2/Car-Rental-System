@@ -1,5 +1,6 @@
 package lk.ijse.spring.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class CarDTO {
     private String registrationId;
-    private String Brand;
+    private String brand;
     private String type;
     private String model;
     private String fuelType;
@@ -28,4 +29,7 @@ public class CarDTO {
     private double monthlyRate;
     private double priceForExtraKm;
     private String availability;
+
+
+
 }

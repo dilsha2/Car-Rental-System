@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@NoArgsConstructor
 @Data
+@Entity
 public class Car {
     @Id
     private String registrationId;
-    private String Brand;
+    private String brand;
     private String type;
     private String model;
     private String fuelType;

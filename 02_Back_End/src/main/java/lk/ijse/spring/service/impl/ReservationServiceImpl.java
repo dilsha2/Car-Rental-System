@@ -1,7 +1,13 @@
 package lk.ijse.spring.service.impl;
 
 import lk.ijse.spring.dto.ReservationDTO;
+import lk.ijse.spring.repo.CarRepo;
+import lk.ijse.spring.repo.CustomerRepo;
+import lk.ijse.spring.repo.DriverRepo;
+import lk.ijse.spring.repo.RentalRepo;
 import lk.ijse.spring.service.ReservationService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -10,6 +16,22 @@ import java.util.List;
 @Service
 @Transactional
 public class ReservationServiceImpl implements ReservationService {
+
+    @Autowired
+    RentalRepo carReservationRepo;
+
+    @Autowired
+    CustomerRepo customerRepo;
+
+    @Autowired
+    CarRepo carRepo;
+
+    @Autowired
+    DriverRepo driverRepo;
+
+    @Autowired
+    ModelMapper mapper;
+
     @Override
     public String generateReservationId() {
         return null;

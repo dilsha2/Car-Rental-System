@@ -7,6 +7,11 @@ import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 @RestController
 @CrossOrigin
@@ -16,10 +21,12 @@ public class CarController {
     @Autowired
     CarService service;
 
-    @PostMapping
-    public ResponseUtil saveCar(@RequestBody CarDTO dto){
+    @PostMapping( produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil saveCar(@RequestBody CarDTO  dto){
+        System.out.println(dto);
         service.saveCar(dto);
-        return new ResponseUtil(200, "Registration Successfully....", dto);
+        return new ResponseUtil(200, "New Vehicle Registered Successfully...", null);
+
     }
 
     @PostMapping(path = "updateCarDetail", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})

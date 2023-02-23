@@ -181,7 +181,7 @@ function loadAllCustomers(){
 
                 $("#admin-customer-table>tr").off("click");
                 $("#admin-customer-table>tr").click(function (){
-                    customer_nic = $(this).children(":eq(0)").text();
+                    customer_nic = $(this).children(":eq(1)").text();
                     console.log(customer_nic)
                     $("#admin-customer-viewBtn").prop('disabled',false);
                 });

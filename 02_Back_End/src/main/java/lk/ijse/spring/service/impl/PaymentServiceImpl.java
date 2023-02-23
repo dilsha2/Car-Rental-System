@@ -1,7 +1,12 @@
 package lk.ijse.spring.service.impl;
 
 import lk.ijse.spring.dto.PaymentDTO;
+import lk.ijse.spring.repo.CarRepo;
+import lk.ijse.spring.repo.PaymentRepo;
+import lk.ijse.spring.repo.RentalRepo;
 import lk.ijse.spring.service.PaymentService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,7 +16,17 @@ import java.util.List;
 @Transactional
 public class PaymentServiceImpl implements PaymentService {
 
+    @Autowired
+    PaymentRepo paymentRepo;
 
+    @Autowired
+    RentalRepo rentalRepo;
+
+    @Autowired
+    CarRepo carRepo;
+
+    @Autowired
+    ModelMapper mapper;
     @Override
     public String generateReservationBillIdId() {
         return null;

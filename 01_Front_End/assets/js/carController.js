@@ -80,75 +80,141 @@ $("#btnCarSave").click(function () {
     saveCar();
 })
 
+// function saveCar() {
+//
+//     let fileName = $("#save-car-frontView")[0].files[0].name;
+//     let backFileName = $("#save-car-backView")[0].files[0].name;
+//     let sideFileName = $("#save-car-sideView")[0].files[0].name;
+//     let interiorFileName = $("#save-car-interior")[0].files[0].name;
+//
+//
+//     let registrationId = $("#save-car-registration-no").val();
+//     let Brand = $("#save-car-brand").val();
+//     let type = $("#save-car-type").val();
+//     let model = $("#save-car-model").val();
+//     let transmissionType = $("#save-car-transmission").val();
+//     let color = $("#save-car-color").val();
+//     let noOfPassenger = $("#save-car-passengers").val();
+//     let lastServiceMileage = $("#save-car-mileage").val();
+//     let freeServiceMileage = $("#save-car-freeKm-month").val();
+//     let fuelType = $("#save-car-fuelType").val();
+//     let dailyRate = $("#save-car-daily").val();
+//     let monthlyRate = $("#save-car-monthly").val();
+//     let priceForExtraKm = $("#save-car-extraKm-price").val();
+//     let availability = $("#save-car-status").val();
+//     let image1 = fileName;
+//     let image2 = backFileName;
+//     let image3 = sideFileName;
+//     let image4 = interiorFileName;
+//
+//     var CarDTO = {
+//         registrationId: registrationId,
+//         Brand: Brand,
+//         type: type,
+//         model: model,
+//         transmissionType: transmissionType,
+//         color: color,
+//         noOfPassenger: noOfPassenger,
+//         lastServiceMileage: lastServiceMileage,
+//         freeServiceMileage: freeServiceMileage,
+//         fuelType: fuelType,
+//         dailyRate: dailyRate,
+//         monthlyRate: monthlyRate,
+//         priceForExtraKm: priceForExtraKm,
+//         availability: availability,
+//         image1: image1,
+//         image2: image2,
+//         image3: image3,
+//         image4: image4
+//     }
+//
+//     $.ajax({
+//         url: baseUrl + "car",
+//         method: 'post',
+//         //async: true,
+//         contentType: "application/json",
+//         //processData: false,
+//         data: JSON.stringify(CarDTO),
+//         success: function (resp) {
+//             if (resp.status === 200) {
+//                 alert(resp.message);
+//                 // loadAllCars("allCarDetail");
+//                 loadImage();
+//
+//             }
+//         },
+//         error: function (err) {
+//             alert(err.responseJSON.message)
+//             console.log(err);
+//         }
+//     });
+//     //clearSaveCarForm();
+// }
+
 function saveCar() {
+    var data = new FormData();
 
-    let fileName = $("#save-car-frontView")[0].files[0].name;
-    let backFileName = $("#save-car-backView")[0].files[0].name;
-    let sideFileName = $("#save-car-sideView")[0].files[0].name;
-    let interiorFileName = $("#save-car-interior")[0].files[0].name;
+    let front = $("#save-car-frontView")[0].files[0];
+    let frontFileName = front.name;
+
+    let back = $("#save-car-backView")[0].files[0];
+    let backFileName = back.name;
+
+    let side = $("#save-car-sideView")[0].files[0];
+    let sideFileName = side.name;
+
+    let interior = $("#save-car-interior")[0].files[0];
+    let interiorFileName = interior.name;
+
+    data.append("file", front);
+    data.append("file", back);
+    data.append("file", side);
+    data.append("file", interior);
 
 
-    let registrationId = $("#save-car-registration-no").val();
-    let Brand = $("#save-car-brand").val();
-    let type = $("#save-car-type").val();
-    let model = $("#save-car-model").val();
-    let transmissionType = $("#save-car-transmission").val();
-    let color = $("#save-car-color").val();
-    let noOfPassenger = $("#save-car-passengers").val();
-    let lastServiceMileage = $("#save-car-mileage").val();
-    let freeServiceMileage = $("#save-car-freeKm-month").val();
-    let fuelType = $("#save-car-fuelType").val();
-    let dailyRate = $("#save-car-daily").val();
-    let monthlyRate = $("#save-car-monthly").val();
-    let priceForExtraKm = $("#save-car-extraKm-price").val();
-    let availability = $("#save-car-status").val();
-    let image1 = fileName;
-    let image2 = backFileName;
-    let image3 = sideFileName;
-    let image4 = interiorFileName;
 
-    var CarDTO = {
-        registrationId: registrationId,
-        Brand: Brand,
-        type: type,
-        model: model,
-        transmissionType: transmissionType,
-        color: color,
-        noOfPassenger: noOfPassenger,
-        lastServiceMileage: lastServiceMileage,
-        freeServiceMileage: freeServiceMileage,
-        fuelType: fuelType,
-        dailyRate: dailyRate,
-        monthlyRate: monthlyRate,
-        priceForExtraKm: priceForExtraKm,
-        availability: availability,
-        image1: image1,
-        image2: image2,
-        image3: image3,
-        image4: image4
+    var car = {
+        registrationId: $("#save-car-registration-no").val(),
+        brand: $("#new_car_brand").val(),
+        type: $("#save-car-type").val(),
+        model: $("#save-car-model").val(),
+        transmissionType: $("#save-car-transmission").val(),
+        color: $("#save-car-color").val(),
+        noOfPassenger: $("#save-car-passengers").val(),
+        lastServiceMileage: $("#save-car-mileage").val(),
+        freeServiceMileage: $("#save-car-freeKm-month").val(),
+        fuelType: $("#save-car-fuelType").val(),
+        dailyRate: $("#save-car-daily").val(),
+        monthlyRate: $("#save-car-monthly").val(),
+        priceForExtraKm: $("#save-car-extraKm-price").val(),
+        availability: $("#save-car-status").val(),
+        image1: null,
+        image2: null,
+        image3: null,
+        image4: null,
     }
+
+    console.log(car.brand);
 
     $.ajax({
         url: baseUrl + "car",
         method: 'post',
-        //async: true,
         contentType: "application/json",
-        //processData: false,
-        data: JSON.stringify(CarDTO),
+        data: JSON.stringify(car),
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 alert(resp.message);
-                // loadAllCars("allCarDetail");
-                loadImage();
+                loadAllCars("allCarDetail");
 
             }
         },
         error: function (err) {
-            alert(err.responseJSON.message)
+            alert(err.resposeJSON.message);
             console.log(err);
         }
     });
-    //clearSaveCarForm();
+    clearSaveCarForm();
+
 }
 
 function loadImage() {
@@ -242,7 +308,7 @@ function setDataToUpdateModel(data) {
     $("#admin-update-transmission").val(data.transmissionType)
     $("#admin-update-color").val(data.color)
     $("#admin-update-passengers").val(data.noOfPassenger)
-   // $("#admin-update-mileage").val(data.mileage)
+    // $("#admin-update-mileage").val(data.mileage)
     $("#admin-update-fuel").val(data.fuelType)
     $("#admin-update-daily").val(data.dailyRate)
     $("#admin-update-monthly").val(data.monthlyRate)
