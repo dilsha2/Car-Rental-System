@@ -29,12 +29,12 @@ $("#loginUserBtn").click(function () {
     }
 
     $.ajax({
-        url: "http://localhost:8080/02_Back_End_war/controller/login",
+        url: "http://localhost:8080/02_Back_End_war/login",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(userDTO),
         success: function (res) {
-            if (res.status === 200) {
+            if (res.code === 200) {
                 if (res.message === ("Customer")) {
                     customerLogin(res.data)
                 } else if (res.message === ("Driver")) {
@@ -62,7 +62,7 @@ function customerLogin(data) {
     $("#customerNavbar").css("display", "block")
 
     $("#customer-profile-nic").val(data.nic)
-    $("#customer-profile-name").val(data.customer_name)
+    $("#customer-profile-name").val(data.name)
     $("#customer-profile-email").val(data.email)
     $("#customer-profile-address").val(data.address)
     $("#customer-profile-mobile").val(data.mobile)

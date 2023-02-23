@@ -73,4 +73,14 @@ public class CustomerServiceImpl implements CustomerService {
 
         return null;
     }
+
+    @Override
+    public CustomerDTO checkCustomerLogIn(String user_name, String password) {
+        Customer customer = repo.checkCustomerLogIn(user_name, password);
+        if (!(customer == null)) {
+            return mapper.map(customer, CustomerDTO.class);
+        } else {
+            return null;
+        }
+    }
 }
