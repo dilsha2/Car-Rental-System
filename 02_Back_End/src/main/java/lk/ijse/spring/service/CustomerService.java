@@ -19,4 +19,6 @@ public interface CustomerService {
     List<CustomerDTO> getAllCustomerDetail();
 
     List<CustomerDTO> getTodayRegisteredCustomers();
+
+    CustomerDTO checkCustomerLogIn(String user_name, String password);
 }

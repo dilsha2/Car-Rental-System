@@ -181,7 +181,7 @@ function loadAllCustomers(){
 
                 $("#admin-customer-table>tr").off("click");
                 $("#admin-customer-table>tr").click(function (){
-                    customer_nic = $(this).children(":eq(1)").text();
+                    customer_nic = $(this).children(":eq(0)").text();
                     console.log(customer_nic)
                     $("#admin-customer-viewBtn").prop('disabled',false);
                 });
@@ -225,7 +225,7 @@ function updateCustomer(){
     });
 }
 
-$("#admin-customer-viewBtn").click(function () {    // me mona button eke action ekada? ethakota e button eka click karamada values tike enna ona? ara table eke tynwane sir data eke ekk click klama ara view detail ekn e customerge full dettails blnn teynne..image ekaema
+$("#admin-customer-viewBtn").click(function () {
     if (customer_nic == null) {
         return
     }

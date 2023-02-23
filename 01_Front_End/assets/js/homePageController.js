@@ -19,6 +19,87 @@ $("#loginFormBtn").click(function (){
     $("#loginPage").css('display','block')
 })
 
+
+//----------------------user Login
+$("#loginUserBtn").click(function () {
+
+    let userDTO = {
+        user_name: $("#login-page-user-name").val(),
+        password: $("#login-page-password").val()
+    }
+
+    $.ajax({
+        url: "http://localhost:8080/02_Back_End_war/controller/login",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(userDTO),
+        success: function (res) {
+            if (res.status === 200) {
+                if (res.message === ("Customer")) {
+                    customerLogin(res.data)
+                } else if (res.message === ("Driver")) {
+                    driverLogin(res.data)
+                } else if (res.message === ("Admin")) {
+                    adminLogin(res.data)
+                } else {
+                    alert(res.message)
+                }
+            }
+            $("#login-page-user-name").val("")
+            $("#login-page-password").val("")
+        },
+        error: function (ob) {
+            console.log(ob.responseJSON.message);
+        }
+    });
+})
+
+//---------Customer Login
+function customerLogin(data) {
+    customer = data
+    $("#loginPage").css("display", "none")
+    $("#customer").css("display", "block")
+    $("#customerNavbar").css("display", "block")
+
+    $("#customer-profile-nic").val(data.nic)
+    $("#customer-profile-name").val(data.customer_name)
+    $("#customer-profile-email").val(data.email)
+    $("#customer-profile-address").val(data.address)
+    $("#customer-profile-mobile").val(data.mobile)
+
+    //getAvailableCar();
+    //clearAllReservationDetails()
+
+}
+
+//---------Driver Login
+function driverLogin(data) {
+    $("#loginPage").css("display", "none")
+    $("#driverNavBar").css("display", "block")
+    $("#driver").css("display", "block")
+
+    //loadDriverSchedule(data);
+
+}
+
+//---------admin Login
+function adminLogin(data) {
+    $("#loginPage").css("display", "none")
+    $("#admin").css("display", "block")
+
+    $("#adminDailySummary").css("display", "block")
+    $("#adminCars").css("display", "none")
+    $("#adminReservation").css("display", "none")
+    $("#adminDrivers").css("display", "none")
+    $("#adminCustomer").css("display", "none")
+    $("#adminPayments").css("display", "none")
+
+    //loadDailySummary();
+
+}
+
+
+
 //Register Page
 $(".getStartBtn").click(function (){
     $("#landingPage").css('display','none')
@@ -190,5 +271,6 @@ $("#adminPaymentBtn").click(function () {
 
 
 })
+
 
 let baseUrl = "http://localhost:8080/02_Back_End_war/"
