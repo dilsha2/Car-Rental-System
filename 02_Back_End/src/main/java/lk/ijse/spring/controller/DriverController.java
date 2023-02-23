@@ -33,7 +33,7 @@ public class DriverController {
         return new ResponseUtil(200, "Driver Details Deleted Successfully", null);
     }
 
-    @GetMapping(path = "driverDetail",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "driverDetail/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getDriverDetail(@PathVariable String id) {
         return new ResponseUtil(200, "Done", service.getDriverDetail(id));
     }

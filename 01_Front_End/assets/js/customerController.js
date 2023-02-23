@@ -109,7 +109,7 @@ function registerCustomer() {
         success: function (resp) {
             console.log(resp);
             alert(resp.message);
-
+            openCustomerHome(resp.data);
             loadImage();
 
         },
@@ -118,7 +118,7 @@ function registerCustomer() {
             alert(prase.message);
         }
     });
-   // cleanRegisterForm();
+    cleanRegisterForm();
 
 }
 
@@ -181,7 +181,8 @@ function loadAllCustomers(){
 
                 $("#admin-customer-table>tr").off("click");
                 $("#admin-customer-table>tr").click(function (){
-                    customer_nic = $(this).children(":eq(0)").text();
+                    customer_nic = $(this).children(":eq(1)").text();
+                    console.log(customer_nic)
                     $("#admin-customer-viewBtn").prop('disabled',false);
                 });
             }
@@ -224,19 +225,37 @@ function updateCustomer(){
     });
 }
 
-$("#admin-customer-viewBtn").click(function () {
+$("#admin-customer-viewBtn").click(function () {    // me mona button eke action ekada? ethakota e button eka click karamada values tike enna ona? ara table eke tynwane sir data eke ekk click klama ara view detail ekn e customerge full dettails blnn teynne..image ekaema
     if (customer_nic == null) {
         return
     }
-    $.ajax({
+    /*$.ajax({
         url: baseUrl + "customer/customerDetail/" + customer_nic,
         method: "GET",
         success: function (resp) {
             if (resp.status === 200) {
                 setDataToViewCustomerModal(resp.data);
+                console.log(resp.data);
             }
         },
         error: function (err) {
+            console.log(err);
+        }
+    });*/
+    $.ajax({
+        url: baseUrl + "customer/customerDetail/" + customer_nic,
+        method: "GET",
+        success: function (resp) {
+
+            if (resp.code === 200) {
+               // console.log("view buttn nic: ", customer_nic)
+                //console.log(resp,"pressed success")
+                setDataToViewCustomerModal(resp.data);
+               // console.log(resp.data);
+            }
+        },
+        error: function (err) {
+           // console.log(resp,"error success")
             console.log(err);
         }
     });
@@ -246,7 +265,7 @@ function setDataToViewCustomerModal(data) {
     $("#admin-view-customer-nic").val(data.nic)
     $("#admin-view-customer-address").val(data.address)
     $("#admin-view-customer-email").val(data.email)
-    $("#admin-view-customer-mobile").val(data.mobile)
+    $("#admin-view-customer-mobile").val(data.contactNumber)
     $("#admin-view-customer-name").val(data.name)
   //  $("#admin-view-customer-registerDate").val(data.register_date)
     $("#admin-view-customer-imgOne").attr("src", baseUrl + data.imageLocation)
