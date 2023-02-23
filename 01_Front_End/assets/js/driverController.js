@@ -164,7 +164,7 @@ $("#admin-driver-viewDetailsBtn").click(function () {
         url: baseUrl + "driver/driverDetail/" + driver_nic,
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 setDataToVieDriverModal(resp.data);
             }
         },
