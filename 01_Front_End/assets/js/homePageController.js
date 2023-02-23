@@ -272,5 +272,59 @@ $("#adminPaymentBtn").click(function () {
 
 })
 
+$("#home-nextBtn").click(function () {
+    if (carList.length === listNo) {
+        return
+    }
+    $('#div-one, #div-two,#div-three').css({
+        display: 'none'
+    })
+
+    loadDataToDiv()
+
+})
+
+$("#home-PreviousBtn").click(function () {
+    if (3 >= listNo) {
+        return
+    }
+    $('#div-one, #div-two,#div-three').css({
+        display: 'none'
+    })
+    listNo = listNo - (displayDiv + 3)
+    loadDataToDiv()
+})
+
+let divArray = ["#div-one", "#div-two", "#div-three"];
+
+function loadDataToDiv(){
+        displayDiv = 0
+        for (var i = 0; listNo <= carList.length - 1; i++, listNo++, displayDiv++) {
+
+            $("#tag").css("display", "none")
+            $(divArray[i]).css("display", "block")
+
+            if (i > 2) {
+                break
+            }
+            let img = "#" + $(divArray[i]).children()[0].id
+            let type = "#" + $(divArray[i]).children().children()[0].id;
+            let brand = "#" + $(divArray[i]).children().children()[1].id;
+            let daily = "#" + $(divArray[i]).children().children()[4].id
+            let monthly = "#" + $(divArray[i]).children().children()[7].id
+
+            let fuel = "#" + $("#" + $(divArray[i]).children().children()[9].id).children()[1].id;
+            let transmission = "#" + $("#" + $(divArray[i]).children().children()[10].id).children()[1].id;
+
+            $(img).attr("src", baseUrl + carList[listNo].image1.image1)
+            $(type).text(carList[listNo].type)
+            $(brand).text(carList[listNo].Brand)
+            $(daily).text(carList[listNo].dailyRate)
+            $(monthly).text(carList[listNo].monthlyRate)
+            $(fuel).text(carList[listNo].fuelType)
+            $(transmission).text(carList[listNo].transmissionType)
+        }
+}
+
 
 let baseUrl = "http://localhost:8080/02_Back_End_war/"

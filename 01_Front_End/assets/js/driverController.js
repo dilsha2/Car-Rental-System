@@ -173,3 +173,27 @@ $("#admin-driver-viewDetailsBtn").click(function () {
         }
     });
 })
+
+
+// function loadDriverScheduleForAdmin() {
+//     $("#admin-all-drivers-schedule-table").empty();
+//
+//     var start = $("#admin-driver-start-date").val();
+//     var end = $("#admin-driver-end-date").val();
+//
+//     $.ajax({
+//         url: baseUrl + "controller/driver/driverScheduleByDate?start_date=" + start + "&end_date=" + end,
+//         method: "GET",
+//         success: function (resp) {
+//             if (resp.status === 200) {
+//                 for (const schedule of resp.data) {
+//                     let row = `<tr><td>${schedule.schedule_id}</td><td>${schedule.driver.driver_name}</td><td>${schedule.start_time}</td>
+//                 <td>${schedule.start_date}</td><td>${schedule.end_date}</td></tr>`;
+//                     $("#admin-all-drivers-schedule-table").append(row);
+//                 }
+//             }
+//         }, error: function (ob) {
+//             console.log(ob.responseJSON.message);
+//         }
+//     });
+// }
