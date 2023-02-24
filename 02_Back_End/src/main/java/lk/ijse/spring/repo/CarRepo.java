@@ -10,4 +10,10 @@ public interface CarRepo extends JpaRepository<Car,String> {
 
     @Query(value = "SELECT * FROM car WHERE availability=?1", nativeQuery = true)
     List<Car> getUnavailableOrAvailableCarsByStatus(String status);
+
+    @Query(value = "SELECT * FROM car WHERE availability='UnderMaintain'", nativeQuery = true)
+    List<Car> getCarsUnderMaintain();
+
+    @Query(value = "SELECT * FROM car WHERE MOD(mileage,5000) = 0 AND availability NOT IN('UnderMaintain')", nativeQuery = true)
+    List<Car> getCarsNeedMaintain();
 }

@@ -41,7 +41,7 @@ public class CarController {
         return new ResponseUtil(200, "Done", carDTO);
     }
 
-    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "allCarDetail", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCarDetail() {
         return new ResponseUtil(200, "Done", service.getAllCarDetail());
     }
@@ -51,5 +51,24 @@ public class CarController {
         service.setCarStatusUnavailableOrAvailable(id, status);
         return new ResponseUtil(200, "Set Car " + id + " As " + status, null);
     }
+
+    //return cars they are statuses is maintained
+    @GetMapping(path = "carsUnderMaintain", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarsUnderMaintain() {
+        return new ResponseUtil(200, "Done", service.getCarsUnderMaintain());
+    }
+
+    //return cars they are needed to maintaining
+    @GetMapping(path = "carsNeedMaintain", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarsNeedMaintain() {
+        return new ResponseUtil(200, "Done", service.getCarsNeedMaintain());
+    }
+
+    //sent status as Available or Unavailable,Then check it with cars
+    @GetMapping(path = "unavailableOrAvailableCarsByStatus/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getUnavailableOrAvailableCars(@PathVariable String status) {
+        return new ResponseUtil(200, "Done", service.getUnavailableOrAvailableCarsByStatus(status));
+    }
+
 
 }

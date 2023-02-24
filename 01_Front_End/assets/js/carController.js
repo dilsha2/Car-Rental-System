@@ -257,7 +257,7 @@ function loadAllCars() {
     $("#admin-cars-table").empty();
 
     $.ajax({
-        url: baseUrl + "car",
+        url: baseUrl + "car/allCarDetail",
         method: "GET",
         success: function (resp) {
             for (const car of resp.data) {
@@ -389,7 +389,7 @@ function updateCar(){
         success: function (resp) {
             if (resp.code === 200) {
                 alert(resp.message);
-                loadAllCars("allCarDetail");
+                loadAllCars();
 
             }
         },
@@ -429,7 +429,7 @@ $("#btnDeleteCar").click(function (){
     if (res) {
         $("#updateCarModel").modal("toggle");
         loadAllCars();
-        clearUpdateCarForm();
+        //clearUpdateCarForm();
     }
 })
 
@@ -440,7 +440,7 @@ function setCarStatus(id, status) {
         method: "PUT",
         async: false,
         success: function (res) {
-            if (res.status === 200) {
+            if (res.code === 200) {
                 alert(res.message)
             }
         },

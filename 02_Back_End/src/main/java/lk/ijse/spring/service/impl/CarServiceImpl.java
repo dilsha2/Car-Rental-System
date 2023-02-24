@@ -67,14 +67,14 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CarDTO> getCarsUnderMaintain() {
-//        return mapper.map(re.getCarsUnderMaintain(), new TypeToken<List<CarDTO>>() {
-//        }.getType());
-        return null;
+        return mapper.map(repo.getCarsUnderMaintain(), new TypeToken<List<CarDTO>>() {
+        }.getType());
     }
 
     @Override
     public List<CarDTO> getCarsNeedMaintain() {
-        return null;
+        return mapper.map(repo.getCarsNeedMaintain(), new TypeToken<List<CarDTO>>() {
+        }.getType());
     }
 
     @Override
