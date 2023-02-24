@@ -69,6 +69,7 @@ function registerCustomer() {
     let email= $("#register-form-email").val();
     let password =$("#register-form-password").val();
     let user_name= $("#register-form-user-name").val();
+    let registrationDate = $("#register-form-date").val()
 
 
     var newDetails = {
@@ -80,6 +81,7 @@ function registerCustomer() {
         email: email,
         password:password,
         user_name:user_name,
+        registrationDate: registrationDate,
         imageLocation: nicFileName
     }
 
@@ -267,7 +269,7 @@ function setDataToViewCustomerModal(data) {
     $("#admin-view-customer-email").val(data.email)
     $("#admin-view-customer-mobile").val(data.contactNumber)
     $("#admin-view-customer-name").val(data.name)
-  //  $("#admin-view-customer-registerDate").val(data.register_date)
+    $("#admin-view-customer-registerDate").val(data.registrationDate)
     $("#admin-view-customer-imgOne").attr("src", baseUrl + data.imageLocation)
 
 

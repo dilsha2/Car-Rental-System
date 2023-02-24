@@ -253,11 +253,11 @@ function loadImage() {
     });
 }
 
-function loadAllCars() {
+function loadAllCars(path) {
     $("#admin-cars-table").empty();
 
     $.ajax({
-        url: baseUrl + "car/allCarDetail",
+        url: baseUrl + "car" + path,
         method: "GET",
         success: function (resp) {
             for (const car of resp.data) {

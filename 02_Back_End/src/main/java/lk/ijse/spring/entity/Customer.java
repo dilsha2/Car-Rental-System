@@ -4,16 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@NoArgsConstructor
 @Data
+@Entity
 public class Customer {
 
     private String name;
@@ -26,6 +27,7 @@ public class Customer {
     private String password;
     private String drivingLicenseNo;
     private String imageLocation;
+    private LocalDate registrationDate;
 
     @OneToMany(mappedBy = "nic")
     private List<Rental> rentalDetails;
