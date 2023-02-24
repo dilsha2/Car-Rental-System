@@ -70,5 +70,10 @@ public class CarController {
         return new ResponseUtil(200, "Done", service.getUnavailableOrAvailableCarsByStatus(status));
     }
 
+    @DeleteMapping(path = "removeCar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCarDetail(@PathVariable String id) {
+        service.deleteCar(id);
+        return new ResponseUtil(200, "Vehicle Details Deleted Successfully", null);
+    }
 
 }

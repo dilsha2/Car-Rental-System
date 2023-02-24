@@ -186,6 +186,7 @@ function saveCar() {
         fuelType: $("#save-car-fuelType").val(),
         dailyRate: $("#save-car-daily").val(),
         monthlyRate: $("#save-car-monthly").val(),
+        waiver_payment: $("#save-car-waiver-payment").val(),
         priceForExtraKm: $("#save-car-extraKm-price").val(),
         availability: $("#save-car-status").val(),
         image1: null,
@@ -257,7 +258,7 @@ function loadAllCars(path) {
     $("#admin-cars-table").empty();
 
     $.ajax({
-        url: baseUrl + "car" + path,
+        url: baseUrl + "car/" + path,
         method: "GET",
         success: function (resp) {
             for (const car of resp.data) {
@@ -315,7 +316,7 @@ function setDataToUpdateModel(data) {
     $("#admin-update-freeKm-day").val(data.lastServiceMileage)
     $("#admin-update-freeKn-month").val(data.freeServiceMileage)
     $("#admin-update-extraKm").val(data.priceForExtraKm)
-    // $("#admin-update-waiverPayment").val(data.waiver_payment)
+    $("#admin-update-waiverPayment").val(data.waiver_payment)
     $("#admin-update-status").val(data.status)
     $("#update-car-modal-front").attr("src", baseUrl + data.image1.image1)
     $("#update-car-modal-back").attr("src", baseUrl + data.image2.image2)
@@ -450,3 +451,124 @@ function setCarStatus(id, status) {
         }
     });
 }
+
+// let homeDivArray = ["#divOne", "#divTwo", "#divThree"];
+//
+// var listNo = 0;
+// var displayDiv = 0;
+//
+// function setCarDetailsToHomeDiv() {
+//     displayDiv = 0
+//
+//     for (var i = 0; listNo <= carList.length - 1; i++, listNo++, displayDiv++) {
+//         $("#homeUnavailableTag").css("display", "none")
+//         $(homeDivArray[i]).css("display", "block")
+//
+//         if (i > 2) {
+//             break
+//         }
+//
+//         let img = "#" + $(homeDivArray[i]).children()[0].id
+//         let type = "#" + $(homeDivArray[i]).children().children()[0].id;
+//         let brand = "#" + $(homeDivArray[i]).children().children()[1].id;
+//         let daily = "#" + $(homeDivArray[i]).children().children()[4].id
+//         let monthly = "#" + $(homeDivArray[i]).children().children()[7].id
+//
+//         let fuel = "#" + $("#" + $(homeDivArray[i]).children().children()[9].id).children()[1].id;
+//         let transmission = "#" + $("#" + $(homeDivArray[i]).children().children()[10].id).children()[1].id;
+//
+//         let car_id = "#" + $(homeDivArray[i]).children().children()[12].id
+//
+//         $(img).attr("src", baseUrl + carList[listNo].image1.image1)
+//         $(img).attr("src", baseUrl + carList[listNo].image2.image2)
+//         $(img).attr("src", baseUrl + carList[listNo].image3.image3)
+//         $(img).attr("src", baseUrl + carList[listNo].image4.image4)
+//         $(type).text(carList[listNo].type)
+//         $(brand).text(carList[listNo].brand)
+//         $(daily).text(carList[listNo].dailyRate)
+//         $(monthly).text(carList[listNo].monthlyRate)
+//         $(fuel).text(carList[listNo].fuelType)
+//         $(transmission).text(carList[listNo].transmissionType)
+//         $(car_id).text(carList[listNo].registrationId)
+//
+//     }
+// }
+//
+// $("#card-one-bookBtn").click(function () {
+//     let id = $("#card-one-car-id").text();
+//     let obj = carList.find(o => o.registrationId === id);
+//     setCarDetailsToModal(obj)
+//
+// })
+// $("#card-two-bookBtn").click(function () {
+//     let id = $("#card-two-car-id").text();
+//     let obj = carList.find(o => o.registrationId === id);
+//     setCarDetailsToModal(obj)
+//
+// })
+// $("#card-three-bookBtn").click(function () {
+//     let id = $("#card-three-car-id").text();
+//     let obj = carList.find(o => o.registrationId === id);
+//     setCarDetailsToModal(obj)
+//
+// })
+//
+// $("#customer-home-nextCarBtn").click(function () {
+//     if (carList.length === listNo) {
+//         return
+//     }
+//     $('#divOne, #divTwo,#divThree').css({
+//         display: 'none'
+//     })
+//
+//     setCarDetailsToHomeDiv()
+//
+// })
+// $("#customer-home-previousCarBtn").click(function () {
+//     if (3 >= listNo) {
+//         return
+//     }
+//     $('#divOne, #divTwo,#divThree').css({
+//         display: 'none'
+//     })
+//     listNo = listNo - (displayDiv + 3)
+//     setCarDetailsToHomeDiv()
+// })
+//
+//
+//
+// function setCarDetailsToModal(obj) {
+//     getReservationId()
+//     $("#customer-reservation-car-id").text(obj.registrationId)
+//     $("#customer-reservation-car-brand").text(obj.brand)
+//     $("#customer-reservation-car-color").text(obj.color)
+//     $("#customer-reservation-car-type").text(obj.color)
+//     $("#customer-reservation-car-extraKm").text(obj.priceForExtraKm)
+//     $("#customer-reservation-car-freeKmDay").text(obj.freeServiceMileage)
+//     $("#customer-reservation-car-freeKmMonth").text(obj.lastServiceMileage)
+//     $("#customer-reservation-car-fuel").text(obj.fuelType)
+//     $("#customer-reservation-car-waiverPayment").text(obj.waiver_payment)
+//     $("#customer-reservation-car-transmission").text(obj.transmissionType)
+//     $("#customer-reservation-car-monthly").text(obj.monthlyRate)
+//     $("#customer-reservation-car-passengers").text(obj.noOfPassenger)
+//     $("#customer-reservation-car-mileage").text(obj.lastServiceMileage)
+//     $("#customer-reservation-car-daily").text(obj.dailyRate)
+//     $("#customer-reservation-car-img1").attr("src", baseUrl + obj.image1.image1)
+//     $("#customer-reservation-car-img2").attr("src", baseUrl + obj.image1.image2)
+//     $("#customer-reservation-car-img3").attr("src", baseUrl + obj.image1.image3)
+//     $("#customer-reservation-car-img4").attr("src", baseUrl + obj.image1.image4)
+//
+//     var date1 = $("#customer-home-pickup").val();
+//     var date2 = $("#customer-home-return").val()
+//
+//     var diff = Math.floor((Date.parse(date2) - Date.parse(date1)) / 86400000);
+//
+//     $("#customer-reservation-customer-days").val(diff)
+//     $("#customer-reservation-customer-name").val(customer.name)
+//     $("#customer-reservation-customer-vehicle-no").val(obj.registrationId)
+//     $("#customer-reservation-customer-returnDate").val(date2)
+//     $("#customer-reservation-customer-pickUpDate").val(date1)
+//
+//     $("#customer-reservation-customer-pickUpTime").text()
+//     $("#customer-reservation-customer-driverCheck").text()
+// }
