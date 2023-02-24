@@ -357,23 +357,25 @@
           </div> End Header
   -->
         <!--        customer dashboard-->
+        <header>
+            <nav id="customer-nav-bar" style="display: none">
+                <input id="check" type="checkbox">
+                <label class="checkbtn" for="check">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <label class="logo">ECR</label>
+                <ul>
+                    <li><a class="active" href="#" id="home-btn">Home</a></li>
+                    <li><a href="#" id="myStore-btn">MyStore</a></li>
+                    <li><a href="#" id="myAccount-btn">My Account</a></li>
+                    <li><a href="#" id="logout-btn">Log Out</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
         <section id="customerHome" style="display: none">
             <div class="customer-home-content">
-
-                <nav id="customer-nav-bar">
-                    <input id="check" type="checkbox">
-                    <label class="checkbtn" for="check">
-                        <i class="fas fa-bars"></i>
-                    </label>
-                    <label class="logo">ECR</label>
-                    <ul>
-                        <li><a class="active" href="#" id="home-btn">Home</a></li>
-                        <li><a href="#" id="myStore-btn">MyStore</a></li>
-                        <li><a href="#" id="myAccount-btn">My Account</a></li>
-                        <li><a href="#" id="logout-btn">Log Out</a></li>
-
-                    </ul>
-                </nav>
 
                 <div class="customer-home-container-one">
                     <div class="customer-sub-container-one">
@@ -413,7 +415,8 @@
                         <div class="card custom-card " id="divOne" style="display: none">
                             <img alt="..."
                                  class="custom-card-img"
-                                 id="card-one-img" src="assets/images/blue-jeep-parking-public-zone-removebg-preview.png"
+                                 id="card-one-img"
+                                 src="assets/images/blue-jeep-parking-public-zone-removebg-preview.png"
                                  style="width: 395px; height: 96%">
                             <div class="card-body " id="divOneBody">
                                 <h8 id="card-one-type">Luxury</h8>
@@ -1451,8 +1454,9 @@
                                         </div>
                                         <div>
                                             <label class="col-form-label fw-bold">Brand:</label>
-                                            <input aria-label="Disabled input example" class="form-control mb-3" name="brand"
+                                            <input aria-label="Disabled input example" class="form-control mb-3"
                                                    id="new_car_brand"
+                                                   name="brand"
                                                    type="text">
                                         </div>
 
@@ -1559,22 +1563,22 @@
                                         <div class="mb-3">
                                             <label class="form-label fw-bold">Front View Of Car</label>
                                             <input class="form-control " id="save-car-frontView"
-                                                   type="file" name="file">
+                                                   name="file" type="file">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label fw-bold">Back View Of Car</label>
                                             <input class="form-control " id="save-car-backView"
-                                                   type="file" name="file">
+                                                   name="file" type="file">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label fw-bold">Side View Of Car</label>
                                             <input class="form-control " id="save-car-sideView"
-                                                   type="file" name="file">
+                                                   name="file" type="file">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label fw-bold">Interior View Of Car</label>
                                             <input class="form-control " id="save-car-interior"
-                                                   type="file" name="file">
+                                                   name="file" type="file">
                                         </div>
                                     </div>
                                 </div>

@@ -41,9 +41,15 @@ public class CarController {
         return new ResponseUtil(200, "Done", carDTO);
     }
 
-    @GetMapping(path = "allCarDetail", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCarDetail() {
         return new ResponseUtil(200, "Done", service.getAllCarDetail());
+    }
+
+    @PutMapping(params = {"id", "status"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCarStatusForUnavailableOrAvailable(@RequestParam String id, @RequestParam String status) {
+        service.setCarStatusUnavailableOrAvailable(id, status);
+        return new ResponseUtil(200, "Set Car " + id + " As " + status, null);
     }
 
 }

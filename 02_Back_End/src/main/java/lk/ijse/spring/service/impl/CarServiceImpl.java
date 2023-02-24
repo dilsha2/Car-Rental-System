@@ -79,9 +79,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CarDTO> getUnavailableOrAvailableCarsByStatus(String status) {
-        return null;
+        return mapper.map(repo.getUnavailableOrAvailableCarsByStatus(status), new TypeToken<List<CarDTO>>() {
+        }.getType());
     }
-
     @Override
     public List<CarDTO> getAvailableAndRentalCarsForReservation(String pick_up_date, String return_date, String status) {
         return null;
@@ -89,9 +89,15 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void setCarStatusUnavailableOrAvailable(String id, String status) {
+        if (repo.existsById(id)) {
+            Car car = repo.findById(id).get();
+            car.setAvailability(status);
+            repo.save(car);
+        } else {
+            throw new RuntimeException("Can't Get Details.!  This Vehicle's Previous Record is Missing..Add Again");
 
+        }
     }
-
     @Override
     public List<CarDTO> sortCarsByAttributes(CarDTO carDTO) {
         return null;

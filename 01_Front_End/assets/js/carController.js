@@ -204,7 +204,7 @@ function saveCar() {
         success: function (resp) {
             if (resp.code === 200) {
                 alert(resp.message);
-                loadAllCars("allCarDetail");
+                loadAllCars();
 
             }
         },
@@ -253,15 +253,15 @@ function loadImage() {
     });
 }
 
-function loadAllCars(path) {
+function loadAllCars() {
     $("#admin-cars-table").empty();
 
     $.ajax({
-        url: baseUrl + "car/" + path,
+        url: baseUrl + "car",
         method: "GET",
         success: function (resp) {
             for (const car of resp.data) {
-                let row = `<tr><td>${car.registrationId}</td><td>${car.Brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td></tr>`;
+                let row = `<tr><td>${car.registrationId}</td><td>${car.brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td></tr>`;
                 $("#admin-cars-table").append(row);
 
                 $("#admin-cars-table>tr").off("click");
@@ -291,7 +291,7 @@ $("#viewButton").click(function () {
         url: baseUrl + "car/carDetail/" + vehicle_no,
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 setDataToUpdateModel(resp.data);
             }
         },
@@ -303,7 +303,7 @@ $("#viewButton").click(function () {
 
 function setDataToUpdateModel(data) {
     $("#admin-update-registration-no").val(data.registrationId)
-    $("#admin-update-brand").val(data.Brand)
+    $("#admin-update-brand").val(data.brand)
     $("#admin-update-type").val(data.type)
     $("#admin-update-transmission").val(data.transmissionType)
     $("#admin-update-color").val(data.color)
@@ -321,4 +321,132 @@ function setDataToUpdateModel(data) {
     $("#update-car-modal-back").attr("src", baseUrl + data.image2.image2)
     $("#update-car-modal-side").attr("src", baseUrl + data.image3.image3)
     $("#update-car-modal-interior").attr("src", baseUrl + data.image4.image4)
+}
+
+$("#btnUpdateCar").click(function () {
+    updateCar();
+})
+
+$("#customer-upcoming-reservationBtn").click(function (){
+   // clearAllReservationDetails()
+   // loadUpcomingReservation()
+})
+$("#customer-pending-reservationBtn").click(function (){
+    //clearAllReservationDetails()
+    //loadPendingReservation()
+})
+
+function updateCar(){
+    var data = new FormData();
+
+    let front = $("#admin-update-front")[0].files[0];
+    let frontFileName = front.name;
+
+    let back = $("#admin-update-back")[0].files[0];
+    let backFileName = back.name;
+
+    let side = $("#admin-update-side")[0].files[0];
+    let sideFileName = side.name;
+
+    let interior = $("#admin-update-interior")[0].files[0];
+    let interiorFileName = interior.name;
+
+    data.append("file", front);
+    data.append("file", back);
+    data.append("file", side);
+    data.append("file", interior);
+
+
+
+    var car = {
+        registrationId: $("#admin-update-registration-no").val(),
+        brand: $("#admin-update-brand").val(),
+        type: $("#admin-update-type").val(),
+        model: $("#admin-update-").val(),
+        transmissionType: $("#admin-update-transmission").val(),
+        color: $("#admin-update-color").val(),
+        noOfPassenger: $("#admin-update-passengers").val(),
+        lastServiceMileage: $("#admin-update-mileage").val(),
+        freeServiceMileage: $("#admin-update-freeKn-month").val(),
+        fuelType: $("#admin-update-fuel").val(),
+        dailyRate: $("#admin-update-daily").val(),
+        monthlyRate: $("#admin-update-monthly").val(),
+        priceForExtraKm: $("#admin-update-extraKm").val(),
+        availability: $("#admin-update-status").val(),
+        image1: null,
+        image2: null,
+        image3: null,
+        image4: null,
+    }
+
+    console.log(car.brand);
+
+    $.ajax({
+        url: baseUrl + "car/updateCarDetail",
+        method: 'post',
+        contentType: "application/json",
+        data: JSON.stringify(car),
+        success: function (resp) {
+            if (resp.code === 200) {
+                alert(resp.message);
+                loadAllCars("allCarDetail");
+
+            }
+        },
+        error: function (err) {
+            alert(err.resposeJSON.message);
+            console.log(err);
+        }
+    });
+    clearSaveCarForm();
+
+}
+
+$("#unavailableBtn").click(function () {
+    var status = "Unavailable";
+    setCarStatus(vehicle_no, status)
+    loadAllCars("unavailableOrAvailableCarsByStatus/Available")
+})
+$("#availableBtn").click(function () {
+    var status = "Available";
+    setCarStatus(vehicle_no, status)
+
+    loadAllCars("unavailableOrAvailableCarsByStatus/Unavailable")
+})
+$("#maintainBtn").click(function () {
+    var status = "UnderMaintain";
+    setCarStatus(vehicle_no, status)
+    loadAllCars("carsNeedMaintain")
+})
+$("#underMaintainBtn").click(function () {
+    var status = "Available";
+    setCarStatus(vehicle_no, status)
+    loadAllCars("carsUnderMaintain")
+})
+
+$("#btnDeleteCar").click(function (){
+    let res = confirm("Do you really need to delete this Car ?");
+    if (res) {
+        $("#updateCarModel").modal("toggle");
+        loadAllCars();
+        clearUpdateCarForm();
+    }
+})
+
+function setCarStatus(id, status) {
+
+    $.ajax({
+        url: baseUrl + "car?id=" + id + "&status=" + status,
+        method: "PUT",
+        async: false,
+        success: function (res) {
+            if (res.status === 200) {
+                alert(res.message)
+            }
+        },
+        error: function (ob) {
+            console.log(ob);
+            alert("Sorry Cant Update This Car Status Right Now..Try Again Latter")
+        }
+    });
 }

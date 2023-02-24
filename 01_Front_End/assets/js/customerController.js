@@ -255,7 +255,7 @@ $("#admin-customer-viewBtn").click(function () {
             }
         },
         error: function (err) {
-           // console.log(resp,"error success")
+            console.log(resp,"error success")
             console.log(err);
         }
     });
