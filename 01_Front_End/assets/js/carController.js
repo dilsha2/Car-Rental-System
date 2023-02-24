@@ -204,7 +204,7 @@ function saveCar() {
         success: function (resp) {
             if (resp.code === 200) {
                 alert(resp.message);
-                loadAllCars();
+                loadAllCars("allCarDetail");
 
             }
         },
@@ -389,7 +389,7 @@ function updateCar(){
         success: function (resp) {
             if (resp.code === 200) {
                 alert(resp.message);
-                loadAllCars();
+                loadAllCars("allCarDetail");
 
             }
         },
@@ -428,7 +428,7 @@ $("#btnDeleteCar").click(function (){
     let res = confirm("Do you really need to delete this Car ?");
     if (res) {
         $("#updateCarModel").modal("toggle");
-        loadAllCars();
+        loadAllCars("allCarDetail");
         //clearUpdateCarForm();
     }
 })
