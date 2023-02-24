@@ -215,7 +215,7 @@ function updateCustomer(){
         contentType: "application/json",
         data: JSON.stringify(newDetails),
         success: function (res) {
-            if (res.status === 200) {
+            if (res.code === 200) {
                 alert(res.message)
             } else {
                 alert("Cant update your Details in this moment")
