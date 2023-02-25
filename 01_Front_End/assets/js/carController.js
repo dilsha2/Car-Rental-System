@@ -309,6 +309,9 @@ function loadAllCars(path) {
 
 }
 
+
+
+
 function clearSaveCarForm() {
     $('#save-car-registration-no,#save-car-brand,#save-car-type,#save-car-transmission,#save-car-color,#save-car-passengers,#save-car-mileage,#save-car-fuelType,#save-car-daily,#save-car-monthly,#save-car-freeKm-day,#save-car-freeKm-month,#save-car-extraKm-price,#save-car-waiver-payment,#save-car-status').css({
         border: '1px solid #c4c4c4',
@@ -530,24 +533,18 @@ function setCarStatus(id, status) {
 //     }
 // }
 
-$("#card-one-bookBtn").click(function () {
+$("#card-one-bookBtn").click(function (){
     let id = $("#card-one-car-id").text();
     let obj = carList.find(o => o.registrationId === id);
     setCarDetailsToModal(obj)
-
+    console.log(id,obj)
 })
-$("#card-two-bookBtn").click(function () {
-    let id = $("#card-two-car-id").text();
-    let obj = carList.find(o => o.registrationId === id);
-    setCarDetailsToModal(obj)
-
-})
-$("#card-three-bookBtn").click(function () {
-    let id = $("#card-three-car-id").text();
-    let obj = carList.find(o => o.registrationId === id);
-    setCarDetailsToModal(obj)
-
-})
+// $("#card-one-bookBtn").click(function () {
+//     let id = $("#card-one-car-id").text();
+//     let obj = carList.find(o => o.registrationId === id);
+//     setCarDetailsToModal(obj)
+//
+// })
 
 $("#customer-home-nextCarBtn").click(function () {
     if (carList.length === listNo) {
@@ -574,11 +571,11 @@ $("#customer-home-previousCarBtn").click(function () {
 
 
 function setCarDetailsToModal(obj) {
-    getReservationId()
+
     $("#customer-reservation-car-id").text(obj.registrationId)
     $("#customer-reservation-car-brand").text(obj.brand)
     $("#customer-reservation-car-color").text(obj.color)
-    $("#customer-reservation-car-type").text(obj.color)
+    $("#customer-reservation-car-type").text(obj.type)
     $("#customer-reservation-car-extraKm").text(obj.priceForExtraKm)
     $("#customer-reservation-car-freeKmDay").text(obj.freeKmDay)
     $("#customer-reservation-car-freeKmMonth").text(obj.freeKmMonth)
@@ -593,6 +590,8 @@ function setCarDetailsToModal(obj) {
     $("#customer-reservation-car-img2").attr("src", baseUrl + obj.image1.image2)
     $("#customer-reservation-car-img3").attr("src", baseUrl + obj.image1.image3)
     $("#customer-reservation-car-img4").attr("src", baseUrl + obj.image1.image4)
+
+    console.log(obj.registrationId);
 
     var date1 = $("#customer-home-pickup").val();
     var date2 = $("#customer-home-return").val()

@@ -325,7 +325,7 @@ function loadDataToDiv(){
 
             $(img).attr("src", baseUrl + carList[listNo].image1.image1)
             $(type).text(carList[listNo].type)
-            $(brand).text(carList[listNo].Brand)
+            $(brand).text(carList[listNo].brand)
             $(daily).text(carList[listNo].dailyRate)
             $(monthly).text(carList[listNo].monthlyRate)
             $(fuel).text(carList[listNo].fuelType)
