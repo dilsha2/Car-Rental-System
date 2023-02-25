@@ -100,6 +100,8 @@ public class CarServiceImpl implements CarService {
     }
     @Override
     public List<CarDTO> sortCarsByAttributes(CarDTO carDTO) {
-        return null;
+        return mapper.map(repo.sortCarsByAttributes(carDTO.getTransmissionType(), carDTO.getBrand()
+                , carDTO.getType(), carDTO.getFuelType(), carDTO.getNoOfPassenger()), new TypeToken<List<CarDTO>>() {
+        }.getType());
     }
 }

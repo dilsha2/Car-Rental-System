@@ -76,4 +76,9 @@ public class CarController {
         return new ResponseUtil(200, "Vehicle Details Deleted Successfully", null);
     }
 
+    @GetMapping(path = "carsSortByAttribute", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil carsSortByAttribute(@RequestBody CarDTO carDTO) {
+        return new ResponseUtil(200, "Done", service.sortCarsByAttributes(carDTO));
+    }
+
 }
