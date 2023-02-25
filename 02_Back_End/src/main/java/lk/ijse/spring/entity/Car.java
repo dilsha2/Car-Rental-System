@@ -25,11 +25,13 @@ public class Car {
     private String image2;
     private String image3;
     private String image4;
-    private long lastServiceMileage;
-    private long freeServiceMileage;
+    private double mileage;
+    private double freeKmDay;
+    private long freeKmMonth;
     private double dailyRate;
     private double monthlyRate;
     private double priceForExtraKm;
+    private double waiver_payment;
     private String availability;
 
 }

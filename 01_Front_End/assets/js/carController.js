@@ -181,8 +181,9 @@ function saveCar() {
         transmissionType: $("#save-car-transmission").val(),
         color: $("#save-car-color").val(),
         noOfPassenger: $("#save-car-passengers").val(),
-        lastServiceMileage: $("#save-car-mileage").val(),
-        freeServiceMileage: $("#save-car-freeKm-month").val(),
+        mileage: $("#save-car-mileage").val(),
+        freeKmMonth: $("#save-car-freeKm-month").val(),
+        freeKmDay: $("#save-car-freeKm-day").val(),
         fuelType: $("#save-car-fuelType").val(),
         dailyRate: $("#save-car-daily").val(),
         monthlyRate: $("#save-car-monthly").val(),
@@ -309,12 +310,12 @@ function setDataToUpdateModel(data) {
     $("#admin-update-transmission").val(data.transmissionType)
     $("#admin-update-color").val(data.color)
     $("#admin-update-passengers").val(data.noOfPassenger)
-    // $("#admin-update-mileage").val(data.mileage)
+     $("#admin-update-mileage").val(data.mileage)
     $("#admin-update-fuel").val(data.fuelType)
     $("#admin-update-daily").val(data.dailyRate)
     $("#admin-update-monthly").val(data.monthlyRate)
-    $("#admin-update-freeKm-day").val(data.lastServiceMileage)
-    $("#admin-update-freeKn-month").val(data.freeServiceMileage)
+    $("#admin-update-freeKm-day").val(data.freeKmDay)
+    $("#admin-update-freeKn-month").val(data.freeKmMonth)
     $("#admin-update-extraKm").val(data.priceForExtraKm)
     $("#admin-update-waiverPayment").val(data.waiver_payment)
     $("#admin-update-status").val(data.status)
@@ -367,12 +368,14 @@ function updateCar(){
         transmissionType: $("#admin-update-transmission").val(),
         color: $("#admin-update-color").val(),
         noOfPassenger: $("#admin-update-passengers").val(),
-        lastServiceMileage: $("#admin-update-mileage").val(),
-        freeServiceMileage: $("#admin-update-freeKn-month").val(),
+        mileage: $("#admin-update-mileage").val(),
+        freeKmMonth: $("#admin-update-freeKn-month").val(),
+        freeKmDay: $("#admin-update-freeKm-day").val(),
         fuelType: $("#admin-update-fuel").val(),
         dailyRate: $("#admin-update-daily").val(),
         monthlyRate: $("#admin-update-monthly").val(),
         priceForExtraKm: $("#admin-update-extraKm").val(),
+        waiver_payment:  $("#admin-update-waiverPayment"),
         availability: $("#admin-update-status").val(),
         image1: null,
         image2: null,
