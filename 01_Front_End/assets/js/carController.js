@@ -272,22 +272,24 @@ function loadAllCars(path) {
                     $("#viewButton").prop('disabled', false);
                 });
 
-                alert("asadssd")
+
                let div = `  <div style="" id="divOne" class="card custom-card ">
-                            <img id="card-one-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">
+                            <img id="card-one-img" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHNwb3J0cyUyMGNhcnxlbnwwfHwwfHw%3D&w=1000&q=80" class="custom-card-img" alt="...">
                             <div id="divOneBody" class="card-body ">
                                 <h8 id="card-one-type" >Luxury</h8>
-                                <h3 id="card-one-brand" class="card-title">Mercedes Benz</h3><br>
-                                <h5 class="custom-card-daily">Daily(LKR)</h5>
+                                <h3 id="card-one-brand" class="card-title">${car.brand}</h3><br>
+                                <h5 class="custom-card-daily">Daily(LKR) : ${car.dailyRate}</h5>
                                 <h5 id="card-one-daily" class="custom-card-price"></h5>
                                 <br style="clear:both;">
-                                <h5  class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5  class="custom-card-daily">Monthly(LKR) : ${car.monthlyRate}</h5>
                                 <h5 id="card-one-monthly" class="custom-card-price"></h5>
-
+                                <br style="clear: both">
+                                <h5  class="custom-card-onHold">On-Hold(LKR) : ${car.waiver_payment}</h5>
+                                 <h5 id="card-one-onhold" class="custom-card-price"></h5>
                                 <hr style="clear:both;"/>
                                 <h5 id="card-one-fuel-main" class=" float-start ms-2">
                                     <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i>
-                                    <span id="card-one-fuel">Petrol </span>
+                                    <span id="card-one-fuel">${car.fuelType} </span>
                                 </h5>
 
 
@@ -295,7 +297,7 @@ function loadAllCars(path) {
                                 <p id="card-one-car-id" style="display: none">Car</p>
 
                                 <a id="card-one-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
-                                   data-bs-target="#bookNowModel">Book Now</a>
+                                   data-bs-target="#bookNowModel" style="margin-top: 0rem!important;">Book Now</a>
                             </div>
                         </div>`;
 
@@ -490,7 +492,7 @@ function setCarStatus(id, status) {
 //
 // var listNo = 0;
 // var displayDiv = 0;
-
+//
 // function setCarDetailsToHomeDiv() {
 //     displayDiv = 0
 //
