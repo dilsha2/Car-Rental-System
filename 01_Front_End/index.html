@@ -330,70 +330,26 @@
     <!--    customer dashboard-->
 
 
-    <section id="customer" style="display: block">
-        <!--   ======= Header =======
-          <div class="header d-flex align-items-center" id="headerr">
-              <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <section style="" id="customer">
 
-                  <a class="logo d-flex align-items-center" href="index.html">
-                      logo
-                       <img src="assets/img/logo.png" alt="">
-                      <h1>ECar Rental<span>.</span></h1>
-                  </a>
-
-                  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-                  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-                  <nav class="navbar" id="navbar">
-                      <ul>
-                          <li><a href="index.html">Home</a></li>
-                          <li><a class="active" href="#">Car Store</a></li>
-                          <li><a href="#">About Us</a></li>
-                          <li><a href="#">Contact</a></li>
-                          <li><a href="login.html">Logout</a></li>
-                      </ul>
-                  </nav> .navbar
-
-              </div>
-          </div> End Header
-  -->
-        <!--        customer dashboard-->
-        <header>
-            <nav id="customer-nav-bar" style="display: none">
-                <input id="check" type="checkbox">
-                <label class="checkbtn" for="check">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <label class="logo">ECR</label>
-                <ul>
-                    <li><a class="active" href="#" id="home-btn">Home</a></li>
-                    <li><a href="#" id="myStore-btn">MyStore</a></li>
-                    <li><a href="#" id="myAccount-btn">My Account</a></li>
-                    <li><a href="#" id="logout-btn">Log Out</a></li>
-
-                </ul>
-            </nav>
-        </header>
-
-        <section id="customerHome" style="display: none">
-            <div class="customer-home-content">
-
+        <section style="display: block" id="customerHome">
+            <div class="customer-home-container">
                 <div class="customer-home-container-one">
-                    <div class="customer-sub-container-one">
-                        <p class="fs-1 fw-bold text-light mb-5">WHY ARE YOU WAITING ? <br/> Plan Your Trip Now</p>
+                    <div class="customer-home-sub-container-one">
+                        <p class="fs-1 fw-bold text-light mb-5">Why Are You Waiting ? <br/> Plan Your Trip Now </p>
                         <div class="customer-home-detail-container">
                             <div class="form-floating w-75 mt-4 ">
-                                <input class="form-control border-secondary " id="customer-home-pickup" type="date">
-                                <label>Date</label>
+                                <input type="date" class="form-control border-secondary " id="customer-home-pickup">
+                                <label for="register-form-date">Date</label>
                             </div>
-                            <div class="form-floating w-75 mt-3">
-                                <input class="form-control border-secondary" id="customer-home-return" type="date">
-                                <label>Date</label>
-                                <button class="btn bg-black text-light register-form-btn mt-4 "
-                                        id="customer-searchCarBtn" style="width: 100% "
-                                        type="button">Search Car
+                            <div class="form-floating w-75 mt-3 ">
+                                <input type="date" class="form-control border-secondary" id="customer-home-return">
+                                <label for="register-form-date">Date</label>
+                                <button id="customer-searchCarBtn" type="button" style="width: 100% "
+                                        class="btn bg-black text-light register-form-btn mt-4 ">Search Car
                                 </button>
-
                             </div>
+
                         </div>
                     </div>
                     <div class="customer-home-sub-container-two">
@@ -401,115 +357,88 @@
                         <h4 style=" color: #545454">A car rental,hire car or car hire agency is a company <br/>that
                             rents automobiles for short periods of time,generally <br/> raging from a few hours to a few
                             weeks</h4>
-                        <img alt="audi car"
-                             class="customer-home-background-image"
-                             src="assets/images/red-luxury-sedan-road-removebg-preview.png">
+                        <img class="customer-home-background-image" src="assets/images/red-luxury-sedan-road-removebg-preview.png" alt="audi car">
                     </div>
                 </div>
                 <div class="customer-home-container-two">
                     <div class="customer-home-div-one">
-                        <p class="fs-1 fw-bold mt-5 text-black">Available Cars</p>
+                        <p class="fs-1 fw-bold mt-4 text-black">Available Cars</p>
                     </div>
                     <div class="customer-home-main-two">
-                        <!--                        <h1 class="text-danger" id="homeUnavailableTag">No Any Available Cars</h1>-->
-                        <div class="card custom-card " id="divOne" style="display: none">
-                            <img alt="..."
-                                 class="custom-card-img"
-                                 id="card-one-img"
-                                 src="assets/images/blue-jeep-parking-public-zone-removebg-preview.png"
-                                 style="width: 395px; height: 96%">
-                            <div class="card-body " id="divOneBody">
-                                <h8 id="card-one-type">Luxury</h8>
-                                <h3 class="card-title" id="card-one-brand">Mercedes Benz</h3><br>
+                        <h1 class="text-danger" id="homeUnavailableTag">No Any Available Cars</h1>
+                        <div style="display:none" id="divOne" class="card custom-card ">
+                            <img id="card-one-img" src="assets/images/red-luxurious-sedan-car-diving-street.jpg" class="custom-card-img" alt="...">
+                            <div id="divOneBody" class="card-body ">
+                                <h8 id="card-one-type" >Luxury</h8>
+                                <h3 id="card-one-brand" class="card-title">Mercedes Benz</h3><br>
                                 <h5 class="custom-card-daily">Daily(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-one-daily"></h5>
+                                <h5 id="card-one-daily" class="custom-card-price"></h5>
                                 <br style="clear:both;">
-                                <h5 class="custom-card-daily">Monthly(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-one-monthly"></h5>
-                                <h5 class="custom-card-daily">On Hold(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-T-monthly"></h5>
+                                <h5  class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5 id="card-one-monthly" class="custom-card-price"></h5>
 
                                 <hr style="clear:both;"/>
-                                <h5 class=" float-start ms-2" id="card-one-fuel-main">
-                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary "></i>
-                                    <span id="card-one-fuel" style="display: none">Car </span>
+                                <h5 id="card-one-fuel-main" class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i>
+                                    <span id="card-one-fuel">petrol </span>
                                 </h5>
 
-                                <h5 class="float-end me-2" id="card-one-transmission-main">
-                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary "></i>
-                                    <span id="card-one-transmission"></span>
-                                </h5>
+<!--                                <h5 id="card-one-transmission-main" class="float-end me-2">-->
+<!--                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i>-->
+<!--                                    <span id="card-one-transmission"></span>-->
+<!--                                </h5>-->
                                 <br style="clear:both;">
                                 <p id="card-one-car-id" style="display: none">Car</p>
 
-                                <a class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto "
-                                   data-bs-target="#bookNowModel"
-                                   data-bs-toggle="modal"
-                                   id="card-one-bookBtn" style="position:absolute; top: 500px; left: 1px">Book Now</a>
+                                <a id="card-one-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel" style="margin-top: 3rem!important; ">Book Now</a>
                             </div>
                         </div>
-                        <div class="card custom-card  " id="divTwo" style="display: none">
-                            <img alt="..."
-                                 class="custom-card-img"
-                                 id="card-two-img"
-                                 src="assets/images/blue-jeep-parking-public-zone-removebg-preview.png">
-                            <div class="card-body ">
+                        <div style="display: none" id="divTwo" class="card custom-card  ">
+                            <img id="card-two-img" src="" class="custom-card-img" alt="...">
+                            <div  class="card-body ">
                                 <h8 id="card-two-type">Luxury</h8>
-                                <h3 class="card-title" id="card-two-brand">Mercedes Benz</h3><br>
+                                <h3 id="card-two-brand" class="card-title">Mercedes Benz</h3><br>
                                 <h5 class="custom-card-daily">Daily(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-two-daily"></h5>
+                                <h5 id="card-two-daily" class="custom-card-price"></h5>
                                 <br style="clear:both;">
-                                <h5 class="custom-card-daily">Monthly(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-two-monthly"></h5>
-                                <h5 class="custom-card-daily">On Hold(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-one-onHold"></h5>
+                                <h5  class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5 id="card-two-monthly" class="custom-card-price"></h5>
 
                                 <hr style="clear:both;"/>
-                                <h5 class=" float-start ms-2" id="card-two-fuel-main">
-                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span
-                                        id="card-two-fuel"> </span></h5>
-                                <h5 class="float-end me-2" id="card-two-transmission-main">
-                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span
-                                        id="card-two-transmission"></span></h5>
+                                <h5 id="card-two-fuel-main"  class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span id="card-two-fuel"> petrol </span></h5>
+<!--                                <h5 id="card-two-transmission-main" class="float-end me-2">-->
+<!--                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span id="card-two-transmission"></span></h5>-->
                                 <br style="clear:both;">
                                 <p id="card-two-car-id" style="display: none">Car</p>
-                                <a class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto "
-                                   data-bs-target="#bookNowModel"
-                                   data-bs-toggle="modal"
-                                   id="card-two-bookBtn">Book Now</a>
+                                <a id="card-two-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel" style="margin-top: 3rem!important;" >Book Now</a>
                             </div>
                         </div>
-                        <div class="card custom-card  " id="divThree" style="display: none">
-                            <img alt="..."
-                                 class="custom-card-img"
-                                 id="card-three-img"
-                                 src="assets/images/blue-jeep-parking-public-zone-removebg-preview.png">
+                        <div style="display: none" id="divThree" class="card custom-card  ">
+                            <img id="card-three-img" src="" class="custom-card-img" alt="...">
                             <div class="card-body ">
                                 <h8 id="card-three-type">Luxury</h8>
-                                <h3 class="card-title" id="card-three-brand">Mercedes Benz</h3><br>
+                                <h3 id="card-three-brand" class="card-title">Mercedes Benz</h3><br>
                                 <h5 class="custom-card-daily">Daily(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-three-daily"></h5>
+                                <h5 id="card-three-daily" class="custom-card-price"></h5>
                                 <br style="clear:both;">
                                 <h5 class="custom-card-daily">Monthly(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-three-monthly"></h5>
-                                <h5 class="custom-card-daily">On Hold(LKR)</h5>
-                                <h5 class="custom-card-price" id="card-three-hold"></h5>
+                                <h5 id="card-three-monthly" class="custom-card-price"></h5>
 
                                 <hr style="clear:both;"/>
-                                <h5 class=" float-start ms-2" id="card-three-fuel-main">
-                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span
-                                        id="card-three-fuel"></span></h5>
-                                <h5 class="float-end me-2" id="card-three-transmission-main">
-                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span
-                                        id="card-three-transmission"></span></h5>
+                                <h5 id="card-three-fuel-main"  class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span id="card-three-fuel"> petrol</span></h5>
+<!--                                <h5 id="card-three-transmission-main"  class="float-end me-2">-->
+<!--                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span id="card-three-transmission"></span></h5>-->
                                 <br style="clear:both;">
                                 <p id="card-three-car-id" style="display: none">Car</p>
-                                <a class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto"
-                                   data-bs-target="#bookNowModel"
-                                   data-bs-toggle="modal"
-                                   id="card-three-bookBtn">Book Now</a>
+                                <a id="card-three-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto" data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel" style="margin-top: 3rem!important;" >Book Now</a>
                             </div>
                         </div>
+
 
                         <!-------------------------------Model-------------------------------------------->
                         <div aria-hidden="true" aria-labelledby="bookCarModalLabel" class="modal fade" id="bookNowModel"
@@ -880,7 +809,7 @@
     </section>
 
     <!--    ===========================================admin dashboard section=============================================-->
-    <section id="admin" style="">
+    <section id="admin" style="display: none">
         <section id="adminDashboard">
             <div class="admin-dashboard-container position-fixed">
 
