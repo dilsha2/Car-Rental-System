@@ -271,9 +271,40 @@ function loadAllCars(path) {
                     vehicle_no = $(this).children(":eq(0)").text();
                     $("#viewButton").prop('disabled', false);
                 });
+
+                alert("asadssd")
+               let div = `  <div style="" id="divOne" class="card custom-card ">
+                            <img id="card-one-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">
+                            <div id="divOneBody" class="card-body ">
+                                <h8 id="card-one-type" >Luxury</h8>
+                                <h3 id="card-one-brand" class="card-title">Mercedes Benz</h3><br>
+                                <h5 class="custom-card-daily">Daily(LKR)</h5>
+                                <h5 id="card-one-daily" class="custom-card-price"></h5>
+                                <br style="clear:both;">
+                                <h5  class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5 id="card-one-monthly" class="custom-card-price"></h5>
+
+                                <hr style="clear:both;"/>
+                                <h5 id="card-one-fuel-main" class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i>
+                                    <span id="card-one-fuel">Petrol </span>
+                                </h5>
+
+
+                                <br style="clear:both;">
+                                <p id="card-one-car-id" style="display: none">Car</p>
+
+                                <a id="card-one-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel">Book Now</a>
+                            </div>
+                        </div>`;
+
+               $("#vehicle-cards").append(div);
             }
         }
     });
+
+
 }
 
 function clearSaveCarForm() {
@@ -455,47 +486,47 @@ function setCarStatus(id, status) {
     });
 }
 
-let homeDivArray = ["#divOne", "#divTwo", "#divThree"];
+// let homeDivArray = ["#divOne", "#divTwo", "#divThree"];
+//
+// var listNo = 0;
+// var displayDiv = 0;
 
-var listNo = 0;
-var displayDiv = 0;
-
-function setCarDetailsToHomeDiv() {
-    displayDiv = 0
-
-    for (var i = 0; listNo <= carList.length - 1; i++, listNo++, displayDiv++) {
-        $("#homeUnavailableTag").css("display", "none")
-        $(homeDivArray[i]).css("display", "block")
-
-        if (i > 2) {
-            break
-        }
-
-        let img = "#" + $(homeDivArray[i]).children()[0].id
-        let type = "#" + $(homeDivArray[i]).children().children()[0].id;
-        let brand = "#" + $(homeDivArray[i]).children().children()[1].id;
-        let daily = "#" + $(homeDivArray[i]).children().children()[4].id
-        let monthly = "#" + $(homeDivArray[i]).children().children()[7].id
-
-        let fuel = "#" + $("#" + $(homeDivArray[i]).children().children()[9].id).children()[1].id;
-        let transmission = "#" + $("#" + $(homeDivArray[i]).children().children()[10].id).children()[1].id;
-
-        let car_id = "#" + $(homeDivArray[i]).children().children()[12].id
-
-        $(img).attr("src", baseUrl + carList[listNo].image1.image1)
-        $(img).attr("src", baseUrl + carList[listNo].image2.image2)
-        $(img).attr("src", baseUrl + carList[listNo].image3.image3)
-        $(img).attr("src", baseUrl + carList[listNo].image4.image4)
-        $(type).text(carList[listNo].type)
-        $(brand).text(carList[listNo].brand)
-        $(daily).text(carList[listNo].dailyRate)
-        $(monthly).text(carList[listNo].monthlyRate)
-        $(fuel).text(carList[listNo].fuelType)
-        $(transmission).text(carList[listNo].transmissionType)
-        $(car_id).text(carList[listNo].registrationId)
-
-    }
-}
+// function setCarDetailsToHomeDiv() {
+//     displayDiv = 0
+//
+//     for (var i = 0; listNo <= carList.length - 1; i++, listNo++, displayDiv++) {
+//         $("#homeUnavailableTag").css("display", "none")
+//         $(homeDivArray[i]).css("display", "block")
+//
+//         if (i > 2) {
+//             break
+//         }
+//
+//         let img = "#" + $(homeDivArray[i]).children()[0].id
+//         let type = "#" + $(homeDivArray[i]).children().children()[0].id;
+//         let brand = "#" + $(homeDivArray[i]).children().children()[1].id;
+//         let daily = "#" + $(homeDivArray[i]).children().children()[4].id
+//         let monthly = "#" + $(homeDivArray[i]).children().children()[7].id
+//
+//         let fuel = "#" + $("#" + $(homeDivArray[i]).children().children()[9].id).children()[1].id;
+//         let transmission = "#" + $("#" + $(homeDivArray[i]).children().children()[10].id).children()[1].id;
+//
+//         let car_id = "#" + $(homeDivArray[i]).children().children()[12].id
+//
+//         $(img).attr("src", baseUrl + carList[listNo].image1.image1)
+//         $(img).attr("src", baseUrl + carList[listNo].image2.image2)
+//         $(img).attr("src", baseUrl + carList[listNo].image3.image3)
+//         $(img).attr("src", baseUrl + carList[listNo].image4.image4)
+//         $(type).text(carList[listNo].type)
+//         $(brand).text(carList[listNo].brand)
+//         $(daily).text(carList[listNo].dailyRate)
+//         $(monthly).text(carList[listNo].monthlyRate)
+//         $(fuel).text(carList[listNo].fuelType)
+//         $(transmission).text(carList[listNo].transmissionType)
+//         $(car_id).text(carList[listNo].registrationId)
+//
+//     }
+// }
 
 $("#card-one-bookBtn").click(function () {
     let id = $("#card-one-car-id").text();

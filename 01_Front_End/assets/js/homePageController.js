@@ -221,6 +221,8 @@ $("#adminCarsBtn").click(function () {
     $("#admin-all-underMaintains-title").css("display", "none");
     $("#admin-all-availableCars-title").css("display", "none");
 
+    loadAllCars("allCarDetail")
+
 })
 
 //--Customer
@@ -270,6 +272,11 @@ $("#adminPaymentBtn").click(function () {
     $("#adminDailySummary").css("display", "none")
 
 
+})
+
+$(window).on('load',function () {
+
+    loadAllCars("allCarDetail");
 })
 
 $("#home-nextBtn").click(function () {
