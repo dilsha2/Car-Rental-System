@@ -154,22 +154,22 @@ $("#btnCarSave").click(function () {
 function saveCar() {
     var data = new FormData();
 
-    // let front = $("#save-car-frontView")[0].files[0];
-    // let frontFileName = front.name;
-    //
-    // let back = $("#save-car-backView")[0].files[0];
-    // let backFileName = back.name;
-    //
-    // let side = $("#save-car-sideView")[0].files[0];
-    // let sideFileName = side.name;
-    //
-    // let interior = $("#save-car-interior")[0].files[0];
-    // let interiorFileName = interior.name;
-    //
-    // data.append("file", front);
-    // data.append("file", back);
-    // data.append("file", side);
-    // data.append("file", interior);
+    let front = $("#save-car-frontView")[0].files[0];
+    let frontFileName = front.name;
+
+    let back = $("#save-car-backView")[0].files[0];
+    let backFileName = back.name;
+
+    let side = $("#save-car-sideView")[0].files[0];
+    let sideFileName = side.name;
+
+    let interior = $("#save-car-interior")[0].files[0];
+    let interiorFileName = interior.name;
+
+    data.append("file", front);
+    data.append("file", back);
+    data.append("file", side);
+    data.append("file", interior);
 
 
 
@@ -190,10 +190,10 @@ function saveCar() {
         waiver_payment: $("#save-car-waiver-payment").val(),
         priceForExtraKm: $("#save-car-extraKm-price").val(),
         availability: $("#save-car-status").val(),
-        image1: $("#save-car-frontView")[0].files[0].name,
-        image2: $("#save-car-backView")[0].files[0].name,
-        image3: $("#save-car-sideView")[0].files[0].name,
-        image4: $("#save-car-interior")[0].files[0].name,
+        image1: frontFileName,
+        image2:backFileName,
+        image3: sideFileName,
+        image4: interiorFileName
     }
 
     console.log(car.brand);
@@ -263,7 +263,7 @@ function loadAllCars(path) {
         method: "GET",
         success: function (resp) {
             for (const car of resp.data) {
-                let row = `<tr><td>${car.registrationId}</td><td>${car.brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td></tr>`;
+                let row = `<tr style="text-align: center"><td>${car.registrationId}</td><td>${car.brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td></tr>`;
                 $("#admin-cars-table").append(row);
 
                 $("#admin-cars-table>tr").off("click");

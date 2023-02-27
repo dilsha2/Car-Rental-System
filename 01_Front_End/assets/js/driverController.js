@@ -89,7 +89,7 @@ function loadAllDrivers(){
         method: "GET",
         success: function (resp) {
             for (const driver of resp.data) {
-                let row = `<tr><td>${driver.driverNic}</td><td>${driver.driver_name}</td><td>${driver.address}</td><td>${driver.mobile}</td><td>${driver.join_date}</td></tr>`;
+                let row = `<tr style="text-align: center"><td>${driver.driverNic}</td><td>${driver.driver_name}</td><td>${driver.address}</td><td>${driver.mobile}</td><td>${driver.join_date}</td></tr>`;
                 $("#admin-all-drivers-table").append(row);
 
                 $("#admin-all-drivers-table>tr").off("click");

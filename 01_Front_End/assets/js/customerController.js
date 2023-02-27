@@ -178,7 +178,7 @@ function loadAllCustomers(){
         method: "GET",
         success: function (resp){
             for (const customer of resp.data){
-                let row = `<tr><td>${customer.name}</td><td>${customer.nic}</td><td>${customer.address}</td><td>${customer.contactNumber}</td><td>${customer.email}</td><td>${customer.imageLocation}</td></tr>`;
+                let row = `<tr style="text-align: center"><td>${customer.name}</td><td>${customer.nic}</td><td>${customer.address}</td><td>${customer.contactNumber}</td><td>${customer.email}</td><td>${customer.imageLocation}</td></tr>`;
                 $("#admin-customer-table").append(row);
 
                 $("#admin-customer-table>tr").off("click");

@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class ReservationDTO {
 
     private String rentalId;
-    private Customer nic;
+    private CustomerDTO nic;
     private Time pickupTime;
     private LocalDate pickupDate;
     private String pick_up_and_return_venue;
@@ -25,4 +25,7 @@ public class ReservationDTO {
     private String bank_slip_img;
     private String reservation_status;
     private String driver_status;
+
+
+    private CarDTO registrationId;
 }
