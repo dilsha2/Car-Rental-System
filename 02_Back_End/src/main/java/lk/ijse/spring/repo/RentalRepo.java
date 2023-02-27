@@ -13,15 +13,15 @@ public interface RentalRepo extends JpaRepository<Rental,String> {
     @Query(value = "SELECT * FROM Rental WHERE reservation_status='Pending'", nativeQuery = true)
     List<Rental> getAllPendingReservation();
 
-    @Query(value = "SELECT * FROM car_reservation WHERE reserve_date=current_date()", nativeQuery = true)
+    @Query(value = "SELECT * FROM Rental WHERE reserve_date=current_date()", nativeQuery = true)
     List<Rental> getAllTodayReservation();
 
-    @Query(value = "SELECT * FROM car_reservation WHERE pick_up_date=current_date() AND reservation_status='Accept'", nativeQuery = true)
+    @Query(value = "SELECT * FROM Rental WHERE pick_up_date=current_date() AND reservation_status='Accept'", nativeQuery = true)
     List<Rental> getAllTodayPickUps();
 
-    @Query(value = "SELECT * FROM car_reservation WHERE customer_nic=?1 AND reservation_status=?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM Rental WHERE nic_nic=?1 AND reservation_status=?2", nativeQuery = true)
     List<Rental> getCustomerReservationByStatus(String id, String status);
 
-    @Query(value = "SELECT * FROM car_reservation WHERE (customer_nic=?1) AND (reservation_status='Accept') AND (current_date() BETWEEN pick_up_date AND return_date)", nativeQuery = true)
+    @Query(value = "SELECT * FROM Rental WHERE (nic_nic=?1) AND (reservation_status='Accept') AND (current_date() BETWEEN pick_up_date AND return_date)", nativeQuery = true)
     Rental checkTodayCustomerInReservationOrNot(String id);
 }

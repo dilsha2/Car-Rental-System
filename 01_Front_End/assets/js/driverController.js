@@ -1,10 +1,6 @@
 
 var driver_nic;
 
-$("#btnDriverSave").click(function (){
-
-})
-
 $("#admin-driverBtn").click(function () {
     $("#admin-all-drivers-title").css("display", "block")
     $("#admin-all-driverSchedule-title").css("display", "none")

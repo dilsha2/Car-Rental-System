@@ -219,6 +219,138 @@ function saveCar() {
 
 }
 
+// function saveCar() {
+//     var Vdata = new FormData();
+//
+//     let frontFileName =$("#save-car-frontView")[0].files[0].name;
+//     let backFileName = $("#save-car-backView")[0].files[0].name;
+//     let sideFileName = $("#save-car-sideView")[0].files[0].name;
+//     let interiorFileName =$("#save-car-interior")[0].files[0].name;
+//
+//     let vFrontImg =$("#save-car-frontView")[0].files[0]
+//     let vBackImg =$("#save-car-backView")[0].files[0]
+//     let vSideImg =$("#save-car-sideView")[0].files[0]
+//     let vInteriorImg =$("#save-car-interior")[0].files[0]
+//
+//
+//     let registrationId = $("#save-car-registration-no").val();
+//     let Brand = $("#save-car-brand").val();
+//     let type = $("#save-car-type").val();
+//     let model = $("#save-car-model").val();
+//     let transmissionType = $("#save-car-transmission").val();
+//     let color = $("#save-car-color").val();
+//     let noOfPassenger = $("#save-car-passengers").val();
+//     let lastServiceMileage = $("#save-car-mileage").val();
+//     let freeServiceMileage = $("#save-car-freeKm-month").val();
+//     let fuelType = $("#save-car-fuelType").val();
+//     let dailyRate = $("#save-car-daily").val();
+//     let monthlyRate = $("#save-car-monthly").val();
+//     let priceForExtraKm = $("#save-car-extraKm-price").val();
+//     let availability = $("#save-car-status").val();
+//     var CarDTO = {
+//         registrationId: registrationId,
+//         Brand: Brand,
+//         type: type,
+//         model: model,
+//         transmissionType: transmissionType,
+//         color: color,
+//         noOfPassenger: noOfPassenger,
+//         lastServiceMileage: lastServiceMileage,
+//         freeServiceMileage: freeServiceMileage,
+//         fuelType: fuelType,
+//         dailyRate: dailyRate,
+//         monthlyRate: monthlyRate,
+//         priceForExtraKm: priceForExtraKm,
+//         availability: availability,
+//         image1: "uploads/"+frontFileName,
+//         image2: "uploads/"+backFileName,
+//         image3: "uploads/"+sideFileName,
+//         image4: "uploads/"+interiorFileName
+//     }
+//
+//     Vdata.append("vImageFile" , vFrontImg)
+//     Vdata.append("vImageFile" , vBackImg)
+//     Vdata.append("vImageFile" , vSideImg)
+//     Vdata.append("vImageFile" , vInteriorImg)
+//     Vdata.append("vehicle", new Blob([JSON.stringify(CarDTO)], {type: "application/json"}))
+//
+//
+//     $.ajax({
+//         url: baseUrl + "car",
+//         method: "post",
+//         async: true,
+//         contentType: false,
+//         processData: false,
+//         data: Vdata,
+//         success: function (resp) {
+//             if (resp.code === 200) {
+//                 alert(resp.message);
+//                  loadAllCars("allCarDetail");
+//
+//                 uploadCarImages(registrationId);
+//
+//             }
+//         },
+//         error: function (err) {
+//             alert(err.responseJSON.message)
+//             console.log(err);
+//         }
+//     });
+//     //clearSaveCarForm();
+// }
+
+
+// function uploadCarImages(registrationId) {
+//
+//     let frontViewFile = $("#save-car-frontView")[0].files[0];
+//     let backViewFile = $("#save-car-backView")[0].files[0];
+//     let sideViewFile = $("#save-car-sideView")[0].files[0];
+//     let interiorViewFile = $("#save-car-interior")[0].files[0];
+//
+//     let frontFileName = registrationId + "-image1-" + $("#save-car-frontView")[0].files[0].name;
+//     let backFileName = registrationId + "-image2-" + $("#save-car-backView")[0].files[0].name;
+//     let sideFileName = registrationId + "-image3-" + $("#save-car-sideView")[0].files[0].name;
+//     let interiorFileName = registrationId + "-image4-" + $("#save-car-interior")[0].files[0].name;
+//
+//
+//     var data = new FormData();
+//
+//     data.append("image1", frontViewFile, frontFileName);
+//     data.append("image2", backViewFile, backFileName);
+//     data.append("image3", sideViewFile, sideFileName);
+//     data.append("image4", interiorViewFile, interiorFileName);
+//
+//
+//     $.ajax({
+//         url: baseUrl + "car/uploadImg/" + registrationId,
+//         method: "Post",
+//         async: true,
+//         contentType: false,
+//         processData: false,
+//         data: data,
+//         success: function (res) {
+//             console.log("Uploaded");
+//             /* Swal.fire({
+//                  position: 'top-end',
+//                  icon: 'success',
+//                  title: "Images Upload Successfully",
+//                  showConfirmButton: false,
+//                  timer: 1500
+//              });*/
+//         },
+//         error: function (error) {
+//             let errorReason = JSON.parse(error.responseText);
+//             /*   Swal.fire({
+//                    position: 'top-end',
+//                    icon: 'error',
+//                    title: "Images Not Upload Successfully",
+//                    showConfirmButton: false,
+//                    timer: 1500
+//                });*/
+//         }
+//     });
+// }
+
 function loadImage() {
     var data = new FormData();
 
