@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,5 +36,8 @@ public class Car {
     private double priceForExtraKm;
     private double waiver_payment;
     private String availability;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Rental> reservations;
 
 }

@@ -7,6 +7,7 @@ import lk.ijse.spring.repo.DriverRepo;
 import lk.ijse.spring.repo.RentalRepo;
 import lk.ijse.spring.service.ReservationService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,25 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public String generateReservationId() {
-        return null;
+        String id = carReservationRepo.generateReservationId();
+        if (!(id == null)) {
+            int tempId = Integer.parseInt(id.split("-")[1]);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                return "RID-000" + tempId;
+
+            } else if (tempId <= 99) {
+                return "RID-00" + tempId;
+
+            } else if (tempId <= 999) {
+                return "RID-0" + tempId;
+
+            } else {
+                return "RID-" + tempId;
+            }
+        } else {
+            return "RID-0001";
+        }
     }
 
     @Override
@@ -49,26 +68,35 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<ReservationDTO> getAllPendingReservation() {
-        return null;
+        return mapper.map(carReservationRepo.getAllPendingReservation(), new TypeToken<List<ReservationDTO>>() {
+        }.getType());
     }
 
     @Override
     public ReservationDTO getReservationDetail(String id) {
-        return null;
+        if (carReservationRepo.existsById(id)) {
+            return mapper.map(carReservationRepo.findById(id).get(), ReservationDTO.class);
+        } else {
+            throw new RuntimeException("Can't Get Details..!  This Reservation Previous Record is Missing.Try Again..!");
+        }
     }
 
     @Override
     public List<ReservationDTO> getAllTodayReservation() {
-        return null;
+        return mapper.map(carReservationRepo.getAllTodayReservation(), new TypeToken<List<ReservationDTO>>() {
+        }.getType());
     }
 
     @Override
     public List<ReservationDTO> getAllTodayPickUps() {
-        return null;
+        return mapper.map(carReservationRepo.getAllTodayPickUps(), new TypeToken<List<ReservationDTO>>() {
+        }.getType());
     }
+
 
     @Override
     public List<ReservationDTO> getCustomerReservationByStatus(String id, String status) {
-        return null;
+        return mapper.map(carReservationRepo.getCustomerReservationByStatus(id, status), new TypeToken<List<ReservationDTO>>() {
+        }.getType());
     }
 }

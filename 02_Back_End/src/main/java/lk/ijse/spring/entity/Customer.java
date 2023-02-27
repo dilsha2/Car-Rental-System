@@ -29,7 +29,7 @@ public class Customer {
     private String imageLocation;
     private LocalDate registrationDate;
 
-    @OneToMany(mappedBy = "nic")
+    @OneToMany
     private List<Rental> rentalDetails;
 
 

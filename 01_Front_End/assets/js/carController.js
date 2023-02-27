@@ -154,22 +154,22 @@ $("#btnCarSave").click(function () {
 function saveCar() {
     var data = new FormData();
 
-    let front = $("#save-car-frontView")[0].files[0];
-    let frontFileName = front.name;
-
-    let back = $("#save-car-backView")[0].files[0];
-    let backFileName = back.name;
-
-    let side = $("#save-car-sideView")[0].files[0];
-    let sideFileName = side.name;
-
-    let interior = $("#save-car-interior")[0].files[0];
-    let interiorFileName = interior.name;
-
-    data.append("file", front);
-    data.append("file", back);
-    data.append("file", side);
-    data.append("file", interior);
+    // let front = $("#save-car-frontView")[0].files[0];
+    // let frontFileName = front.name;
+    //
+    // let back = $("#save-car-backView")[0].files[0];
+    // let backFileName = back.name;
+    //
+    // let side = $("#save-car-sideView")[0].files[0];
+    // let sideFileName = side.name;
+    //
+    // let interior = $("#save-car-interior")[0].files[0];
+    // let interiorFileName = interior.name;
+    //
+    // data.append("file", front);
+    // data.append("file", back);
+    // data.append("file", side);
+    // data.append("file", interior);
 
 
 
@@ -190,10 +190,10 @@ function saveCar() {
         waiver_payment: $("#save-car-waiver-payment").val(),
         priceForExtraKm: $("#save-car-extraKm-price").val(),
         availability: $("#save-car-status").val(),
-        image1: null,
-        image2: null,
-        image3: null,
-        image4: null,
+        image1: $("#save-car-frontView")[0].files[0].name,
+        image2: $("#save-car-backView")[0].files[0].name,
+        image3: $("#save-car-sideView")[0].files[0].name,
+        image4: $("#save-car-interior")[0].files[0].name,
     }
 
     console.log(car.brand);
@@ -274,7 +274,7 @@ function loadAllCars(path) {
 
 
                let div = `  <div style="" id="divOne" class="card custom-card ">
-                            <img id="card-one-img" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHNwb3J0cyUyMGNhcnxlbnwwfHwwfHw%3D&w=1000&q=80" class="custom-card-img" alt="...">
+                            <img id="card-one-img" src="../../abc.png" class="custom-card-img" alt="...">
                             <div id="divOneBody" class="card-body ">
                                 <h8 id="card-one-type" >Luxury</h8>
                                 <h3 id="card-one-brand" class="card-title">${car.brand}</h3><br>
@@ -346,7 +346,7 @@ function setDataToUpdateModel(data) {
     $("#admin-update-transmission").val(data.transmissionType)
     $("#admin-update-color").val(data.color)
     $("#admin-update-passengers").val(data.noOfPassenger)
-     $("#admin-update-mileage").val(data.mileage)
+    $("#admin-update-mileage").val(data.mileage)
     $("#admin-update-fuel").val(data.fuelType)
     $("#admin-update-daily").val(data.dailyRate)
     $("#admin-update-monthly").val(data.monthlyRate)
@@ -377,22 +377,22 @@ $("#customer-pending-reservationBtn").click(function (){
 function updateCar(){
     var data = new FormData();
 
-    let front = $("#admin-update-front")[0].files[0];
-    let frontFileName = front.name;
-
-    let back = $("#admin-update-back")[0].files[0];
-    let backFileName = back.name;
-
-    let side = $("#admin-update-side")[0].files[0];
-    let sideFileName = side.name;
-
-    let interior = $("#admin-update-interior")[0].files[0];
-    let interiorFileName = interior.name;
-
-    data.append("file", front);
-    data.append("file", back);
-    data.append("file", side);
-    data.append("file", interior);
+    // let front = $("#admin-update-front")[0].files[0];
+    // let frontFileName = front.name;
+    //
+    // let back = $("#admin-update-back")[0].files[0];
+    // let backFileName = back.name;
+    //
+    // let side = $("#admin-update-side")[0].files[0];
+    // let sideFileName = side.name;
+    //
+    // let interior = $("#admin-update-interior")[0].files[0];
+    // let interiorFileName = interior.name;
+    //
+    // data.append("file", front);
+    // data.append("file", back);
+    // data.append("file", side);
+    // data.append("file", interior);
 
 
 
@@ -413,10 +413,10 @@ function updateCar(){
         priceForExtraKm: $("#admin-update-extraKm").val(),
         waiver_payment:  $("#admin-update-waiverPayment"),
         availability: $("#admin-update-status").val(),
-        image1: null,
-        image2: null,
-        image3: null,
-        image4: null,
+        image1: $("#admin-update-front")[0].files[0].name,
+        image2: $("#admin-update-back")[0].files[0].name,
+        image3: $("#admin-update-side")[0].files[0].name,
+        image4: $("#admin-update-interior")[0].files[0].name,
     }
 
     console.log(car.brand);
@@ -606,4 +606,86 @@ function setCarDetailsToModal(obj) {
 
     $("#customer-reservation-customer-pickUpTime").text()
     $("#customer-reservation-customer-driverCheck").text()
+}
+
+function saveReservation() {
+    var data = new FormData();
+
+    let slip_img = $("#slip-image")[0].files[0];
+    let slipFileName = slip_img.name;
+
+    data.append("file", slip_img);
+
+    var driver_status;
+    if ($('#customer-reservation-customer-driverCheck').is(":checked")) {
+        driver_status = "YES"
+    } else {
+        driver_status = "NO"
+    }
+
+    let reservation = {
+        reserve_id: $("#customer-reservation-reserve-id").val(),
+        reserve_date: today,
+        pick_up_date: $("#customer-reservation-customer-pickUpDate").val(),
+        return_date: $("#customer-reservation-customer-returnDate").val(),
+        pick_up_time: $("#customer-reservation-customer-pickUpTime").val(),
+        pick_up_and_return_venue: $("#customer-reservation-customer-venue").val(),
+        no_of_days: $("#customer-reservation-customer-days").val(),
+        bank_slip_img: slipFileName,
+        reservation_status: "Pending",
+        driver_status: driver_status,
+        customer: {
+            nic: customer.nic
+        },
+        car: {
+            registration_no: $("#customer-reservation-car-id").text()
+        },
+    }
+    data.append("reservation", new Blob([JSON.stringify(reservation)], {type: "application/json"}));
+
+
+    $.ajax({
+        url: baseUrl + "reservation",
+        method: 'post',
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (resp) {
+            console.log(resp.data)
+            alert(resp.message);
+            listNo=0;
+            getAvailableCar();
+            $("#bookNowModel").modal("toggle");
+        },
+        error: function (err) {
+            console.log(err);
+            getAvailableCar();
+        }
+    });
+
+    $('#customer-reservation-customer-venue,#slip-image').css({
+        border: '1px solid #c4c4c4'
+    })
+    $('#customer-reservation-customer-venue,#slip-image').val("")
+}
+
+
+function getAvailableCar() {
+        var start_date = $("#customer-home-pickup").val()
+        var end_date = $("#customer-home-return").val()
+
+        $.ajax({
+            url: baseUrl + "car/availableOrRentalCarsByDate?pick_up_date=" + start_date + "&return_date=" + end_date + "&status=Available",
+            method: 'GET',
+            success: function (resp) {
+                if (resp.code === 200) {
+                    carList = resp.data;
+                    setCarDetailsToHomeDiv()
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 }

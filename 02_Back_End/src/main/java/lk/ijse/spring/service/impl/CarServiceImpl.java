@@ -84,7 +84,29 @@ public class CarServiceImpl implements CarService {
     }
     @Override
     public List<CarDTO> getAvailableAndRentalCarsForReservation(String pick_up_date, String return_date, String status) {
-        return null;
+        if ((pick_up_date.isEmpty() || return_date.isEmpty()) && pick_up_date.isEmpty()) {
+            throw new RuntimeException("Please Select date for Show Available Vehicles.!");
+        }
+        //check the status for filter results of cars as rental and available
+        if (status.equals("Available")) {
+            if (return_date.isEmpty()) {
+                return mapper.map(repo.getAvailableCarsForReservationOnDay(pick_up_date), new TypeToken<List<CarDTO>>() {
+                }.getType());
+            } else {
+                return mapper.map(repo.getAvailableCarsForReservation(pick_up_date, return_date), new TypeToken<List<CarDTO>>() {
+                }.getType());
+            }
+        } else if (status.equals("Rental")) {
+            if (return_date.isEmpty()) {
+                return mapper.map(repo.getRentalCarsOnDay(pick_up_date), new TypeToken<List<CarDTO>>() {
+                }.getType());
+            } else {
+                return mapper.map(repo.getRentalCars(pick_up_date, return_date), new TypeToken<List<CarDTO>>() {
+                }.getType());
+            }
+        } else {
+            throw new RuntimeException("Select Available Or Rental Cars You Want");
+        }
     }
 
     @Override
