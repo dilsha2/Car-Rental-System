@@ -20,12 +20,57 @@ $("#admin-today-pickups").click(function () {
     //loadTodayPickUps()
 })
 
+function loadPendingReservations() {
+    $("#admin-reservation-table").empty();
+
+    $.ajax({
+        url: baseUrl + "reservation/pendingReservation",
+        method: "GET",
+        success: function (resp) {
+            for (const reservation of resp.data) {
+                let row = `<tr><td>${reservation.reserve_id}</td><td>${reservation.customer.nic}</td><td>${reservation.car.registration_no}</td>
+                    <td>${reservation.no_of_days}</td></tr>`;
+                $("#admin-reservation-table").append(row);
+                $("#admin-reservation-table>tr").off("click");
+                $("#admin-reservation-table>tr").click(function () {
+                    reservation_Id = $(this).children(":eq(0)").text();
+                    $("#admin-update-reservation").prop('disabled', false);
+                    console.log(reservation_Id)
+                });
+            }
+        }
+    });
+}
+
+function loadTodayPickUps() {
+    $("#admin-reservation-table").empty();
+
+    $.ajax({
+        url: baseUrl + "reservation/todayPickUps",
+        method: "GET",
+        success: function (resp) {
+            for (const reservation of resp.data) {
+                let row = `<tr><td>${reservation.reserve_id}</td><td>${reservation.customer.nic}</td><td>${reservation.car.registration_no}</td>
+                    <td>${reservation.no_of_days}</td></tr>`;
+                $("#admin-reservation-table").append(row);
+                $("#admin-reservation-table>tr").off("click");
+                $("#admin-reservation-table>tr").click(function () {
+                    reservation_Id = $(this).children(":eq(0)").text();
+                    $("#admin-view-reservation").prop('disabled', false);
+                    $("#admin-update-reservation").prop('disabled', false);
+                });
+            }
+        }
+    });
+}
+
+
 $("#admin-view-reservation").click(function () {
     if (reservation_Id == null) {
         return
     }
     $.ajax({
-        url: baseUrl + "controller/reservation/getReservation/" + reservation_Id,
+        url: baseUrl + "reservation/getReservation/" + reservation_Id,
         method: "GET",
         success: function (resp) {
             if (resp.status === 200) {

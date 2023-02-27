@@ -703,7 +703,7 @@ $("#customer-home-previousCarBtn").click(function () {
 
 
 function setCarDetailsToModal(obj) {
-
+    getReservationId();
     $("#customer-reservation-car-id").text(obj.registrationId)
     $("#customer-reservation-car-brand").text(obj.brand)
     $("#customer-reservation-car-color").text(obj.color)
@@ -802,6 +802,9 @@ function saveReservation() {
     $('#customer-reservation-customer-venue,#slip-image').val("")
 }
 
+$("#btnReservationSave").click(function () {
+    saveReservation();
+})
 
 function getAvailableCar() {
         var start_date = $("#customer-home-pickup").val()
@@ -820,4 +823,20 @@ function getAvailableCar() {
                 console.log(err);
             }
         });
+}
+
+function getReservationId() {
+    $.ajax({
+        url: baseUrl + "reservation/generateReservationId",
+        method: "GET",
+        success: function (resp) {
+            if (resp.code === 200) {
+                $("#customer-reservation-reserve-id").val(resp.data)
+            }
+        },
+        error: function (ob) {
+            console.log(ob);
+        }
+    });
+
 }
