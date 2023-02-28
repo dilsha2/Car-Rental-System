@@ -70,7 +70,7 @@ public class DriverScheduleServiceImpl implements DriverScheduleService {
         List<DriverScheduleDTO> scheduleDTOS = new ArrayList<>();
         for (Rental reservation : accept) {
             if (!reservation.getDriver_status().equals("NO")) {
-                DriverScheduleDTO dto = mapper.map(driverScheduleRepo.getDriverSchedulesByReservationId(reservation.getRentalId()), DriverScheduleDTO.class);
+                DriverScheduleDTO dto = mapper.map(driverScheduleRepo.getDriverSchedulesByReservationId(reservation.getReserve_id()), DriverScheduleDTO.class);
                 scheduleDTOS.add(dto);
             }
         }

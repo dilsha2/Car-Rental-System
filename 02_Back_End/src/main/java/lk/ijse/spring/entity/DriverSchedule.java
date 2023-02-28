@@ -17,17 +17,33 @@ import java.time.LocalTime;
 @ToString
 @Entity(name = "driver_schedule")
 public class DriverSchedule {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int schedule_id;
+//
+//    private LocalTime start_time;
+//    private LocalDate start_date;
+//    private LocalDate end_date;
+//
+//    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+//    private Driver driverNic;
+//
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private Rental rentalId;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int schedule_id;
 
-    private LocalTime start_time;
-    private LocalDate start_date;
-    private LocalDate end_date;
+    private Time start_time;
+    private Date start_date;
+    private Date end_date;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    private Driver driverNic;
+    @JoinColumn(name="driver_nic")
+    private Driver driver;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Rental rentalId;
+    @JoinColumn(name = "reserve_id")
+    private Rental carReservation;
 }

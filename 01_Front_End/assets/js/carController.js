@@ -756,11 +756,11 @@ function saveReservation() {
     }
 
     let reservation = {
-        reserve_id: $("#customer-reservation-reserve-id").val(),
+        rentalId: $("#customer-reservation-reserve-id").val(),
         reserve_date: today,
-        pick_up_date: $("#customer-reservation-customer-pickUpDate").val(),
-        return_date: $("#customer-reservation-customer-returnDate").val(),
-        pick_up_time: $("#customer-reservation-customer-pickUpTime").val(),
+        pickupDate: $("#customer-reservation-customer-pickUpDate").val(),
+        returnDate: $("#customer-reservation-customer-returnDate").val(),
+        pickupTime: $("#customer-reservation-customer-pickUpTime").val(),
         pick_up_and_return_venue: $("#customer-reservation-customer-venue").val(),
         no_of_days: $("#customer-reservation-customer-days").val(),
         bank_slip_img: slipFileName,
@@ -770,7 +770,7 @@ function saveReservation() {
             nic: customer.nic
         },
         car: {
-            registration_no: $("#customer-reservation-car-id").text()
+            registrationId: $("#customer-reservation-car-id").text()
         },
     }
     data.append("reservation", new Blob([JSON.stringify(reservation)], {type: "application/json"}));
