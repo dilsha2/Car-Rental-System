@@ -499,11 +499,11 @@ $("#btnUpdateCar").click(function () {
 
 $("#customer-upcoming-reservationBtn").click(function (){
    // clearAllReservationDetails()
-   // loadUpcomingReservation()
+    loadUpcomingReservation()
 })
 $("#customer-pending-reservationBtn").click(function (){
     //clearAllReservationDetails()
-    //loadPendingReservation()
+    loadPendingReservation()
 })
 
 function updateCar(){
@@ -666,17 +666,12 @@ function setCarStatus(id, status) {
 // }
 
 $("#card-one-bookBtn").click(function (){
+    alert("Work");
+    console.log("hello");
     let id = $("#card-one-car-id").text();
     let obj = carList.find(o => o.registrationId === id);
     setCarDetailsToModal(obj)
-    console.log(id,obj)
 })
-// $("#card-one-bookBtn").click(function () {
-//     let id = $("#card-one-car-id").text();
-//     let obj = carList.find(o => o.registrationId === id);
-//     setCarDetailsToModal(obj)
-//
-// })
 
 $("#customer-home-nextCarBtn").click(function () {
     if (carList.length === listNo) {
@@ -685,8 +680,6 @@ $("#customer-home-nextCarBtn").click(function () {
     $('#divOne, #divTwo,#divThree').css({
         display: 'none'
     })
-
-    setCarDetailsToHomeDiv()
 
 })
 $("#customer-home-previousCarBtn").click(function () {
@@ -697,7 +690,6 @@ $("#customer-home-previousCarBtn").click(function () {
         display: 'none'
     })
     listNo = listNo - (displayDiv + 3)
-    setCarDetailsToHomeDiv()
 })
 
 
@@ -756,11 +748,11 @@ function saveReservation() {
     }
 
     let reservation = {
-        rentalId: $("#customer-reservation-reserve-id").val(),
+        reserve_id: $("#customer-reservation-reserve-id").val(),
         reserve_date: today,
-        pickupDate: $("#customer-reservation-customer-pickUpDate").val(),
-        returnDate: $("#customer-reservation-customer-returnDate").val(),
-        pickupTime: $("#customer-reservation-customer-pickUpTime").val(),
+        pick_up_date: $("#customer-reservation-customer-pickUpDate").val(),
+        return_date: $("#customer-reservation-customer-returnDate").val(),
+        pick_up_time: $("#customer-reservation-customer-pickUpTime").val(),
         pick_up_and_return_venue: $("#customer-reservation-customer-venue").val(),
         no_of_days: $("#customer-reservation-customer-days").val(),
         bank_slip_img: slipFileName,
@@ -773,16 +765,15 @@ function saveReservation() {
             registrationId: $("#customer-reservation-car-id").text()
         },
     }
-    data.append("reservation", new Blob([JSON.stringify(reservation)], {type: "application/json"}));
-
+    // data.append("reservation", new Blob([JSON.stringify(reservation)], {type: "application/json"}));
 
     $.ajax({
         url: baseUrl + "reservation",
         method: 'post',
-        async: true,
-        contentType: false,
-        processData: false,
-        data: data,
+        //async: true,
+        contentType:  "application/json",
+       // processData: false,
+        data: JSON.stringify(reservation),
         success: function (resp) {
             console.log(resp.data)
             alert(resp.message);
@@ -802,9 +793,12 @@ function saveReservation() {
     $('#customer-reservation-customer-venue,#slip-image').val("")
 }
 
+
 $("#btnReservationSave").click(function () {
     saveReservation();
 })
+alert("D");
+getAvailableCar();
 
 function getAvailableCar() {
         var start_date = $("#customer-home-pickup").val()
@@ -816,7 +810,9 @@ function getAvailableCar() {
             success: function (resp) {
                 if (resp.code === 200) {
                     carList = resp.data;
-                    setCarDetailsToHomeDiv()
+                    //setCarDetailsToHomeDiv()
+                    setReservationData(resp.data)
+                    //setCarDetailsToModal(obj);
                 }
             },
             error: function (err) {
@@ -830,7 +826,7 @@ function getReservationId() {
         url: baseUrl + "reservation/generateReservationId",
         method: "GET",
         success: function (resp) {
-            if (resp.code === 200) {
+            if (resp.status === 200) {
                 $("#customer-reservation-reserve-id").val(resp.data)
             }
         },
@@ -839,4 +835,122 @@ function getReservationId() {
         }
     });
 
+}
+
+function loadUpcomingReservationTable(data) {
+    $("#customer-upcoming-reservation-table").empty();
+
+    for (const reservation of data) {
+        let row = `<tr style="text-align: center"><td>${reservation.reserve_id}</td></tr>`;
+        $("#customer-upcoming-reservation-table").append(row);
+
+        $("#customer-upcoming-reservation-table>tr").off("click");
+        $("#customer-upcoming-reservation-table>tr").click(function () {
+            reservationId = $(this).children(":eq(0)").text();
+            setReservationData(reservationId);
+        });
+    }
+}
+
+function loadUpcomingReservation() {
+    $.ajax({
+        url: baseUrl + "customer/customerReservationByStatus/?id=" + customer.nic + "&status=Accept",
+        method: "GET",
+        success: function (resp) {
+            if (resp.status === 200) {
+                if (!(resp.data.length === 0)) {
+                    reservationList=resp.data
+                    setReservationData(resp.data[0].reserve_id);
+                    loadUpcomingReservationTable(resp.data)
+                }
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function loadPendingReservation() {
+    $.ajax({
+        url: baseUrl + "customer/customerReservationByStatus/?id=" + customer.nic + "&status=Pending",
+        method: "GET",
+        success: function (resp) {
+            if (resp.status === 200) {
+                if (!(resp.data.length === 0)) {
+                    reservationList=resp.data
+                    console.log(resp.data)
+                    setReservationData(resp.data[0].reserve_id);
+                    loadUpcomingReservationTable(resp.data)
+                }
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+
+function loadDriverInfo() {
+    $.ajax({
+        url: baseUrl + "customer/sendDriverInfoForAcceptReservations/" + customer.nic,
+        method: "GET",
+        success: function (resp) {
+            if (resp.status === 200) {
+                if (!(resp.data.length === 0)) {
+                    setDriverData(resp.data);
+                }
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function setDriverData(data) {
+
+    let reserveId = $("#customer-reservation-id").text();
+    let obj = data.find(o => o.carReservation.reserve_id === reserveId);
+    console.log(obj)
+    if (typeof obj !== 'undefined'){
+        $("#driverStatus").text("YES")
+        $("#customer-reservationStatus").css("color", "green")
+        $("#driverStatus").css("color", "green")
+
+        $("#customer-reservation-driver-id").text(obj.driver.driverNic)
+        $("#customer-reservation-driver-name").text(obj.driver.driver_name)
+        $("#customer-reservation-driver-license").text(obj.driver.license_no)
+        $("#customer-reservation-driver-mobile").text(obj.driver.mobile)
+        $("#customer-reservation-driver-joinDate").text(obj.driver.join_date)
+    }else {
+        $("#driverStatus").text("NO")
+        $("#driverStatus").css("color", "red")
+        $("#customer-reservation-driver-id,#customer-reservation-driver-name,#customer-reservation-driver-license,#customer-reservation-driver-mobile,#customer-reservation-driver-joinDate").text("")
+    }
+}
+
+function setReservationData(data) {
+    let obj = reservationList.find(o => o.reserve_id === data);
+
+    if (obj.reservation_status==="Accept"){
+        $("#customer-reservationStatus").text("ACTIVE")
+        $("#customer-reservationStatus").css("color", "green")
+    }else {
+        $("#customer-reservationStatus").text("Pending")
+        $("#customer-reservationStatus").css("color", "orange")
+    }
+
+
+    $("#customer-reservation-id").text(obj.reserve_id)
+    $("#customer-reservation-name").text(obj.customer.name)
+    $("#customer-reservation-vehicle").text(obj.car.registrationId)
+    $("#customer-reservation-venue").text(obj.pick_up_and_return_venue)
+    $("#customer-reservation-pickUp-time").text(obj.pick_up_time)
+    $("#customer-reservation-pickUp-date").text(obj.pick_up_date)
+    $("#customer-reservation-return-date").text(obj.return_date)
+    $("#customer-reservation-days").text(obj.no_of_days)
+
+    loadDriverInfo()
 }

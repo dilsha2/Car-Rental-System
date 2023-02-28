@@ -40,8 +40,42 @@
 
         </div>
     </nav>
+
+    <nav style="display: none" id="customerNavbar" class="navbar navbar-expand-lg bg-custom-black ">
+        <div class="container-fluid">
+            <i class="fa-solid text-light fs-2 fa-car me-2 ms-5"></i>
+            <a class="navbar-brand fw-bolder fs-1 text-light me-5">ECR .</a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <button id="dashboardBtn" class="bg-transparent fw-bold border-0">
+                            <a id="customerHomeBtn" class="nav-link text-secondary fs-5 me-3 ">Home</a>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="customerReservationBtn" class="bg-transparent fw-bold border-0">
+                            <a class="nav-link text-secondary fs-5 me-3 ">Reservation</a>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="customerAccountBtn" class="bg-transparent fw-bold border-0">
+                            <a class="nav-link text-secondary fs-5 me-3">My Account</a>
+                        </button>
+                    </li>
+                </ul>
+                <span class="navbar-text me-5">
+                    <button type="button" class="btn btn-outline-danger fw-bold btn-radius " data-bs-toggle="modal"
+                            data-bs-target="#logoutModel">Log Out</button>
+                       </span>
+            </div>
+
+        </div>
+    </nav>
 </header>
 <main>
+
+
     <!--    Home Page-->
 
     <section id="landingPage" style="display: none">
@@ -332,23 +366,6 @@
 
     <section style="" id="customer">
 
-        <header>
-            <nav id="customer-nav-bar" style="display: none">
-                <input id="check" type="checkbox">
-                <label class="checkbtn" for="check">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <label class="logo">ECR</label>
-                <ul>
-                    <li><a class="active" href="#" id="home-btn">Home</a></li>
-                    <li><a href="#" id="myStore-btn">MyStore</a></li>
-                    <li><a href="#" id="myAccount-btn">My Account</a></li>
-                    <li><a href="#" id="logout-btn">Log Out</a></li>
-
-                </ul>
-            </nav>
-        </header>
-
         <section style="display: block" id="customerHome">
             <div class="customer-home-container">
                 <div class="customer-home-container-one">
@@ -379,80 +396,81 @@
                 </div>
                 <div class="customer-home-container-two">
                     <div class="customer-home-div-one">
-                        <p class="fs-1 fw-bold mt-4 text-black">Available Cars</p>
+                        <p class="fs-1 fw-bold mt-4 text-black">Available Cars...</p>
                     </div>
                     <div class="customer-home-main-two" id="vehicle-cards">
                         <h1 style="display: none" id="homeUnavailableTag" class="text-danger">No Any Available Cars</h1>
-<!--                        <div style="display: none" id="divOne" class="card custom-card ">-->
-<!--                            <img id="card-one-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">-->
-<!--                            <div id="divOneBody" class="card-body ">-->
-<!--                                <h8 id="card-one-type" >Luxury</h8>-->
-<!--                                <h3 id="card-one-brand" class="card-title">Mercedes Benz</h3><br>-->
-<!--                                <h5 class="custom-card-daily">Daily(LKR)</h5>-->
-<!--                                <h5 id="card-one-daily" class="custom-card-price"></h5>-->
-<!--                                <br style="clear:both;">-->
-<!--                                <h5  class="custom-card-daily">Monthly(LKR)</h5>-->
-<!--                                <h5 id="card-one-monthly" class="custom-card-price"></h5>-->
+<!--
+                        <div style="display: none" id="divOne" class="card custom-card ">
+                            <img id="card-one-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">
+                            <div id="divOneBody" class="card-body ">
+                                <h8 id="card-one-type" >Luxury</h8>
+                                <h3 id="card-one-brand" class="card-title">Mercedes Benz</h3><br>
+                                <h5 class="custom-card-daily">Daily(LKR)</h5>
+                                <h5 id="card-one-daily" class="custom-card-price"></h5>
+                                <br style="clear:both;">
+                                <h5  class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5 id="card-one-monthly" class="custom-card-price"></h5>
 
-<!--                                <hr style="clear:both;"/>-->
-<!--                                <h5 id="card-one-fuel-main" class=" float-start ms-2">-->
-<!--                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i>-->
-<!--                                    <span id="card-one-fuel">Petrol </span>-->
-<!--                                </h5>-->
+                                <hr style="clear:both;"/>
+                                <h5 id="card-one-fuel-main" class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i>
+                                    <span id="card-one-fuel">Petrol </span>
+                                </h5>
 
 
-<!--                                <br style="clear:both;">-->
-<!--                                <p id="card-one-car-id" style="display: none">Car</p>-->
+                                <br style="clear:both;">
+                                <p id="card-one-car-id" style="display: none">Car</p>
 
-<!--                                <a id="card-one-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"-->
-<!--                                   data-bs-target="#bookNowModel">Book Now</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div style="display: none" id="divTwo" class="card custom-card  ">-->
-<!--                            <img id="card-two-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">-->
-<!--                            <div  class="card-body ">-->
-<!--                                <h8 id="card-two-type">Luxury</h8>-->
-<!--                                <h3 id="card-two-brand" class="card-title">Mercedes Benz</h3><br>-->
-<!--                                <h5 class="custom-card-daily">Daily(LKR)</h5>-->
-<!--                                <h5 id="card-two-daily" class="custom-card-price"></h5>-->
-<!--                                <br style="clear:both;">-->
-<!--                                <h5  class="custom-card-daily">Monthly(LKR)</h5>-->
-<!--                                <h5 id="card-two-monthly" class="custom-card-price"></h5>-->
+                                <a id="card-one-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel">Book Now</a>
+                            </div>
+                        </div>
+                        <div style="display: none" id="divTwo" class="card custom-card  ">
+                            <img id="card-two-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">
+                            <div  class="card-body ">
+                                <h8 id="card-two-type">Luxury</h8>
+                                <h3 id="card-two-brand" class="card-title">Mercedes Benz</h3><br>
+                                <h5 class="custom-card-daily">Daily(LKR)</h5>
+                                <h5 id="card-two-daily" class="custom-card-price"></h5>
+                                <br style="clear:both;">
+                                <h5  class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5 id="card-two-monthly" class="custom-card-price"></h5>
 
-<!--                                <hr style="clear:both;"/>-->
-<!--                                <h5 id="card-two-fuel-main"  class=" float-start ms-2">-->
-<!--                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span id="card-two-fuel"> </span></h5>-->
-<!--                                <h5 id="card-two-transmission-main" class="float-end me-2">-->
-<!--                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span id="card-two-transmission"></span></h5>-->
-<!--                                <br style="clear:both;">-->
-<!--                                <p id="card-two-car-id" style="display: none">Car</p>-->
-<!--                                <a id="card-two-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"-->
-<!--                                   data-bs-target="#bookNowModel">Book Now</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div style="display: none" id="divThree" class="card custom-card  ">-->
-<!--                            <img id="card-three-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">-->
-<!--                            <div class="card-body ">-->
-<!--                                <h8 id="card-three-type">Luxury</h8>-->
-<!--                                <h3 id="card-three-brand" class="card-title">Mercedes Benz</h3><br>-->
-<!--                                <h5 class="custom-card-daily">Daily(LKR)</h5>-->
-<!--                                <h5 id="card-three-daily" class="custom-card-price"></h5>-->
-<!--                                <br style="clear:both;">-->
-<!--                                <h5 class="custom-card-daily">Monthly(LKR)</h5>-->
-<!--                                <h5 id="card-three-monthly" class="custom-card-price"></h5>-->
+                                <hr style="clear:both;"/>
+                                <h5 id="card-two-fuel-main"  class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span id="card-two-fuel"> </span></h5>
+                                <h5 id="card-two-transmission-main" class="float-end me-2">
+                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span id="card-two-transmission"></span></h5>
+                                <br style="clear:both;">
+                                <p id="card-two-car-id" style="display: none">Car</p>
+                                <a id="card-two-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel">Book Now</a>
+                            </div>
+                        </div>
+                        <div style="display: none" id="divThree" class="card custom-card  ">
+                            <img id="card-three-img" src="assets/img/black-car.png" class="custom-card-img" alt="...">
+                            <div class="card-body ">
+                                <h8 id="card-three-type">Luxury</h8>
+                                <h3 id="card-three-brand" class="card-title">Mercedes Benz</h3><br>
+                                <h5 class="custom-card-daily">Daily(LKR)</h5>
+                                <h5 id="card-three-daily" class="custom-card-price"></h5>
+                                <br style="clear:both;">
+                                <h5 class="custom-card-daily">Monthly(LKR)</h5>
+                                <h5 id="card-three-monthly" class="custom-card-price"></h5>
 
-<!--                                <hr style="clear:both;"/>-->
-<!--                                <h5 id="card-three-fuel-main"  class=" float-start ms-2">-->
-<!--                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span id="card-three-fuel"></span></h5>-->
-<!--                                <h5 id="card-three-transmission-main"  class="float-end me-2">-->
-<!--                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span id="card-three-transmission"></span></h5>-->
-<!--                                <br style="clear:both;">-->
-<!--                                <p id="card-three-car-id" style="display: none">Car</p>-->
-<!--                                <a id="card-three-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto" data-bs-toggle="modal"-->
-<!--                                   data-bs-target="#bookNowModel">Book Now</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
+                                <hr style="clear:both;"/>
+                                <h5 id="card-three-fuel-main"  class=" float-start ms-2">
+                                    <i class="fa-solid fs-3 me-1 mt-2 text-secondary fa-gas-pump"></i><span id="card-three-fuel"></span></h5>
+                                <h5 id="card-three-transmission-main"  class="float-end me-2">
+                                    <i class="fa-solid fs-3 mt-2 me-2 text-secondary fa-car-rear"></i><span id="card-three-transmission"></span></h5>
+                                <br style="clear:both;">
+                                <p id="card-three-car-id" style="display: none">Car</p>
+                                <a id="card-three-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto" data-bs-toggle="modal"
+                                   data-bs-target="#bookNowModel">Book Now</a>
+                            </div>
+                        </div>
+-->
 
                         <!-------------------------------Model-------------------------------------------->
                         <div aria-hidden="true" aria-labelledby="bookCarModalLabel" class="modal fade" id="bookNowModel"
@@ -510,7 +528,7 @@
 
                                         <!-----------------------------Model Body----------------------->
                                         <form id="customerForm">
-                                            <p class="text-center fs-3 fw-bold">Vehicle Details</p>
+                                            <p class="text-center fs-3 fw-bold">Vehicle Details....</p>
                                             <hr style=" height: 2px; border: 1px solid black;">
 
                                             <div class="d-flex flex-wrap justify-content-around">
@@ -685,7 +703,6 @@
                             </div>
                         </div>
 
-
                     </div>
                     <div class="customer-home-div-two">
                         <button class="btn btn-light me-1" id="customer-home-previousCarBtn" type="button">
@@ -700,6 +717,77 @@
             </div>
             </div>
         </section>
+    </section>
+
+    <section style="display: none" id="customerReservation">
+
+        <div class="customer-res-container">
+            <div class="customer-res-sub__container">
+                <div>
+                    <button id="customer-upcoming-reservationBtn" class="btn btn-outline-dark fs-5 me-2"> Upcoming Reservation</button>
+                    <button id="customer-pending-reservationBtn" class="btn btn-outline-dark fs-5 ms-2"> Pending Reservation</button>
+                    <button style="display:none;margin-left: 20px" class="btn btn-outline-dark fs-5"> Previous
+                        Reservation
+                    </button>
+
+                </div>
+                <div class="customer-res-detail__container">
+                    <div class="card text-bg-light border-radius-shadow w-50" style="height: 80%;">
+                        <div class="card-header border-2 fw-bold">Reservation Status
+                            <span  id="customer-reservationStatus" class=" ms-3 fw-bold ">No Reservation</span></div>
+                        <div class="card-body text-center">
+                            <h5  class="card-title text-center fw-bolder">Reservation ID : <span id="customer-reservation-id"> </span></h5>
+                            <br>
+                            <p class="card-title fs-5 fw-bold">Name : <span id="customer-reservation-name"></span></p>
+                            <p class="card-title fs-5 fw-bold">Vehicle No : <span id="customer-reservation-vehicle"></span></p>
+                            <p class="card-title fs-5 fw-bold">Pickup venue : <span id="customer-reservation-venue"></span></p>
+                            <p class="card-title fs-5 fw-bold">pickup Time : <span id="customer-reservation-pickUp-time"></span></p>
+                            <p class="card-title fs-5 fw-bold">Pickup Date : <span id="customer-reservation-pickUp-date"></span></p>
+                            <p class="card-title fs-5 fw-bold">Return Date : <span id="customer-reservation-return-date"></span></p>
+                            <p class="card-title fs-5 fw-bold">No Of Days : <span id="customer-reservation-days"></span></p>
+
+                        </div>
+                    </div>
+                    <div class="card text-bg-light border-radius-shadow w-25" style="margin-right: 5%;height: 80%">
+                        <div class="card-header fw-bold">Driver Status <span id="driverStatus" class="ms-3 fw-bold">Not Required</span></div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-center fw-bolder">Driver ID : <span id="customer-reservation-driver-id"> </span></h5>
+                            <br>
+                            <p class="card-title fs-5 fw-bold">Name : <span id="customer-reservation-driver-name">   </span></p>
+                            <p class="card-title fs-5 fw-bold">License No : <span id="customer-reservation-driver-license"> </span></p>
+                            <p class="card-title fs-5 fw-bold">Join Date : <span id="customer-reservation-driver-joinDate"> </span></p>
+                            <p class="card-title fs-5 fw-bold">Mobile : <span id="customer-reservation-driver-mobile"> </span></p>
+
+
+                        </div>
+                    </div>
+                    <div style="height: 80%;width: 15%" class="border-radius-shadow">
+
+                        <table class="table table-hover table-borderless  ">
+                            <thead style="background-color: #f2f2f2;border-bottom: 1px solid #e9e9e9" class="text-center">
+                            <tr >
+                                <th class="text-center" scope="col">Reservations</th>
+                            </tr>
+                            </thead>
+                            <tbody id="customer-upcoming-reservation-table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-light me-1">
+                        <i class="fa-solid fs-2 fa-circle-arrow-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-light ms-1">
+                        <i class="fa-solid fs-2 fa-circle-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
     </section>
 
     <!--    customer profile-->

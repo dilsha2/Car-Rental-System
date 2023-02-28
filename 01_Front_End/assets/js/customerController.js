@@ -228,27 +228,16 @@ function updateCustomer(){
 }
 
 $("#admin-customer-viewBtn").click(function () {
+    console.log("hello");
     if (customer_nic == null) {
         return
     }
-    /*$.ajax({
-        url: baseUrl + "customer/customerDetail/" + customer_nic,
-        method: "GET",
-        success: function (resp) {
-            if (resp.status === 200) {
-                setDataToViewCustomerModal(resp.data);
-                console.log(resp.data);
-            }
-        },
-        error: function (err) {
-            console.log(err);
-        }
-    });*/
+
     $.ajax({
         url: baseUrl + "customer/customerDetail/" + customer_nic,
         method: "GET",
         success: function (resp) {
-
+            console.log("h");
             if (resp.code === 200) {
                // console.log("view buttn nic: ", customer_nic)
                 //console.log(resp,"pressed success")

@@ -29,7 +29,7 @@ $("#loginUserBtn").click(function () {
     }
 
     $.ajax({
-        url: "http://localhost:8080/02_Back_End_war/login",
+        url: "http://localhost:8080/02_Back_End_war_exploded/login",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(userDTO),
@@ -118,25 +118,47 @@ $(".backToHomeBtn").click(function (){
     $("#registerForm").css('display','none')
 })
 
-//--------------------customer page navigation
+//----------------customer navigation
+//---Home
+$("#customerHomeBtn").click(function () {
+    $("#customerReservation").css("display", "none")
+    $("#customerProfile").css("display", "none")
 
-//-home
-$("#home-btn").click(function (){
-    $("#customerReservation").css("display","none");
-    $("#customerProfile").css("display","none");
-
-    $("#customerHome").css("display","block");
-    $("#customer-nav-bar").css("display","block")
+    $("#customerHome").css("display", "block")
 })
 
-//-mystore
-$("#myStore-btn").click(function () {
+//---Reservations
+$("#customerReservationBtn").click(function () {
     $("#customerProfile").css("display", "none")
     $("#customerHome").css("display", "none")
     $("#customerReservation").css("display", "block")
-    $("#customer-nav-bar").css("display","block")
 
     //loadUpcomingReservation();
+})
+
+//---Account
+$("#customerAccountBtn").click(function () {
+    $("#customerHome").css("display", "none")
+    $("#customerReservation").css("display", "none")
+
+    $("#customerProfile").css("display", "block")
+})
+
+//---------------------User Logout
+$("#logOutBtn").click(function () {
+    $("#customer").css("display", "none")
+    $("#customerNavbar").css("display", "none")
+
+    $("#driverNavBar").css("display", "none")
+    $("#driver").css("display", "none")
+
+    $("#admin").css("display", "none")
+
+    $("#landingPage").css("display", "block")
+    $("#landingNavbar").css("display", "block")
+
+    loadTodayAvailableCars()
+    listNo = 0;
 })
 
 //---------------customer Profile navigations------------------
@@ -334,4 +356,4 @@ function loadDataToDiv(){
 }
 
 
-let baseUrl = "http://localhost:8080/02_Back_End_war/"
+let baseUrl = "http://localhost:8080/02_Back_End_war_exploded/"

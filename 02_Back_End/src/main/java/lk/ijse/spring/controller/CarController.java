@@ -81,4 +81,9 @@ public class CarController {
         return new ResponseUtil(200, "Done", service.sortCarsByAttributes(carDTO));
     }
 
+    @GetMapping(path = "availableOrRentalCarsByDate", params = {"pick_up_date", "return_date", "status"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAvailableAndRentalCarsForReservation(@RequestParam String pick_up_date, @RequestParam String return_date, @RequestParam String status) {
+        return new ResponseUtil(200, "Done", service.getAvailableAndRentalCarsForReservation(pick_up_date, return_date, status));
+    }
+
 }

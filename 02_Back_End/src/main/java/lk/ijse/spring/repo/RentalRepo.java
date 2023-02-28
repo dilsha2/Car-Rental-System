@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface RentalRepo extends JpaRepository<Rental,String> {
-    @Query(value = "SELECT rentalId FROM Rental ORDER BY rentalId DESC limit 1", nativeQuery = true)
+    @Query(value = "SELECT reserve_id FROM Rental ORDER BY reserve_id DESC limit 1", nativeQuery = true)
     String generateReservationId();
 
     @Query(value = "SELECT * FROM Rental WHERE reservation_status='Pending'", nativeQuery = true)
