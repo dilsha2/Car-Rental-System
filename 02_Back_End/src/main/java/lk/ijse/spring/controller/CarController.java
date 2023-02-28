@@ -21,9 +21,22 @@ public class CarController {
     @Autowired
     CarService service;
 
-    @PostMapping( produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil saveCar(@RequestBody CarDTO  dto){
-        System.out.println(dto);
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil saveCar(@RequestPart("vImageFile") MultipartFile[] file, @RequestPart("vehicle") CarDTO  dto){
+        for (MultipartFile myFile : file) {
+
+            try {
+                String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+                File uploadsDir = new File(projectPath + "/uploads");
+                uploadsDir.mkdir();
+                myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
+                System.out.println(projectPath);
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+                return new ResponseUtil(500, "Registration Failed.Try Again Latter", null);
+            }
+        }
+
         service.saveCar(dto);
         return new ResponseUtil(200, "New Vehicle Registered Successfully...", null);
 

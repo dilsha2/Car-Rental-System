@@ -80,144 +80,165 @@ $("#btnCarSave").click(function () {
     saveCar();
 })
 
-// function saveCar() {
-//
-//     let fileName = $("#save-car-frontView")[0].files[0].name;
-//     let backFileName = $("#save-car-backView")[0].files[0].name;
-//     let sideFileName = $("#save-car-sideView")[0].files[0].name;
-//     let interiorFileName = $("#save-car-interior")[0].files[0].name;
-//
-//
-//     let registrationId = $("#save-car-registration-no").val();
-//     let Brand = $("#save-car-brand").val();
-//     let type = $("#save-car-type").val();
-//     let model = $("#save-car-model").val();
-//     let transmissionType = $("#save-car-transmission").val();
-//     let color = $("#save-car-color").val();
-//     let noOfPassenger = $("#save-car-passengers").val();
-//     let lastServiceMileage = $("#save-car-mileage").val();
-//     let freeServiceMileage = $("#save-car-freeKm-month").val();
-//     let fuelType = $("#save-car-fuelType").val();
-//     let dailyRate = $("#save-car-daily").val();
-//     let monthlyRate = $("#save-car-monthly").val();
-//     let priceForExtraKm = $("#save-car-extraKm-price").val();
-//     let availability = $("#save-car-status").val();
-//     let image1 = fileName;
-//     let image2 = backFileName;
-//     let image3 = sideFileName;
-//     let image4 = interiorFileName;
-//
-//     var CarDTO = {
-//         registrationId: registrationId,
-//         Brand: Brand,
-//         type: type,
-//         model: model,
-//         transmissionType: transmissionType,
-//         color: color,
-//         noOfPassenger: noOfPassenger,
-//         lastServiceMileage: lastServiceMileage,
-//         freeServiceMileage: freeServiceMileage,
-//         fuelType: fuelType,
-//         dailyRate: dailyRate,
-//         monthlyRate: monthlyRate,
-//         priceForExtraKm: priceForExtraKm,
-//         availability: availability,
-//         image1: image1,
-//         image2: image2,
-//         image3: image3,
-//         image4: image4
-//     }
-//
-//     $.ajax({
-//         url: baseUrl + "car",
-//         method: 'post',
-//         //async: true,
-//         contentType: "application/json",
-//         //processData: false,
-//         data: JSON.stringify(CarDTO),
-//         success: function (resp) {
-//             if (resp.status === 200) {
-//                 alert(resp.message);
-//                 // loadAllCars("allCarDetail");
-//                 loadImage();
-//
-//             }
-//         },
-//         error: function (err) {
-//             alert(err.responseJSON.message)
-//             console.log(err);
-//         }
-//     });
-//     //clearSaveCarForm();
-// }
-
 function saveCar() {
-    var data = new FormData();
+    var Vdata = new FormData();
 
-    let front = $("#save-car-frontView")[0].files[0];
-    let frontFileName = front.name;
+    let frontFileName =$("#save-car-frontView")[0].files[0].name;
+    let backFileName = $("#save-car-backView")[0].files[0].name;
+    let sideFileName = $("#save-car-sideView")[0].files[0].name;
+    let interiorFileName =$("#save-car-interior")[0].files[0].name;
 
-    let back = $("#save-car-backView")[0].files[0];
-    let backFileName = back.name;
-
-    let side = $("#save-car-sideView")[0].files[0];
-    let sideFileName = side.name;
-
-    let interior = $("#save-car-interior")[0].files[0];
-    let interiorFileName = interior.name;
-
-    data.append("file", front);
-    data.append("file", back);
-    data.append("file", side);
-    data.append("file", interior);
+    let vFrontImg =$("#save-car-frontView")[0].files[0]
+    let vBackImg =$("#save-car-backView")[0].files[0]
+    let vSideImg =$("#save-car-sideView")[0].files[0]
+    let vInteriorImg =$("#save-car-interior")[0].files[0]
 
 
+    let registrationId = $("#save-car-registration-no").val();
+    let brand = $("#new_car_brand").val();
+    let type = $("#save-car-type").val();
+    let model = $("#save-car-model").val();
+    let transmissionType = $("#save-car-transmission").val();
+    let color = $("#save-car-color").val();
+    let noOfPassenger = $("#save-car-passengers").val();
+    let mileage = $("#save-car-mileage").val();
+    let freeKmMonth = $("#save-car-freeKm-month").val();
+    let freeKmDay = $("#save-car-freeKm-day").val();
+    let fuelType = $("#save-car-fuelType").val();
+    let dailyRate = $("#save-car-daily").val();
+    let waiver_payment = $("#save-car-waiver-payment").val();
+    let monthlyRate = $("#save-car-monthly").val();
+    let priceForExtraKm = $("#save-car-extraKm-price").val();
+    let availability = $("#save-car-status").val();
+    let image1 = frontFileName;
+    let image2 = backFileName;
+    let image3 = sideFileName;
+    let image4 = interiorFileName;
 
-    var car = {
-        registrationId: $("#save-car-registration-no").val(),
-        brand: $("#new_car_brand").val(),
-        type: $("#save-car-type").val(),
-        model: $("#save-car-model").val(),
-        transmissionType: $("#save-car-transmission").val(),
-        color: $("#save-car-color").val(),
-        noOfPassenger: $("#save-car-passengers").val(),
-        mileage: $("#save-car-mileage").val(),
-        freeKmMonth: $("#save-car-freeKm-month").val(),
-        freeKmDay: $("#save-car-freeKm-day").val(),
-        fuelType: $("#save-car-fuelType").val(),
-        dailyRate: $("#save-car-daily").val(),
-        monthlyRate: $("#save-car-monthly").val(),
-        waiver_payment: $("#save-car-waiver-payment").val(),
-        priceForExtraKm: $("#save-car-extraKm-price").val(),
-        availability: $("#save-car-status").val(),
-        image1: frontFileName,
-        image2:backFileName,
-        image3: sideFileName,
-        image4: interiorFileName
+
+    var CarDTO = {
+        registrationId: registrationId,
+        brand: brand,
+        type: type,
+        model: model,
+        transmissionType: transmissionType,
+        color: color,
+        noOfPassenger: noOfPassenger,
+        mileage: mileage,
+        freeKmMonth: freeKmMonth,
+        freeKmDay:freeKmDay,
+        fuelType: fuelType,
+        waiver_payment: waiver_payment,
+        dailyRate: dailyRate,
+        monthlyRate: monthlyRate,
+        priceForExtraKm: priceForExtraKm,
+        availability: availability,
+        image1:"uploads/"+ image1,
+        image2:"uploads/"+ image2,
+        image3:"uploads/"+ image3,
+        image4:"uploads/"+ image4,
     }
 
-    console.log(car.brand);
+    Vdata.append("vImageFile" , vFrontImg)
+    Vdata.append("vImageFile" , vBackImg)
+    Vdata.append("vImageFile" , vSideImg)
+    Vdata.append("vImageFile" , vInteriorImg)
+    Vdata.append("vehicle", new Blob([JSON.stringify(CarDTO)], {type: "application/json"}))
+
 
     $.ajax({
         url: baseUrl + "car",
-        method: 'post',
-        contentType: "application/json",
-        data: JSON.stringify(car),
+        method: "post",
+        async: true,
+        contentType: false,
+        processData: false,
+        data: Vdata,
         success: function (resp) {
             if (resp.code === 200) {
+                console.log("hi");
                 alert(resp.message);
-                loadAllCars("allCarDetail");
+                 loadAllCars("allCarDetail");
+
+                uploadCarImages(registrationId);
 
             }
         },
         error: function (err) {
-            alert(err.resposeJSON.message);
+            alert(err.responseJSON.message)
             console.log(err);
         }
     });
     clearSaveCarForm();
-
 }
+
+
+// function saveCar() {
+//     var data = new FormData();
+//
+//     let front = $("#save-car-frontView")[0].files[0];
+//     let frontFileName = front.name;
+//
+//     let back = $("#save-car-backView")[0].files[0];
+//     let backFileName = back.name;
+//
+//     let side = $("#save-car-sideView")[0].files[0];
+//     let sideFileName = side.name;
+//
+//     let interior = $("#save-car-interior")[0].files[0];
+//     let interiorFileName = interior.name;
+//
+//     data.append("file", front);
+//     data.append("file", back);
+//     data.append("file", side);
+//     data.append("file", interior);
+//
+//
+//
+//     var car = {
+//         registrationId: $("#save-car-registration-no").val(),
+//         brand: $("#new_car_brand").val(),
+//         type: $("#save-car-type").val(),
+//         model: $("#save-car-model").val(),
+//         transmissionType: $("#save-car-transmission").val(),
+//         color: $("#save-car-color").val(),
+//         noOfPassenger: $("#save-car-passengers").val(),
+//         mileage: $("#save-car-mileage").val(),
+//         freeKmMonth: $("#save-car-freeKm-month").val(),
+//         freeKmDay: $("#save-car-freeKm-day").val(),
+//         fuelType: $("#save-car-fuelType").val(),
+//         dailyRate: $("#save-car-daily").val(),
+//         monthlyRate: $("#save-car-monthly").val(),
+//         waiver_payment: $("#save-car-waiver-payment").val(),
+//         priceForExtraKm: $("#save-car-extraKm-price").val(),
+//         availability: $("#save-car-status").val(),
+//         image1: frontFileName,
+//         image2:backFileName,
+//         image3: sideFileName,
+//         image4: interiorFileName
+//     }
+//
+//     console.log(car.brand);
+//
+//     $.ajax({
+//         url: baseUrl + "car",
+//         method: 'post',
+//         contentType: "application/json",
+//         data: JSON.stringify(car),
+//         success: function (resp) {
+//             if (resp.code === 200) {
+//                 alert(resp.message);
+//                 loadAllCars("allCarDetail");
+//
+//             }
+//         },
+//         error: function (err) {
+//             alert(err.resposeJSON.message);
+//             console.log(err);
+//         }
+//     });
+//     clearSaveCarForm();
+//
+// }
 
 // function saveCar() {
 //     var Vdata = new FormData();
@@ -300,56 +321,56 @@ function saveCar() {
 // }
 
 
-// function uploadCarImages(registrationId) {
-//
-//     let frontViewFile = $("#save-car-frontView")[0].files[0];
-//     let backViewFile = $("#save-car-backView")[0].files[0];
-//     let sideViewFile = $("#save-car-sideView")[0].files[0];
-//     let interiorViewFile = $("#save-car-interior")[0].files[0];
-//
-//     let frontFileName = registrationId + "-image1-" + $("#save-car-frontView")[0].files[0].name;
-//     let backFileName = registrationId + "-image2-" + $("#save-car-backView")[0].files[0].name;
-//     let sideFileName = registrationId + "-image3-" + $("#save-car-sideView")[0].files[0].name;
-//     let interiorFileName = registrationId + "-image4-" + $("#save-car-interior")[0].files[0].name;
-//
-//
-//     var data = new FormData();
-//
-//     data.append("image1", frontViewFile, frontFileName);
-//     data.append("image2", backViewFile, backFileName);
-//     data.append("image3", sideViewFile, sideFileName);
-//     data.append("image4", interiorViewFile, interiorFileName);
-//
-//
-//     $.ajax({
-//         url: baseUrl + "car/uploadImg/" + registrationId,
-//         method: "Post",
-//         async: true,
-//         contentType: false,
-//         processData: false,
-//         data: data,
-//         success: function (res) {
-//             console.log("Uploaded");
-//             /* Swal.fire({
-//                  position: 'top-end',
-//                  icon: 'success',
-//                  title: "Images Upload Successfully",
-//                  showConfirmButton: false,
-//                  timer: 1500
-//              });*/
-//         },
-//         error: function (error) {
-//             let errorReason = JSON.parse(error.responseText);
-//             /*   Swal.fire({
-//                    position: 'top-end',
-//                    icon: 'error',
-//                    title: "Images Not Upload Successfully",
-//                    showConfirmButton: false,
-//                    timer: 1500
-//                });*/
-//         }
-//     });
-// }
+function uploadCarImages(registrationId) {
+
+    let frontViewFile = $("#save-car-frontView")[0].files[0];
+    let backViewFile = $("#save-car-backView")[0].files[0];
+    let sideViewFile = $("#save-car-sideView")[0].files[0];
+    let interiorViewFile = $("#save-car-interior")[0].files[0];
+
+    let frontFileName = registrationId + "-image1-" + $("#save-car-frontView")[0].files[0].name;
+    let backFileName = registrationId + "-image2-" + $("#save-car-backView")[0].files[0].name;
+    let sideFileName = registrationId + "-image3-" + $("#save-car-sideView")[0].files[0].name;
+    let interiorFileName = registrationId + "-image4-" + $("#save-car-interior")[0].files[0].name;
+
+
+    var data = new FormData();
+
+    data.append("image1", frontViewFile, frontFileName);
+    data.append("image2", backViewFile, backFileName);
+    data.append("image3", sideViewFile, sideFileName);
+    data.append("image4", interiorViewFile, interiorFileName);
+
+
+    $.ajax({
+        url: baseUrl + "car/uploadImg/" + registrationId,
+        method: "Post",
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (res) {
+            console.log("Uploaded");
+            /* Swal.fire({
+                 position: 'top-end',
+                 icon: 'success',
+                 title: "Images Upload Successfully",
+                 showConfirmButton: false,
+                 timer: 1500
+             });*/
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            /*   Swal.fire({
+                   position: 'top-end',
+                   icon: 'error',
+                   title: "Images Not Upload Successfully",
+                   showConfirmButton: false,
+                   timer: 1500
+               });*/
+        }
+    });
+}
 
 function loadImage() {
     var data = new FormData();
@@ -406,7 +427,7 @@ function loadAllCars(path) {
 
 
                let div = `  <div style="" id="divOne" class="card custom-card ">
-                            <img id="card-one-img" src="../../abc.png" class="custom-card-img" alt="...">
+                            <img id="card-one-img" src="${"http://localhost:8080/02_Back_End_war_exploded/"+car.image3}" class="custom-card-img" alt="...">
                             <div id="divOneBody" class="card-body ">
                                 <h8 id="card-one-type" >Luxury</h8>
                                 <h3 id="card-one-brand" class="card-title">${car.brand}</h3><br>

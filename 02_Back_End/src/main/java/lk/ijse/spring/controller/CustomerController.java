@@ -34,9 +34,9 @@ public class CustomerController {
    }
 
    @PutMapping(path = "updateCustomer",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-   public ResponseUtil UpdateCustomer(CustomerDTO dto){
-       service.saveCustomer(dto);
-       return new ResponseUtil(200,"Update Successfully",dto);
+   public ResponseUtil UpdateCustomer(@RequestBody CustomerDTO dto){
+       String message = service.updateCustomer(dto);
+       return new ResponseUtil(200, message, null);
 
    }
 
