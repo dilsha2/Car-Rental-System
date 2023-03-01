@@ -28,7 +28,7 @@ function loadPendingReservations() {
         method: "GET",
         success: function (resp) {
             for (const reservation of resp.data) {
-                let row = `<tr><td>${reservation.reserve_id}</td><td>${reservation.customer.nic}</td><td>${reservation.car.registrationId}</td>
+                let row = `<tr style="text-align: center"><td>${reservation.reserve_id}</td><td>${reservation.customer.nic}</td><td>${reservation.car.registrationId}</td>
                     <td>${reservation.no_of_days}</td></tr>`;
                 $("#admin-reservation-table").append(row);
                 $("#admin-reservation-table>tr").off("click");
@@ -50,7 +50,7 @@ function loadTodayPickUps() {
         method: "GET",
         success: function (resp) {
             for (const reservation of resp.data) {
-                let row = `<tr><td>${reservation.reserve_id}</td><td>${reservation.customer.nic}</td><td>${reservation.car.registrationId}</td>
+                let row = `<tr style="text-align: center"><td>${reservation.reserve_id}</td><td>${reservation.customer.nic}</td><td>${reservation.car.registrationId}</td>
                     <td>${reservation.no_of_days}</td></tr>`;
                 $("#admin-reservation-table").append(row);
                 $("#admin-reservation-table>tr").off("click");

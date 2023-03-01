@@ -701,13 +701,13 @@ function setCarStatus(id, status) {
 //     }
 // }
 
-$("#card-one-bookBtn").click(function (){
-    alert("Work");
-    console.log("hello");
-    let id = $("#card-one-car-id").text();
-    let obj = carList.find(o => o.registrationId === id);
-    setCarDetailsToModal(obj)
-})
+// $("#card-one-bookBtn").click(function (){
+//     alert("Work");
+//     console.log("hello");
+//     let id = $("#card-one-car-id").text();
+//     let obj = carList.find(o => o.registrationId === id);
+//     setCarDetailsToModal(obj)
+// })
 
 $("#customer-home-nextCarBtn").click(function () {
     if (carList.length === listNo) {
