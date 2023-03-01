@@ -429,7 +429,7 @@ function loadAllCars(path) {
                let div = `  <div style="" id="divOne" class="card custom-card ">
                             <img id="card-one-img" src="${"http://localhost:8080/02_Back_End_war_exploded/"+car.image3}" class="custom-card-img" alt="...">
                             <div id="divOneBody" class="card-body ">
-                                <h8 id="card-one-type" >Luxury</h8>
+                                <h8 id="card-one-type" >${car.type}</h8>
                                 <h3 id="card-one-brand" class="card-title">${car.brand}</h3><br>
                                 <h5 class="custom-card-daily">Daily(LKR) : ${car.dailyRate}</h5>
                                 <h5 id="card-one-daily" class="custom-card-price"></h5>
@@ -818,8 +818,8 @@ function saveReservation() {
 $("#btnReservationSave").click(function () {
     saveReservation();
 })
-alert("D");
-getAvailableCar();
+// alert("D");
+// getAvailableCar();
 
 function getAvailableCar() {
         var start_date = $("#customer-home-pickup").val()
@@ -975,3 +975,4 @@ function setReservationData(data) {
 
     loadDriverInfo()
 }
+

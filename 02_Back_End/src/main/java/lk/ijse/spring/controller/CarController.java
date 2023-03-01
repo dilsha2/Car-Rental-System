@@ -43,9 +43,27 @@ public class CarController {
     }
 
     @PostMapping(path = "updateCarDetail", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil updateCar(@RequestBody CarDTO dto){
-        service.saveCar(dto);
-        return new ResponseUtil(200, "Registration Successfully....", dto);
+    public ResponseUtil updateCar(@RequestPart("file") MultipartFile[] file, @RequestPart("car") CarDTO dto){
+
+        dto.setImage1("uploads/" + dto.getImage1());
+        dto.setImage2("uploads/" + dto.getImage2());
+        dto.setImage3("uploads/" + dto.getImage3());
+        dto.setImage4("uploads/" + dto.getImage4());
+
+        service.updateCar(dto);
+
+        for (MultipartFile myFile : file) {
+            try {
+                String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+                File uploadsDir = new File(projectPath + "/uploads");
+                myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
+
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+                return new ResponseUtil(500, "Update Vehicle Details Failed.Try Again Latter", null);
+            }
+        }
+        return new ResponseUtil(200, "Update Vehicle Details Successfully...", null);
     }
 
     @GetMapping(path = "carDetail/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

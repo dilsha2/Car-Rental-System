@@ -283,6 +283,22 @@ $("#adminDriversBtn").click(function () {
     loadAllDrivers();
 })
 
+function loadTodayAvailableCars() {
+    $.ajax({
+        url: baseUrl + "car/availableOrRentalCarsByDate?pick_up_date=" + today + "&return_date=&status=Available",
+        method: 'GET',
+        success: function (resp) {
+            if (resp.status === 200) {
+                carList = resp.data
+                loadDataToDiv()
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
 //--Payment
 $("#adminPaymentBtn").click(function () {
     $("#adminPayments").css("display", "inline-flex")
