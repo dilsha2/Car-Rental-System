@@ -449,13 +449,28 @@ function loadAllCars(path) {
                                 <br style="clear:both;">
                                 <p id="card-one-car-id" style="display: none">Car</p>
 
-                                <a id="card-one-bookBtn" class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto " data-bs-toggle="modal"
+                                <a  data-registrationId="${car.registrationId}"  class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto bookBtn" data-bs-toggle="modal"
                                    data-bs-target="#bookNowModel" style="margin-top: 0rem!important;">Book Now</a>
                             </div>
                         </div>`;
 
                $("#vehicle-cards").append(div);
+
             }
+            $(".bookBtn").click(function (){
+               let reg =  $(this).attr("data-registrationId")
+                console.log(reg)
+                $.ajax({
+                    url: baseUrl + "car/carDetail/" + reg,
+                    method: 'GET',
+                    success: function (resp) {
+                        console.log(resp.data)
+                        setCarDetailsToModal(resp.data);
+                    }
+
+                })
+
+            })
         }
     });
 
@@ -566,10 +581,10 @@ function updateCar(){
         priceForExtraKm: $("#admin-update-extraKm").val(),
         waiver_payment:  $("#admin-update-waiverPayment"),
         availability: $("#admin-update-status").val(),
-        image1: $("#admin-update-front")[0].files[0].name,
-        image2: $("#admin-update-back")[0].files[0].name,
-        image3: $("#admin-update-side")[0].files[0].name,
-        image4: $("#admin-update-interior")[0].files[0].name,
+        // image1: $("#admin-update-front")[0].files[0].name,
+        // image2: $("#admin-update-back")[0].files[0].name,
+        // image3: $("#admin-update-side")[0].files[0].name,
+        // image4: $("#admin-update-interior")[0].files[0].name,
     }
 
     console.log(car.brand);

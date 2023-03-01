@@ -200,13 +200,14 @@ function updateCustomer(){
 
     var newDetails = {
         nic: $("#customer-profile-nic").val(),
+        user_name: customer.user_name,
+        password: customer.password,
+        name: $("#customer-profile-name").val(),
+        imageLocation: customer.imageLocation,
         address: $("#customer-profile-address").val(),
         contactNumber: $("#customer-profile-mobile").val(),
-        name: $("#customer-profile-name").val(),
         email: $("#customer-profile-email").val(),
-        password: customer.password,
-        user_name: customer.user_name,
-        imageLocation: customer.imageLocation,
+        registrationDate: customer.registrationDate
     }
 
     $.ajax({
@@ -258,8 +259,8 @@ function setDataToViewCustomerModal(data) {
     $("#admin-view-customer-email").val(data.email)
     $("#admin-view-customer-mobile").val(data.contactNumber)
     $("#admin-view-customer-name").val(data.name)
-    $("#admin-view-customer-registerDate").val(data.registrationDate)
     $("#admin-view-customer-imgOne").attr("src", baseUrl + data.imageLocation)
+    $("#admin-view-customer-registerDate").val(data.registrationDate)
 
 
 }

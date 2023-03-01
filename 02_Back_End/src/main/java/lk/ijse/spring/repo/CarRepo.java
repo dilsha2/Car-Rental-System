@@ -18,7 +18,7 @@ public interface CarRepo extends JpaRepository<Car,String> {
     @Query(value = "SELECT * FROM Car WHERE MOD(mileage,5000) = 0 AND availability NOT IN('UnderMaintain')", nativeQuery = true)
     List<Car> getCarsNeedMaintain();
 
-    @Query(value = "SELECT * FROM Car WHERE registrationId NOT IN (SELECT DISTINCT registrationId FROM Rental WHERE (reservation_status='Pending' OR reservation_status='Accept') AND (pick_up_date BETWEEN ?1 AND ?2 OR return_date BETWEEN ?1 AND ?2 )) AND availabilty='Available'", nativeQuery = true)
+    @Query(value = "SELECT * FROM Car WHERE registrationId NOT IN (SELECT DISTINCT registrationId FROM Rental WHERE (reservation_status='Pending' OR reservation_status='Accept') AND (pick_up_date BETWEEN ?1 AND ?2 OR return_date BETWEEN ?1 AND ?2 )) AND availability='Available'", nativeQuery = true)
     List<Car> getAvailableCarsForReservation(String pick_date, String return_date);
 
     @Query(value = "SELECT * FROM Car WHERE availability='Available' AND registrationId NOT IN (SELECT DISTINCT registrationId FROM car_reservation WHERE (reservation_status='Pending' OR reservation_status='Accept') AND ?1 BETWEEN pick_up_date AND return_date) ", nativeQuery = true)

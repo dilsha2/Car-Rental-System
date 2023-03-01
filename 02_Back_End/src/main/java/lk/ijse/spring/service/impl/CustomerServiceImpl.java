@@ -96,10 +96,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getTodayRegisteredCustomers() {
-//        return mapper.map(repo.getTodayRegisteredCustomers(), new TypeToken<List<CustomerDTO>>() {
-//        }.getType());
-
-        return null;
+        return mapper.map(repo.getTodayRegisteredCustomers(), new TypeToken<List<CustomerDTO>>() {
+        }.getType());
     }
 
     @Override
