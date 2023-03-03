@@ -81,7 +81,7 @@ $("#btnCarSave").click(function () {
 })
 
 function saveCar() {
-    var Vdata = new FormData();
+    var Vdata = new FormData(); //ara loku get eka pennahnko eka na ne kohed kiyala..mona loku ekada..ara issella meet ekedi pennuwe
 
     let frontFileName =$("#save-car-frontView")[0].files[0].name;
     let backFileName = $("#save-car-backView")[0].files[0].name;
@@ -449,7 +449,7 @@ function loadAllCars(path) {
                                 <br style="clear:both;">
                                 <p id="card-one-car-id" style="display: none">Car</p>
 
-                                <a  data-registrationId="${car.registrationId}"  class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto bookBtn" data-bs-toggle="modal"
+                                <a  data-registrationId="${car.registrationId}" data-img3="${car.image3}"  class="btn btn-dark mt-5 d-block w-100 me-auto ms-auto bookBtn" data-bs-toggle="modal"
                                    data-bs-target="#bookNowModel" style="margin-top: 0rem!important;">Book Now</a>
                             </div>
                         </div>`;
@@ -746,10 +746,10 @@ function setCarDetailsToModal(obj) {
     $("#customer-reservation-car-passengers").text(obj.noOfPassenger)
     $("#customer-reservation-car-mileage").text(obj.mileage)
     $("#customer-reservation-car-daily").text(obj.dailyRate)
-    $("#customer-reservation-car-img1").attr("src", baseUrl + obj.image1.image1)
-    $("#customer-reservation-car-img2").attr("src", baseUrl + obj.image1.image2)
-    $("#customer-reservation-car-img3").attr("src", baseUrl + obj.image1.image3)
-    $("#customer-reservation-car-img4").attr("src", baseUrl + obj.image1.image4)
+    $("#customer-reservation-car-img1").attr("data-img1")
+    $("#customer-reservation-car-img2").attr("data-img2")
+    $("#customer-reservation-car-img3").attr("data-img3")
+    $("#customer-reservation-car-img4").attr("data-img4")
 
     console.log(obj.registrationId);
 
@@ -848,7 +848,7 @@ function getAvailableCar() {
                     carList = resp.data;
                     //setCarDetailsToHomeDiv()
                     setReservationData(resp.data)
-                    //setCarDetailsToModal(obj);
+                    setCarDetailsToModal(obj);
                 }
             },
             error: function (err) {
@@ -862,7 +862,7 @@ function getReservationId() {
         url: baseUrl + "reservation/generateReservationId",
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 $("#customer-reservation-reserve-id").val(resp.data)
             }
         },
@@ -979,7 +979,7 @@ function setReservationData(data) {
     }
 
 
-    $("#customer-reservation-id").text(obj.reserve_id)
+    $("#customer-reservation-id").text(obj.reserve_id) //ara deric ghuwe kiwa ekata ynnn
     $("#customer-reservation-name").text(obj.customer.name)
     $("#customer-reservation-vehicle").text(obj.car.registrationId)
     $("#customer-reservation-venue").text(obj.pick_up_and_return_venue)
