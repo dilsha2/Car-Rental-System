@@ -73,7 +73,7 @@ function bindEvents(){
         if (reservation_Id == null) {
             return
         }
-        //methana hadanna sir oka nemeine ara update btn eke event ek
+
         $.ajax({
             url: baseUrl + "reservation/getReservation/" + reservation_Id,
             method: "GET",
