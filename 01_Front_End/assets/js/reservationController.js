@@ -33,7 +33,7 @@ function loadPendingReservations() {
                 $("#admin-reservation-table").append(row);
                 $("#admin-reservation-table>tr").off("click");
                 $("#admin-reservation-table>tr").click(function () {
-                    reservation_Id = $(this).children(":eq(0)").text();
+                    reservation_Id = $(this).children(":eq(1)").text();
                     $("#admin-update-reservation").prop('disabled', false);
                     console.log(reservation_Id)
                 });
@@ -72,7 +72,7 @@ $("#admin-view-reservation").click(function () {
         url: baseUrl + "reservation/getReservation/" + reservation_Id,
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 data = resp.data
                 setDataToViewReservationModal()
             }
@@ -118,3 +118,5 @@ function getReservationDriver(reserve_id) {
         }
     });
 }
+
+

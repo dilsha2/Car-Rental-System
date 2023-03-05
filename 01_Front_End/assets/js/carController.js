@@ -81,7 +81,7 @@ $("#btnCarSave").click(function () {
 })
 
 function saveCar() {
-    var Vdata = new FormData(); //ara loku get eka pennahnko eka na ne kohed kiyala..mona loku ekada..ara issella meet ekedi pennuwe
+    var Vdata = new FormData();
 
     let frontFileName =$("#save-car-frontView")[0].files[0].name;
     let backFileName = $("#save-car-backView")[0].files[0].name;
@@ -801,15 +801,15 @@ function saveReservation() {
             registrationId: $("#customer-reservation-car-id").text()
         },
     }
-    // data.append("reservation", new Blob([JSON.stringify(reservation)], {type: "application/json"}));
+    data.append("reservation", new Blob([JSON.stringify(reservation)], {type: "application/json"}));
 
     $.ajax({
         url: baseUrl + "reservation",
         method: 'post',
-        //async: true,
-        contentType:  "application/json",
-       // processData: false,
-        data: JSON.stringify(reservation),
+        async: true,
+        contentType:  false,
+        processData: false,
+        data: data,
         success: function (resp) {
             console.log(resp.data)
             alert(resp.message);
@@ -848,7 +848,7 @@ function getAvailableCar() {
                     carList = resp.data;
                     //setCarDetailsToHomeDiv()
                     setReservationData(resp.data)
-                    setCarDetailsToModal(obj);
+                    setCarDetailsToModal(resp.data);
                 }
             },
             error: function (err) {
@@ -893,7 +893,7 @@ function loadUpcomingReservation() {
         url: baseUrl + "customer/customerReservationByStatus/?id=" + customer.nic + "&status=Accept",
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 if (!(resp.data.length === 0)) {
                     reservationList=resp.data
                     setReservationData(resp.data[0].reserve_id);
@@ -912,7 +912,7 @@ function loadPendingReservation() {
         url: baseUrl + "customer/customerReservationByStatus/?id=" + customer.nic + "&status=Pending",
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 if (!(resp.data.length === 0)) {
                     reservationList=resp.data
                     console.log(resp.data)
@@ -933,7 +933,7 @@ function loadDriverInfo() {
         url: baseUrl + "customer/sendDriverInfoForAcceptReservations/" + customer.nic,
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 if (!(resp.data.length === 0)) {
                     setDriverData(resp.data);
                 }
@@ -979,7 +979,7 @@ function setReservationData(data) {
     }
 
 
-    $("#customer-reservation-id").text(obj.reserve_id) //ara deric ghuwe kiwa ekata ynnn
+    $("#customer-reservation-id").text(obj.reserve_id)
     $("#customer-reservation-name").text(obj.customer.name)
     $("#customer-reservation-vehicle").text(obj.car.registrationId)
     $("#customer-reservation-venue").text(obj.pick_up_and_return_venue)
