@@ -121,7 +121,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO getReservationDetail(String id) {
+    public ReservationDTO getReservationDetail(String id) {//methanata ewanna ona RID-0001 oya type eke id ekak.. habai oya ewanne 20013110016 oka. oka null nisa thamai load wenne nathhe. eka hadanna.. ok.? ek js wla ned ethkot aula sir. yes
         if (carReservationRepo.existsById(id)) {
             return mapper.map(carReservationRepo.findById(id).get(), ReservationDTO.class);
         } else {

@@ -32,11 +32,13 @@ function loadPendingReservations() {
                     <td>${reservation.no_of_days}</td></tr>`;
                 $("#admin-reservation-table").append(row);
                 $("#admin-reservation-table>tr").off("click");
+                bindEvents();
                 $("#admin-reservation-table>tr").click(function () {
-                    reservation_Id = $(this).children(":eq(1)").text();
+                    reservation_Id = $(this).children(":eq(0)").text();
                     $("#admin-update-reservation").prop('disabled', false);
                     console.log(reservation_Id)
                 });
+
             }
         }
     });
@@ -59,29 +61,35 @@ function loadTodayPickUps() {
                     $("#admin-view-reservation").prop('disabled', false);
                     $("#admin-update-reservation").prop('disabled', false);
                 });
+                bindEvents();
             }
         }
     });
 }
+function bindEvents(){
 
-$("#admin-view-reservation").click(function () {
-    if (reservation_Id == null) {
-        return
-    }
-    $.ajax({
-        url: baseUrl + "reservation/getReservation/" + reservation_Id,
-        method: "GET",
-        success: function (resp) {
-            if (resp.code === 200) {
-                data = resp.data
-                setDataToViewReservationModal()
-            }
-        },
-        error: function (err) {
-            console.log(err);
+    $("#admin-reservation-table>tr").click(function () {
+
+        if (reservation_Id == null) {
+            return
         }
-    });
-})
+        //methana hadanna sir oka nemeine ara update btn eke event ek
+        $.ajax({
+            url: baseUrl + "reservation/getReservation/" + reservation_Id,
+            method: "GET",
+            success: function (resp) {
+                if (resp.code === 200) {
+                    data = resp.data
+                    setDataToViewReservationModal()
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    })
+}
+
 
 function setDataToViewReservationModal() {
     $("#admin-view-reservation-id").val(data.reserve_id)
@@ -179,7 +187,7 @@ $("#admin-update-reservation").click(function () {
         url: baseUrl + "reservation/getReservation/" + reservation_Id,
         method: "GET",
         success: function (resp) {
-            if (resp.code === 200) {
+            if (resp.status === 200) {
                 data = resp.data
                 setDataToUpdateReservationModal(resp.data)
             }
