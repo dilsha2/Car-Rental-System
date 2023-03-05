@@ -55,7 +55,7 @@ function loadTodayPickUps() {
                 $("#admin-reservation-table").append(row);
                 $("#admin-reservation-table>tr").off("click");
                 $("#admin-reservation-table>tr").click(function () {
-                    reservation_Id = $(this).children(":eq(0)").text();
+                    reservation_Id = $(this).children(":eq(1)").text();
                     $("#admin-view-reservation").prop('disabled', false);
                     $("#admin-update-reservation").prop('disabled', false);
                 });
@@ -118,5 +118,57 @@ function getReservationDriver(reserve_id) {
         }
     });
 }
+
+$("#btnAcceptReservation").click(function (){
+    let driverField = $("#admin-update-reservation-driver").val();
+
+    var regExDriverNic = /^[0-9]{12}\b|[0-9]{10}[V]$/;
+    if (regExDriverNic.test(driverField)||driverField==="Not Required") {
+        $("#admin-update-reservation-driver").css('border', '2px solid blue');
+        if (data.driver_status === "YES") {
+            var id = data.reserve_id;
+            var status = "Accept"
+            var driver = $("#admin-update-reservation-driver").val();
+            updateOrDenyReservation(id, status, driver);
+        } else {
+            var id = data.reserve_id;
+            var status = "Accept"
+            var driver = "";
+            updateOrDenyReservation(id, status, driver);
+        }
+        $("#updateReservationModel").modal("toggle");
+    } else {
+        $("#admin-update-reservation-driver").css('border', '2px solid red');
+    }
+
+})
+
+function updateOrDenyReservation(id, status, driver) {
+    console.log(id, status, driver)
+    $.ajax({
+        url: baseUrl + "reservation?reserve_id=" + id + "&driver_id=" + driver + "&status=" + status,
+        method: "PUT",
+        success: function (resp) {
+            if (resp.code === 200) {
+                alert(resp.message)
+                loadPendingReservations();
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+$("#btnDenyReservation").click(function (){
+    let res = confirm("Do you really need to Cancel this Reservation ?");
+    if (res) {
+        var id = data.reserve_id;
+        var status = "Deny"
+        var driver = "";
+        updateOrDenyReservation(id, status, driver);
+        $("#updateReservationModel").modal("toggle");
+    }
+})
 
 

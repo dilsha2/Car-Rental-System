@@ -216,7 +216,7 @@ $("#adminReservationBtn").click(function () {
     $("#admin-update-reservation").css("display", "block")
     $("#admin-view-reservation").css("display", "none")
 
-    //loadPendingReservations();
+    loadPendingReservations();
 })
 
 //--Cars
