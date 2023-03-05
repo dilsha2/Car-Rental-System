@@ -318,29 +318,6 @@ $(window).on('load',function () {
     loadAllCars("allCarDetail");
 })
 
-$("#home-nextBtn").click(function () {
-    if (carList.length === listNo) {
-        return
-    }
-    $('#div-one, #div-two,#div-three').css({
-        display: 'none'
-    })
-
-    loadAllCars("allCarDetail")
-
-})
-
-$("#home-PreviousBtn").click(function () {
-    if (3 >= listNo) {
-        return
-    }
-    $('#div-one, #div-two,#div-three').css({
-        display: 'none'
-    })
-    listNo = listNo - (displayDiv + 3)
-    loadAllCars("allCarDetails")
-})
-
 let divArray = ["#div-one", "#div-two", "#div-three"];
 
 
