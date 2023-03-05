@@ -55,7 +55,7 @@ function loadTodayPickUps() {
                 $("#admin-reservation-table").append(row);
                 $("#admin-reservation-table>tr").off("click");
                 $("#admin-reservation-table>tr").click(function () {
-                    reservation_Id = $(this).children(":eq(1)").text();
+                    reservation_Id = $(this).children(":eq(0)").text();
                     $("#admin-view-reservation").prop('disabled', false);
                     $("#admin-update-reservation").prop('disabled', false);
                 });
@@ -108,7 +108,7 @@ function getReservationDriver(reserve_id) {
         url: baseUrl + "driver/getSchedule/" + reserve_id,
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 $("#admin-view-reservation-driverNic").val(resp.data);
                 $("#admin-update-reservation-driver").val(resp.data);
             }
@@ -170,5 +170,46 @@ $("#btnDenyReservation").click(function (){
         $("#updateReservationModel").modal("toggle");
     }
 })
+
+$("#admin-update-reservation").click(function () {
+    if (reservation_Id == null) {
+        return
+    }
+    $.ajax({
+        url: baseUrl + "reservation/getReservation/" + reservation_Id,
+        method: "GET",
+        success: function (resp) {
+            if (resp.code === 200) {
+                data = resp.data
+                setDataToUpdateReservationModal(resp.data)
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+})
+
+function setDataToUpdateReservationModal(data) {
+    $("#admin-update-reservation-id").val(data.reserve_id)
+    $("#admin-update-reservation-customer").val(data.customer.nic)
+    $("#admin-update-reservation-pickUpDate").val(data.pick_up_date)
+    $("#admin-update-reservation-pickUpTime").val(data.pick_up_time)
+    $("#admin-update-reservation-venue").val(data.pick_up_and_return_venue)
+    $("#admin-update-reservation-returnDate").val(data.return_date)
+    $("#admin-update-reservation-reserveDate").val(data.reserve_date)
+    $("#admin-update-reservation-vehicle").val(data.car.registrationId)
+    $("#admin-update-reservation-img").attr("src", baseUrl + data.bank_slip_img)
+
+    if (data.driver_status === "YES") {
+        getReservationDriver(data.reserve_id)
+    } else {
+        $("#admin-update-reservation-driver").prop('disabled', true);
+        $("#admin-update-reservation-driver").val("Not Required");
+    }
+}
+
+
+
 
 
