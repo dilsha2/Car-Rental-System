@@ -1,6 +1,7 @@
 package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import lk.ijse.spring.dto.UserDTO;
 import lk.ijse.spring.service.CustomerService;
 import lk.ijse.spring.service.DriverScheduleService;
 import lk.ijse.spring.service.ReservationService;
@@ -77,5 +78,9 @@ public class CustomerController {
         return new ResponseUtil(200, "Done", driverScheduleService.getDriverScheduleForSendCustomer(id));
     }
 
-
+    @PutMapping(path = "accountSecurity", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil changeCustomerUsernameAndPassword(@RequestBody UserDTO userDTO) {
+        service.changeCustomerUsernameAndPassword(userDTO);
+        return new ResponseUtil(200, "Update Account Username & password Successfully", null);
+    }
 }

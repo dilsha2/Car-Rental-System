@@ -265,7 +265,59 @@ function setDataToViewCustomerModal(data) {
 
 }
 
+$("#btnChangePassword").click(function () {
 
+    var newPassword = $("#customer-profile-new-password").val()
+
+    let userDTO = {
+        user_name: customer.user_name,
+        password: $("#customer-profile-current-password").val(),
+    }
+
+    $.ajax({
+        url: baseUrl + "login",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(userDTO),
+        success: function (res) {
+            if (res.code === 200) {
+                if (res.message === ("Customer")) {
+                    changePassword(customer.nic, customer.user_name, newPassword);
+                } else {
+                    alert("Current Password Didnt match")
+                }
+            }
+        },
+        error: function (ob) {
+            console.log(ob.responseJSON.message);
+        }
+    });
+})
+
+function changePassword(nic, user_name, newPassword) {
+    user = {
+        customer_id: nic,
+        user_name: user_name,
+        password: newPassword
+    }
+
+    $.ajax({
+        url: baseUrl + "customer/accountSecurity",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(user),
+        success: function (res) {
+            if (res.status === 200) {
+                alert(res.message)
+            } else {
+                alert("Cant update your password in this moment")
+            }
+        },
+        error: function (ob) {
+            console.log(ob.responseJSON.message);
+        }
+    });
+}
 
 
 // let Customer={
