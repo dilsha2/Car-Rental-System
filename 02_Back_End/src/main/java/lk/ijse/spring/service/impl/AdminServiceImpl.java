@@ -21,8 +21,8 @@ public class AdminServiceImpl implements AdminService {
     ModelMapper mapper;
 
     @Override
-    public AdminDTO checkAdminLogIn(String user_name, String password) {
-        Admin admin = adminRepo.checkAdminLogIn(user_name, password);
+    public AdminDTO checkAdminLogIn(String userName, String password) {
+        Admin admin = adminRepo.checkAdminLogIn(userName, password);
         if (!(admin == null)) {
             return mapper.map(admin, AdminDTO.class);
         } else {

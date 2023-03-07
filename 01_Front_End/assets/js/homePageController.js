@@ -4,19 +4,19 @@ var now = new Date();
 var day = ("0" + now.getDate()).slice(-2);
 var month = ("0" + (now.getMonth() + 1)).slice(-2);
 var today = now.getFullYear() + "-" + (month) + "-" + (day);
-var tomorrow = now.getFullYear() + "-" + (month) + "-" + ("0"+((+day) + (+1))).slice(-2);
+var tomorrow = now.getFullYear() + "-" + (month) + "-" + ("0" + ((+day) + (+1))).slice(-2);
 
 // Navigation
 // loadTodayAvailableCars();
 
 //Login Page
-$("#loginFormBtn").click(function (){
-    listNo=0;
+$("#loginFormBtn").click(function () {
+    listNo = 0;
 
-    $("#landingPage").css('display','none')
-    $("#landingNavbar").css('display','none')
+    $("#landingPage").css('display', 'none')
+    $("#landingNavbar").css('display', 'none')
 
-    $("#loginPage").css('display','block')
+    $("#loginPage").css('display', 'block')
 })
 
 
@@ -99,23 +99,22 @@ function adminLogin(data) {
 }
 
 
-
 //Register Page
-$(".getStartBtn").click(function (){
-    $("#landingPage").css('display','none')
-    $("#landingNavbar").css('display','none')
-    $("#loginPage").css('display','none')
+$(".getStartBtn").click(function () {
+    $("#landingPage").css('display', 'none')
+    $("#landingNavbar").css('display', 'none')
+    $("#loginPage").css('display', 'none')
 
-    $("#registerForm").css('display','block')
+    $("#registerForm").css('display', 'block')
 })
 
 // Back to home in register page and login form
-$(".backToHomeBtn").click(function (){
-    $("#landingPage").css('display','block')
-    $("#landingNavbar").css('display','block')
+$(".backToHomeBtn").click(function () {
+    $("#landingPage").css('display', 'block')
+    $("#landingNavbar").css('display', 'block')
 
-    $("#loginPage").css('display','none')
-    $("#registerForm").css('display','none')
+    $("#loginPage").css('display', 'none')
+    $("#registerForm").css('display', 'none')
 })
 
 //----------------customer navigation
@@ -336,14 +335,12 @@ function clearAllReservationDetails() {
 
 }
 
-$(window).on('load',function () {
+$(window).on('load', function () {
 
     loadAllCars("allCarDetail");
 })
 
 let divArray = ["#div-one", "#div-two", "#div-three"];
-
-
 
 
 let baseUrl = "http://localhost:8080/02_Back_End_war_exploded/"

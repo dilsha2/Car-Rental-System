@@ -38,12 +38,12 @@ public class LoginController {
 
         CustomerDTO customerDTO = customerService.checkCustomerLogIn(userDTO.getUser_name(), encryptedPassword);
         if (customerDTO == null) {
-            AdminDTO adminDTO = adminService.checkAdminLogIn(userDTO.getUser_name(),encryptedPassword);
+            AdminDTO adminDTO = adminService.checkAdminLogIn(userDTO.getUser_name(), encryptedPassword);
             if (adminDTO == null) {
                 DriverDTO driverDTO = driverService.checkDriverLogIn(userDTO.getUser_name(), encryptedPassword);
-                if (!(driverDTO ==null)) {
+                if (!(driverDTO == null)) {
                     return new ResponseUtil(200, "Driver", driverDTO);
-                }else {
+                } else {
                     return new ResponseUtil(200, "Incorrect username and password", null);
                 }
             } else {
