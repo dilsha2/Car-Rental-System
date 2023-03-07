@@ -187,9 +187,9 @@ function loadDriverSchedule(data) {
         url: baseUrl + "driver/weeklyAndMonthlyScheduleByDriver?id=" + data.nic + "&date=Weekly",
         method: "GET",
         success: function (resp) {
-            if (resp.status === 200) {
+            if (resp.code === 200) {
                 for (const schedule of resp.data) {
-                    let row = `<tr><td>${schedule.carReservation.reserve_id}</td><td>${schedule.start_time}</td><td>${schedule.start_date}</td>
+                    let row = `<tr style="text-align: center"><td>${schedule.carReservation.reserve_id}</td><td>${schedule.start_time}</td><td>${schedule.start_date}</td>
                 <td>${schedule.end_date}</td></tr>`;
                     $("#driver-schedule").append(row);
                 }
@@ -215,7 +215,7 @@ function loadDriverScheduleForAdmin() {
         success: function (resp) {
             if (resp.code === 200) {
                 for (const schedule of resp.data) {
-                    let row = `<tr><td>${schedule.schedule_id}</td><td>${schedule.driver.driver_name}</td><td>${schedule.start_time}</td>
+                    let row = `<tr style="text-align: center"><td>${schedule.schedule_id}</td><td>${schedule.driver.driver_name}</td><td>${schedule.start_time}</td>
                 <td>${schedule.start_date}</td><td>${schedule.end_date}</td></tr>`;
                     $("#admin-all-drivers-schedule-table").append(row);
                 }
