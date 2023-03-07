@@ -161,7 +161,6 @@ function setDataToVieDriverModal(data) {
 }
 
 $("#admin-driver-viewDetailsBtn").click(function () {
-    console.log("Helloo")
     if (driver_nic == null) {
         return
     }
@@ -170,7 +169,6 @@ $("#admin-driver-viewDetailsBtn").click(function () {
         method: "GET",
         success: function (resp) {
             if (resp.code === 200) {
-                console.log("fffff")
                 setDataToVieDriverModal(resp.data);
             } else {
                 console.log("not found link")

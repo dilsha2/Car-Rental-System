@@ -78,7 +78,7 @@ function driverLogin(data) {
     $("#driverNavBar").css("display", "block")
     $("#driver").css("display", "block")
 
-    //loadDriverSchedule(data);
+    loadDriverSchedule(data);
 
 }
 
