@@ -33,10 +33,14 @@ $("#admin-scheduleBtn").click(function () {
     loadDriverScheduleForAdmin();
 })
 
-$("#admin-driver-schedule-searchBtn").click(function () {
-    loadDriverScheduleForAdmin()
-})
+// $("#admin-driver-schedule-searchBtn").click(function () {
+//     alert("hey")
+//     loadDriverScheduleForAdmin()
+// })
 
+$("#admin-driver-schedule-searchBtn").click(function (){
+    loadDriverScheduleForAdmin();
+})
 $("#btnDriverSave").click(function (){
     saveDriver();
 })
@@ -59,7 +63,7 @@ function saveDriver(){
         contentType: "application/json",
         data: JSON.stringify(driverDTO),
         success: function (res){
-            if (res.status==200){
+            if (res.code ===200){
                 alert(res.message);
                 loadAllDrivers();
             }

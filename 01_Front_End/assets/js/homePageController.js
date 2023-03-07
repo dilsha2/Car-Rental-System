@@ -67,8 +67,8 @@ function customerLogin(data) {
     $("#customer-profile-address").val(data.address)
     $("#customer-profile-mobile").val(data.mobile)
 
-    //getAvailableCar();
-    //clearAllReservationDetails()
+    getAvailableCar();
+    clearAllReservationDetails()
 
 }
 
@@ -310,8 +310,31 @@ $("#adminPaymentBtn").click(function () {
     $("#adminReservation").css("display", "none")
     $("#adminDailySummary").css("display", "none")
 
+    $("#admin-all-drivers-title").css("display", "block")
+    $("#admin-all-driverSchedule-title").css("display", "none")
+
+
+    $("#enableSaveDriverBtn").css("display", "block");
+    $("#enableSearchDriverBtn").css("visibility", "hidden");
+
+    loadAllDrivers()
+
 
 })
+
+function clearAllReservationDetails() {
+    $("#customer-reservationStatus").text("No Reservation")
+    $("#customer-reservationStatus").css("color", "black")
+
+    $("#driverStatus").text("Not Required")
+    $("#driverStatus").css("color", "black")
+
+
+    $('#customer-reservation-driver-id,#customer-reservation-driver-name, #customer-reservation-driver-license,#customer-reservation-driver-mobile, #customer-reservation-driver-joinDate').text("")
+    $('#customer-reservation-id,#customer-reservation-name,#customer-reservation-vehicle,#customer-reservation-venue,#customer-reservation-pickUp-time,#customer-reservation-pickUp-date,#customer-reservation-return-date,#customer-reservation-days').text("")
+    $("#customer-upcoming-reservation-table").empty();
+
+}
 
 $(window).on('load',function () {
 
