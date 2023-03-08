@@ -24,7 +24,12 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public DriverDTO checkDriverLogIn(String name, String password) {
-        return null;
+        Driver driver = repo.checkDriverLogIn(name, password);
+        if (!(driver == null)) {
+            return mapper.map(driver, DriverDTO.class);
+        } else {
+            return null;
+        }
     }
 
     @Override
