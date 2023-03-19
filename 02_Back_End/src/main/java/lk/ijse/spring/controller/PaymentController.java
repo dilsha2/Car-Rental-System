@@ -27,4 +27,15 @@ public class PaymentController {
         paymentService.makePaymentForReservation(reservationPaymentDTO);
         return new ResponseUtil(200, "Transaction Successfully", null);
     }
+
+    //get Daily,Monthly,Weekly & yearly as type para.Otherwise, get two dates for find the between income
+    @GetMapping(path = "daily_weekly_Annually_Income", params = {"type", "start_date", "end_date"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil DailyOrWeekOrAnnualIncome(@RequestParam String type, @RequestParam String start_date, @RequestParam String end_date) {
+        return new ResponseUtil(200, "Done", paymentService.getIncomeByDate(type, start_date, end_date));
+    }
+
+    @GetMapping(path = "todayIncomeList", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil todayIncomeList() {
+        return new ResponseUtil(200, "Done", paymentService.getTodayIncomeList());
+    }
 }

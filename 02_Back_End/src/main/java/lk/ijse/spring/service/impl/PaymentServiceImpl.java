@@ -7,11 +7,14 @@ import lk.ijse.spring.repo.CarRepo;
 import lk.ijse.spring.repo.PaymentRepo;
 import lk.ijse.spring.repo.RentalRepo;
 import lk.ijse.spring.service.PaymentService;
+import lk.ijse.spring.util.DateFinder;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -68,11 +71,61 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public String getIncomeByDate(String type, String start_date, String end_date) {
-        return null;
+        if (type.equals("Daily")) {
+            LocalDate today = DateFinder.getToday();
+
+            String dailyIncome = paymentRepo.getDailyIncome(today);
+            if (!(dailyIncome == null)) {
+                return dailyIncome;
+            } else {
+                throw new RuntimeException("Today have No Any Transaction had Been");
+            }
+
+        } else if (type.equals("Weekly")) {
+            LocalDate monthStartDate = DateFinder.getMonthStartDate();
+            LocalDate monthEndDate = DateFinder.getMonthEndDate();
+
+            String weeklyIncome = paymentRepo.getIncomeByDate(monthStartDate, monthEndDate);
+            if (!(weeklyIncome == null)) {
+                return weeklyIncome;
+            } else {
+                throw new RuntimeException("This Week have No Any Transaction had Been");
+            }
+        } else if (type.equals("Monthly")) {
+            LocalDate monthStartDate = DateFinder.getMonthStartDate();
+            LocalDate monthEndDate = DateFinder.getMonthEndDate();
+
+            String monthlyIncome = paymentRepo.getIncomeByDate(monthStartDate, monthEndDate);
+            if (!(monthlyIncome == null)) {
+                return monthlyIncome;
+            } else {
+                throw new RuntimeException("This Month have No Any Transaction had Been");
+            }
+        } else if (type.equals("Yearly")) {
+            LocalDate yearStartDate = DateFinder.getYearStartDate();
+            LocalDate yearEndDate = DateFinder.getYearEndDate();
+
+            String yearlyIncome = paymentRepo.getIncomeByDate(yearStartDate, yearEndDate);
+            if (!(yearlyIncome == null)) {
+                return yearlyIncome;
+            } else {
+                throw new RuntimeException("This Yearly have No Any Transaction had Been");
+            }
+        } else {
+            LocalDate startDate = DateFinder.dateStringToLocalDate(start_date);
+            LocalDate endDate = DateFinder.dateStringToLocalDate(end_date);
+
+            String incomeByDate = paymentRepo.getIncomeByDate(startDate, endDate);
+            if (!(incomeByDate == null)) {
+                return incomeByDate;
+            } else {
+                throw new RuntimeException("This Dates have No Any Transaction had Been");
+            }
+        }
     }
 
     @Override
     public List<PaymentDTO> getTodayIncomeList() {
-        return null;
+        return mapper.map(paymentRepo.todayIncomeList(),new TypeToken<List<PaymentDTO>>(){}.getType());
     }
 }
